@@ -1,4 +1,4 @@
-/* Littleman Studio v2 — i18n dictionary (EN / ES) */
+/* Littleman Labs v2 — i18n dictionary (EN / ES) */
 window.LITTLEMAN_I18N = {
   en: {
     "nav.home": "Home",
@@ -127,7 +127,7 @@ window.LITTLEMAN_I18N = {
     "svcpage.cta.lede": "Tell us about your business — we'll recommend one.",
 
     /* ---------- About ---------- */
-    "about.eyebrow": "About Littleman Studio",
+    "about.eyebrow": "About Littleman Labs",
     "about.h1": "A studio built to help Puerto Rico businesses run like the best in the world.",
     "about.lede": "Premium design, CRM, and automation — one accountable system.",
     "about.story.p1": "Most businesses juggle a website, a CRM, and leads answered whenever someone finds time. We close that gap.",
@@ -309,7 +309,7 @@ window.LITTLEMAN_I18N = {
     "svcpage.cta.lede": "Cuéntanos sobre tu negocio — te recomendamos uno.",
 
     /* ---------- About ---------- */
-    "about.eyebrow": "Sobre Littleman Studio",
+    "about.eyebrow": "Sobre Littleman Labs",
     "about.h1": "Un estudio creado para que los negocios de Puerto Rico operen como los mejores del mundo.",
     "about.lede": "Diseño premium, CRM y automatización — un solo sistema responsable.",
     "about.story.p1": "La mayoría de los negocios maneja un sitio, un CRM y leads que se responden cuando hay tiempo. Cerramos esa brecha.",

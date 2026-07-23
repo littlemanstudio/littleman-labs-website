@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://littlemanstudio.com/sitemap.xml
+Sitemap: https://littlemanlabs.com/sitemap.xml
