@@ -44,7 +44,7 @@ window.LITTLEMAN_I18N = {
     "pricing.p3.cta": "Scale with Ads + CRM",
 
     "footer.tag": "Websites, CRM &amp; automation for Ponce, PR businesses.",
-    "footer.basedin": "Ponce, Puerto Rico",
+    "footer.basedin": "729 Calle Ausubo, Urb. Los Caobos, Ponce, PR 00716",
     "footer.rights": "All rights reserved.",
     "footer.privacy": "Privacy Policy",
     "footer.terms": "Terms &amp; Conditions",
@@ -225,7 +225,7 @@ window.LITTLEMAN_I18N = {
     "pricing.p3.cta": "Escala con Anuncios + CRM",
 
     "footer.tag": "Sitios web, CRM y automatización para negocios de Ponce, PR.",
-    "footer.basedin": "Ponce, Puerto Rico",
+    "footer.basedin": "729 Calle Ausubo, Urb. Los Caobos, Ponce, PR 00716",
     "footer.rights": "Todos los derechos reservados.",
     "footer.privacy": "Política de Privacidad",
     "footer.terms": "Términos y Condiciones",
