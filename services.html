@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Services &amp; Pricing — Websites, CRM &amp; Automation | Littleman</title>
-<meta name="description" content="Custom websites, CRM setup, automation, local SEO, and paid ads for Ponce, Puerto Rico businesses. Three monthly plans from $297/mo, starting with a free call.">
+<meta name="description" content="Website design from $750, plus CRM &amp; lead management from $300/mo, and Meta ads + CRM bundles from $1,000/mo — for Ponce, Puerto Rico businesses.">
 <link rel="canonical" href="https://littlemanlabs.com/services.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Littleman Labs">
 <meta property="og:title" content="Services &amp; Pricing — Websites, CRM &amp; Automation | Littleman">
-<meta property="og:description" content="Custom websites, CRM setup, automation, local SEO, and paid ads for Ponce, Puerto Rico businesses. Three monthly plans from $297/mo, starting with a free call.">
+<meta property="og:description" content="Website design from $750, plus CRM &amp; lead management from $300/mo, and Meta ads + CRM bundles from $1,000/mo — for Ponce, Puerto Rico businesses.">
 <meta property="og:url" content="https://littlemanlabs.com/services.html">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#044AB3">
@@ -22,16 +22,24 @@
 {
   "@context": "https://schema.org",
   "@type": "OfferCatalog",
-  "name": "Littleman Labs — Plans",
+  "name": "Littleman Labs — Services",
   "itemListElement": [
-    {"@type":"Offer","name":"Presencia","price":"297","priceCurrency":"USD"},
-    {"@type":"Offer","name":"Crecimiento","price":"497","priceCurrency":"USD"},
-    {"@type":"Offer","name":"Dominio","price":"997","priceCurrency":"USD"}
+    {"@type":"Offer","name":"Website Design","priceSpecification":{"@type":"PriceSpecification","minPrice":"750","maxPrice":"1000","priceCurrency":"USD"}},
+    {"@type":"Offer","name":"CRM & Lead Management","price":"300","priceCurrency":"USD","priceSpecification":{"@type":"UnitPriceSpecification","billingIncrement":"1","unitCode":"MON"}},
+    {"@type":"Offer","name":"Ads + CRM","priceSpecification":{"@type":"UnitPriceSpecification","minPrice":"1000","priceCurrency":"USD","billingIncrement":"1","unitCode":"MON"}}
   ]
 }
 </script>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <filter id="liquid-glass-filter" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="noise"/>
+    <feGaussianBlur in="noise" stdDeviation="2.5" result="softNoise"/>
+    <feDisplacementMap in="SourceGraphic" in2="softNoise" scale="16" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
 
 <a href="#main" class="visually-hidden">Skip to main content</a>
 
@@ -67,17 +75,19 @@
       <a href="about.html" data-i18n="nav.about">About</a>
       <a href="blog.html" data-i18n="nav.blog">Insights</a>
     </nav>
-    <div class="lang-toggle" role="group" aria-label="Language selector">
-      <button type="button" data-lang="en">EN</button>
-      <button type="button" data-lang="es">ES</button>
+    <div class="header-actions">
+      <div class="lang-toggle" role="group" aria-label="Language selector">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="es">ES</button>
+      </div>
+      <a href="contact.html" class="header-cta">
+        <span data-i18n="cta.getInTouch">Get in Touch</span>
+        <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
     </div>
-    <a href="contact.html" class="header-cta">
-      <span data-i18n="cta.getInTouch">Get in Touch</span>
-      <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-    <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-    </button>
   </div>
 </header>
 
@@ -179,47 +189,46 @@
 
       <div class="pricing-grid" data-reveal>
         <div class="price-card">
-          <p class="price-name">Presencia</p>
-          <p class="price-num">$297<span data-i18n="pricing.per1">/mo + IVU</span></p>
-          <p class="price-tag" data-i18n="svcpage.pricing.p1.tag">Your site, alive and answering.</p>
+          <p class="price-name" data-i18n="pricing.name1">Website Design</p>
+          <p class="price-num">$750–$1,000<span data-i18n="pricing.per1">one-time</span></p>
+          <p class="price-tag" data-i18n="svcpage.pricing.p1.tag">Built once. Scoped to what you actually need.</p>
           <ul class="price-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p1.f1">Hosting, maintenance &amp; content edits</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p1.f2">CRM with one unified lead inbox</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p1.f3">Missed-call text-back</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p1.f4">Google review requests</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p1.f1">3–5 pages, scoped to your business</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p1.f2">Bilingual from day one</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p1.f3">Backend or database, if you need one</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p1.f4">Yours forever — no monthly lock-in</span></li>
           </ul>
-          <a href="contact.html" class="btn btn-dark" data-i18n="pricing.p1.cta">Start with Presencia</a>
+          <a href="contact.html" class="btn btn-dark" data-i18n="pricing.p1.cta">Start with a Website</a>
         </div>
 
         <div class="price-card is-featured">
-          <span class="price-badge">Most Popular</span>
-          <p class="price-name">Crecimiento</p>
-          <p class="price-num">$497<span data-i18n="pricing.per1">/mo + IVU</span></p>
-          <p class="price-tag" data-i18n="svcpage.pricing.p2.tag">Every lead followed up, booked, and reported.</p>
+          <span class="price-badge" data-i18n="pricing.badge">Most Popular</span>
+          <p class="price-name" data-i18n="pricing.name2">CRM &amp; Lead Management</p>
+          <p class="price-num">$300<span data-i18n="pricing.per2">/mo + IVU</span></p>
+          <p class="price-tag" data-i18n="svcpage.pricing.p2.tag">Every lead followed up. Nothing falls through.</p>
           <ul class="price-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p2.f1">Everything in Presencia</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p2.f2">SMS &amp; email follow-up sequences</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p2.f3">Online booking &amp; appointment reminders</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p2.f4">Google Business Profile &amp; local SEO upkeep</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p2.f5">Monthly report: leads in, jobs booked</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p2.f1">Unified lead inbox — call, form, DM</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p2.f2">Missed-call text-back</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p2.f3">Booking &amp; reminders that cut no-shows</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p2.f4">Monthly report: leads in, jobs booked</span></li>
           </ul>
-          <a href="contact.html" class="btn btn-solid" style="color:var(--blue);background:#fff;" data-i18n="pricing.p2.cta">Grow with Crecimiento</a>
+          <a href="contact.html" class="btn btn-solid" data-i18n="pricing.p2.cta">Start CRM &amp; Leads</a>
         </div>
 
         <div class="price-card">
-          <p class="price-name">Dominio</p>
-          <p class="price-num">$997<span data-i18n="pricing.per3">/mo + ads</span></p>
+          <p class="price-name" data-i18n="pricing.name3">Ads + CRM</p>
+          <p class="price-num"><span data-i18n="pricing.from">From</span> $1,000<span data-i18n="pricing.per3">/mo + IVU</span></p>
           <p class="price-tag" data-i18n="svcpage.pricing.p3.tag">Your market, actively captured.</p>
           <ul class="price-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p3.f1">Everything in Crecimiento</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p3.f2">Google &amp; Meta ads managed weekly</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p3.f1">Everything in CRM &amp; Lead Management</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p3.f2">Meta ads managed weekly</span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p3.f3">Dedicated landing pages per campaign</span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p3.f4">Same-day priority support</span></li>
           </ul>
-          <a href="contact.html" class="btn btn-dark" data-i18n="pricing.p3.cta">Scale with Dominio</a>
+          <a href="contact.html" class="btn btn-dark" data-i18n="pricing.p3.cta">Scale with Ads + CRM</a>
         </div>
       </div>
-      <p class="pricing-note" data-reveal data-i18n="svcpage.pricing.note">Prices + IVU. Dominio's ad budget is yours — paid directly to Google &amp; Meta, recommended from $500/mo.</p>
+      <p class="pricing-note" data-reveal data-i18n="svcpage.pricing.note">Prices + IVU. Website scope (pages, backend) is set on the free call.</p>
     </div>
   </section>
 
@@ -288,35 +297,28 @@
     </div>
   </div>
   <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <a href="index.html" class="footer-brand"><img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs">Littleman</a>
-        <p class="footer-tag" data-i18n="footer.tag">Websites, CRM &amp; automation for Ponce, PR businesses.</p>
-      </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h3 data-i18n="footer.site">Site</h3>
-          <a href="services.html" data-i18n="nav.services">Services</a>
-          <a href="about.html" data-i18n="nav.about">About</a>
-          <a href="blog.html" data-i18n="nav.blog">Insights</a>
-          <a href="contact.html" data-i18n="nav.contact">Contact</a>
-        </div>
-        <div class="footer-col">
-          <h3 data-i18n="footer.connect">Connect</h3>
-          <p data-i18n="footer.basedin">Ponce, Puerto Rico</p>
-          <a href="tel:+17879019020">(787) 901-9020</a>
-          <a href="mailto:hello@littlemanlabs.com">hello@littlemanlabs.com</a>
-        </div>
-        <div class="footer-col">
-          <h3 data-i18n="footer.social">Social</h3>
-          <a href="https://wa.me/17879019020" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#" target="_blank" rel="noopener">Instagram</a>
-        </div>
-      </div>
+    <a href="index.html" class="footer-brand"><img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs">Littleman</a>
+    <p class="footer-tag" data-i18n="footer.tag">Websites, CRM &amp; automation for Ponce, PR businesses.</p>
+
+    <nav class="footer-nav">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="services.html" data-i18n="nav.services">Services</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+      <a href="blog.html" data-i18n="nav.blog">Insights</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
+    </nav>
+
+    <div class="footer-contact-row">
+      <span data-i18n="footer.basedin">Ponce, Puerto Rico</span>
+      <a href="tel:+17879019020">(787) 901-9020</a>
+      <a href="mailto:hello@littlemanlabs.com">hello@littlemanlabs.com</a>
+      <a href="https://wa.me/17879019020" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
     </div>
+
     <div class="footer-bottom">
       <p>© <span data-year>2026</span> Littleman Labs. <span data-i18n="footer.rights">All rights reserved.</span></p>
-      <div style="display:flex;gap:20px;">
+      <div class="footer-legal">
         <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
         <a href="#" data-i18n="footer.terms">Terms &amp; Conditions</a>
       </div>
@@ -327,6 +329,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script src="assets/js/i18n.js?v=1"></script>
-<script src="assets/js/main.js?v=1"></script>
+<script src="assets/js/main.js?v=2"></script>
 </body>
 </html>

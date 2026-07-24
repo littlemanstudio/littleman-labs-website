@@ -92,6 +92,9 @@
     });
     if (closeBtn) closeBtn.addEventListener("click", closeMenu);
     panel.querySelectorAll("nav a").forEach(function (a) { a.addEventListener("click", closeMenu); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && panel.classList.contains("is-open")) closeMenu();
+    });
   }
 
   function initReveal() {

@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About Littleman Labs | Web Design &amp; CRM in Ponce, PR</title>
-<meta name="description" content="Littleman Labs is a Ponce, Puerto Rico studio building one connected system — website, CRM, automation — for local businesses, not five disconnected tools.">
+<meta name="description" content="Why the Littleman? Not because he is different — because he executes when everyone else hesitates. Built in Ponce, Puerto Rico by Allan Gianni Rosario Bobet.">
 <link rel="canonical" href="https://littlemanlabs.com/about.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Littleman Labs">
 <meta property="og:title" content="About Littleman Labs | Web Design &amp; CRM in Ponce, PR">
-<meta property="og:description" content="Littleman Labs is a Ponce, Puerto Rico studio building one connected system — website, CRM, automation — for local businesses, not five disconnected tools.">
+<meta property="og:description" content="Why the Littleman? Not because he is different — because he executes when everyone else hesitates. Built in Ponce, Puerto Rico by Allan Gianni Rosario Bobet.">
 <meta property="og:url" content="https://littlemanlabs.com/about.html">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#044AB3">
@@ -20,6 +20,14 @@
 <link rel="stylesheet" href="assets/css/style.css?v=1">
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <filter id="liquid-glass-filter" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="noise"/>
+    <feGaussianBlur in="noise" stdDeviation="2.5" result="softNoise"/>
+    <feDisplacementMap in="SourceGraphic" in2="softNoise" scale="16" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
 
 <a href="#main" class="visually-hidden">Skip to main content</a>
 
@@ -55,17 +63,19 @@
       <a href="about.html" aria-current="page" data-i18n="nav.about">About</a>
       <a href="blog.html" data-i18n="nav.blog">Insights</a>
     </nav>
-    <div class="lang-toggle" role="group" aria-label="Language selector">
-      <button type="button" data-lang="en">EN</button>
-      <button type="button" data-lang="es">ES</button>
+    <div class="header-actions">
+      <div class="lang-toggle" role="group" aria-label="Language selector">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="es">ES</button>
+      </div>
+      <a href="contact.html" class="header-cta">
+        <span data-i18n="cta.getInTouch">Get in Touch</span>
+        <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
     </div>
-    <a href="contact.html" class="header-cta">
-      <span data-i18n="cta.getInTouch">Get in Touch</span>
-      <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-    </a>
-    <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-    </button>
   </div>
 </header>
 
@@ -87,9 +97,9 @@
         </svg>
       </div>
     <div class="section-inner">
-      <span class="eyebrow" data-i18n="about.eyebrow">About Littleman Labs</span>
-      <h1 data-i18n="about.h1">A studio built to help Puerto Rico businesses run like the best in the world.</h1>
-      <p class="lede" data-i18n="about.lede">Premium design, CRM, and automation — one accountable system.</p>
+      <span class="eyebrow" data-i18n="about.eyebrow">Why "Littleman"</span>
+      <h1 data-i18n="about.h1">He's not different. He's just the one who does it.</h1>
+      <p class="lede" data-i18n="about.lede">Littleman Labs — built in Ponce, Puerto Rico by Allan Gianni Rosario Bobet.</p>
     </div>
   </section>
 
@@ -103,8 +113,9 @@
     </div>
     <div class="section-inner">
       <div class="story-block" data-reveal>
-        <p class="lede" style="color:var(--ink);font-size:17px;" data-i18n="about.story.p1">Most businesses juggle a website, a CRM, and leads answered whenever someone finds time. We close that gap.</p>
-        <p class="lede" style="color:var(--ink);font-size:17px;" data-i18n="about.story.p2">One connected system — not five disconnected tools. We stay accountable after launch.</p>
+        <p class="lede" style="color:var(--ink);font-size:17px;" data-i18n="about.story.p1">The Littleman isn't special. He's just the one who takes action while everyone else hesitates, waits, or puts it off.</p>
+        <p class="lede" style="color:var(--ink);font-size:17px;" data-i18n="about.story.p2">He doesn't always know the path. He just keeps crawling — forward, in an endless search for more.</p>
+        <p class="lede" style="color:var(--ink);font-size:17px;" data-i18n="about.story.p3">The whole point is leveraging income into time. Time is worth more than money.</p>
       </div>
     </div>
   </section>
@@ -119,34 +130,24 @@
     </div>
     <div class="section-inner">
       <div class="section-head" data-reveal>
-        <span class="eyebrow" data-i18n="about.pillars.eyebrow">How We Work</span>
-        <h2 data-i18n="about.pillars.h2">Five Things We Hold To</h2>
+        <span class="eyebrow" data-i18n="about.pillars.eyebrow">How He Works</span>
+        <h2 data-i18n="about.pillars.h2">Three Things That Don't Change</h2>
       </div>
       <div class="pillars-grid" data-reveal>
         <div class="pillar">
           <span class="num">01</span>
-          <h3 data-i18n="about.pillar1.title">Premium craft</h3>
-          <p data-i18n="about.pillar1.desc">The same care as the brands you admire. Nothing templated.</p>
+          <h3 data-i18n="about.pillar1.title">Execute, don't wait</h3>
+          <p data-i18n="about.pillar1.desc">Most people wait for the perfect plan. We just start crawling.</p>
         </div>
         <div class="pillar">
           <span class="num">02</span>
-          <h3 data-i18n="about.pillar2.title">Elegant simplicity</h3>
-          <p data-i18n="about.pillar2.desc">We remove complexity, not add to it.</p>
+          <h3 data-i18n="about.pillar2.title">Time over money</h3>
+          <p data-i18n="about.pillar2.desc">Every system is built to buy you back hours, not just look nice.</p>
         </div>
         <div class="pillar">
           <span class="num">03</span>
-          <h3 data-i18n="about.pillar3.title">Corporate-grade reliability</h3>
-          <p data-i18n="about.pillar3.desc">Built to hold up under real volume, not just a demo.</p>
-        </div>
-        <div class="pillar">
-          <span class="num">04</span>
-          <h3 data-i18n="about.pillar4.title">Radical minimalism</h3>
-          <p data-i18n="about.pillar4.desc">Only what moves your business forward.</p>
-        </div>
-        <div class="pillar">
-          <span class="num">05</span>
-          <h3 data-i18n="about.pillar5.title">Earned trust</h3>
-          <p data-i18n="about.pillar5.desc">Clear communication. Documented systems. No guesswork.</p>
+          <h3 data-i18n="about.pillar3.title">Brief, not empty</h3>
+          <p data-i18n="about.pillar3.desc">Minimal because it's considered — never because we ran out of things to say.</p>
         </div>
       </div>
     </div>
@@ -203,35 +204,28 @@
     </div>
   </div>
   <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <a href="index.html" class="footer-brand"><img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs">Littleman</a>
-        <p class="footer-tag" data-i18n="footer.tag">Websites, CRM &amp; automation for Ponce, PR businesses.</p>
-      </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h3 data-i18n="footer.site">Site</h3>
-          <a href="services.html" data-i18n="nav.services">Services</a>
-          <a href="about.html" data-i18n="nav.about">About</a>
-          <a href="blog.html" data-i18n="nav.blog">Insights</a>
-          <a href="contact.html" data-i18n="nav.contact">Contact</a>
-        </div>
-        <div class="footer-col">
-          <h3 data-i18n="footer.connect">Connect</h3>
-          <p data-i18n="footer.basedin">Ponce, Puerto Rico</p>
-          <a href="tel:+17879019020">(787) 901-9020</a>
-          <a href="mailto:hello@littlemanlabs.com">hello@littlemanlabs.com</a>
-        </div>
-        <div class="footer-col">
-          <h3 data-i18n="footer.social">Social</h3>
-          <a href="https://wa.me/17879019020" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="#" target="_blank" rel="noopener">Instagram</a>
-        </div>
-      </div>
+    <a href="index.html" class="footer-brand"><img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs">Littleman</a>
+    <p class="footer-tag" data-i18n="footer.tag">Websites, CRM &amp; automation for Ponce, PR businesses.</p>
+
+    <nav class="footer-nav">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="services.html" data-i18n="nav.services">Services</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+      <a href="blog.html" data-i18n="nav.blog">Insights</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
+    </nav>
+
+    <div class="footer-contact-row">
+      <span data-i18n="footer.basedin">Ponce, Puerto Rico</span>
+      <a href="tel:+17879019020">(787) 901-9020</a>
+      <a href="mailto:hello@littlemanlabs.com">hello@littlemanlabs.com</a>
+      <a href="https://wa.me/17879019020" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
     </div>
+
     <div class="footer-bottom">
       <p>© <span data-year>2026</span> Littleman Labs. <span data-i18n="footer.rights">All rights reserved.</span></p>
-      <div style="display:flex;gap:20px;">
+      <div class="footer-legal">
         <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
         <a href="#" data-i18n="footer.terms">Terms &amp; Conditions</a>
       </div>
@@ -242,6 +236,6 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script src="assets/js/i18n.js?v=1"></script>
-<script src="assets/js/main.js?v=1"></script>
+<script src="assets/js/main.js?v=2"></script>
 </body>
 </html>
