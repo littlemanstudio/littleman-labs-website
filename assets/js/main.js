@@ -206,6 +206,35 @@
     });
   }
 
+  function initChatWidgetTheme() {
+    var vars = {
+      "--chat-widget-primary-color": "#4C8DFF",
+      "--chat-widget-active-color": "#4C8DFF",
+      "--chat-widget-bubble-color": "#4C8DFF",
+      "--chat-widget-header-color": "#4C8DFF",
+      "--chat-widget-header-darken-color": "#044AB3",
+      "--chat-widget-sender-message-color": "#4C8DFF",
+      "--chat-widget-button-color": "#4C8DFF",
+      "--ion-color-primary": "#4C8DFF",
+      "--color": "#4C8DFF",
+      "--chat-widget-font-family": "'Instrument Sans','Helvetica Neue',Helvetica,Arial,sans-serif",
+      "--ion-font-family": "'Instrument Sans','Helvetica Neue',Helvetica,Arial,sans-serif"
+    };
+    var tries = 0;
+    var timer = setInterval(function () {
+      tries++;
+      var widget = document.querySelector("chat-widget");
+      if (widget) {
+        Object.keys(vars).forEach(function (key) {
+          widget.style.setProperty(key, vars[key]);
+        });
+        clearInterval(timer);
+      } else if (tries > 40) {
+        clearInterval(timer);
+      }
+    }, 250);
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     initLangToggle();
     initLenis();
@@ -215,5 +244,6 @@
     initStars();
     initContactForm();
     initYear();
+    initChatWidgetTheme();
   });
 })();
