@@ -51,12 +51,12 @@ window.LITTLEMAN_I18N = {
 
     /* ---------- Home ---------- */
     "hero.eyebrow": "Systems Over Software",
-    "hero.h1": "The Studio Behind Businesses That Run Themselves",
-    "hero.lede": "Websites, CRM, and automation — built as one system, not three vendors.",
+    "hero.h1": "Web Design, CRM &amp; Automation for Ponce, Puerto Rico Businesses",
+    "hero.lede": "The studio behind businesses that run themselves — websites, CRM, and automation built as one system, not three vendors.",
     "hero.scroll": "Scroll",
 
     "home.services.h2": "What We Build",
-    "home.svc.website.desc": "Fast, bilingual, built for your brand.",
+    "home.svc.website.desc": "Custom web design — fast, bilingual, built for your brand.",
     "home.svc.crm.desc": "Every lead, one place.",
     "home.svc.textback.desc": "Never lose a lead again.",
     "home.svc.scheduling.desc": "Fewer no-shows, fuller calendar.",
@@ -231,12 +231,12 @@ window.LITTLEMAN_I18N = {
 
     /* ---------- Home ---------- */
     "hero.eyebrow": "Sistemas Sobre Software",
-    "hero.h1": "El Estudio Detrás de Negocios Que Se Manejan Solos",
-    "hero.lede": "Sitios web, CRM y automatización — un solo sistema, no tres proveedores.",
+    "hero.h1": "Diseño Web, CRM y Automatización para Negocios en Ponce, Puerto Rico",
+    "hero.lede": "El estudio detrás de negocios que se manejan solos — sitios web, CRM y automatización en un solo sistema, no tres proveedores.",
     "hero.scroll": "Desliza",
 
     "home.services.h2": "Lo Que Construimos",
-    "home.svc.website.desc": "Rápidos, bilingües, hechos para tu marca.",
+    "home.svc.website.desc": "Diseño web personalizado — rápido, bilingüe, hecho para tu marca.",
     "home.svc.crm.desc": "Cada lead, un solo lugar.",
     "home.svc.textback.desc": "Nunca vuelvas a perder un lead.",
     "home.svc.scheduling.desc": "Menos ausencias, calendario lleno.",
