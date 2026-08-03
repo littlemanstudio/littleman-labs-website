@@ -35,7 +35,6 @@ window.LITTLEMAN_I18N = {
     "svc.brand.title": "Brand &amp; Content",
 
     "pricing.badge": "Most Popular",
-    "pricing.from": "From",
     "pricing.name1": "Website Design",
     "pricing.name2": "CRM &amp; Lead Management",
     "pricing.name3": "Ads + CRM",
@@ -65,11 +64,6 @@ window.LITTLEMAN_I18N = {
     "home.svc.reports.desc": "Leads in, jobs booked.",
     "home.svc.brand.desc": "Bilingual copy, done for you.",
 
-    "home.pricing.eyebrow": "Pricing",
-    "home.pricing.h2": "Simple, Honest Pricing",
-    "pricing.per1": "one-time",
-    "pricing.per2": "/mo + IVU",
-    "pricing.per3": "/mo + IVU",
     "pricing.p1.tag": "Built once. Scoped to what you actually need.",
     "pricing.p1.f1": "3–5 pages, scoped to you",
     "pricing.p1.f2": "Bilingual from day one",
@@ -82,7 +76,6 @@ window.LITTLEMAN_I18N = {
     "pricing.p3.f1": "Everything in CRM &amp; Leads",
     "pricing.p3.f2": "Meta ads, managed weekly",
     "pricing.p3.f3": "Same-day priority support",
-    "home.pricing.note": "One-time website. Monthly systems. Prices + IVU.",
 
     "industries.eyebrow": "Who We Build For",
     "industries.chip.home": "Home Services",
@@ -105,9 +98,9 @@ window.LITTLEMAN_I18N = {
     "svcpage.svc.reports.desc": "Leads in, jobs booked — plain language, every month.",
     "svcpage.svc.brand.desc": "Bilingual copywriting, done for you.",
 
-    "svcpage.pricing.eyebrow": "Pricing",
-    "svcpage.pricing.h2": "One Build. Two Ways We Keep It Working.",
-    "svcpage.pricing.lede": "Every engagement starts with a free call.",
+    "svcpage.pricing.eyebrow": "How We Work",
+    "svcpage.pricing.h2": "After Launch: Three Ways We Keep It Selling.",
+    "svcpage.pricing.lede": "Website is a one-time build. CRM and Ads run month to month, 90-day minimum.",
     "svcpage.pricing.p1.tag": "Built once. Scoped to what you actually need.",
     "svcpage.pricing.p1.f1": "3–5 pages, scoped to your business",
     "svcpage.pricing.p1.f2": "Bilingual from day one",
@@ -123,7 +116,7 @@ window.LITTLEMAN_I18N = {
     "svcpage.pricing.p3.f2": "Meta ads managed weekly",
     "svcpage.pricing.p3.f3": "Dedicated landing pages per campaign",
     "svcpage.pricing.p3.f4": "Same-day priority support",
-    "svcpage.pricing.note": "Prices + IVU. Website scope (pages, backend) is set on the free call.",
+    "svcpage.pricing.note": "Every engagement is different — scope and cost are confirmed on your free call.",
 
     "svcpage.cta.h2": "Not Sure Which Plan Fits?",
     "svcpage.cta.lede": "Tell us about your business — we'll recommend one.",
@@ -215,7 +208,6 @@ window.LITTLEMAN_I18N = {
     "svc.brand.title": "Marca y Contenido",
 
     "pricing.badge": "Más Popular",
-    "pricing.from": "Desde",
     "pricing.name1": "Diseño Web",
     "pricing.name2": "CRM y Gestión de Leads",
     "pricing.name3": "Anuncios + CRM",
@@ -245,11 +237,6 @@ window.LITTLEMAN_I18N = {
     "home.svc.reports.desc": "Leads que entran, trabajos agendados.",
     "home.svc.brand.desc": "Textos bilingües, listos para ti.",
 
-    "home.pricing.eyebrow": "Precios",
-    "home.pricing.h2": "Precios Simples y Honestos",
-    "pricing.per1": "pago único",
-    "pricing.per2": "/mes + IVU",
-    "pricing.per3": "/mes + IVU",
     "pricing.p1.tag": "Se construye una vez. Ajustado a lo que realmente necesitas.",
     "pricing.p1.f1": "3–5 páginas, a tu medida",
     "pricing.p1.f2": "Bilingüe desde el primer día",
@@ -262,7 +249,6 @@ window.LITTLEMAN_I18N = {
     "pricing.p3.f1": "Todo lo de CRM y Leads",
     "pricing.p3.f2": "Anuncios en Meta, cada semana",
     "pricing.p3.f3": "Soporte prioritario el mismo día",
-    "home.pricing.note": "Sitio web único. Sistemas mensuales. Precios + IVU.",
 
     "industries.eyebrow": "Para Quién Construimos",
     "industries.chip.home": "Servicios del Hogar",
@@ -285,9 +271,9 @@ window.LITTLEMAN_I18N = {
     "svcpage.svc.reports.desc": "Leads que entran, trabajos agendados — cada mes, en lenguaje claro.",
     "svcpage.svc.brand.desc": "Copywriting bilingüe, listo para ti.",
 
-    "svcpage.pricing.eyebrow": "Precios",
-    "svcpage.pricing.h2": "Un Proyecto. Dos Formas de Mantenerlo Funcionando.",
-    "svcpage.pricing.lede": "Cada proyecto empieza con una llamada gratis.",
+    "svcpage.pricing.eyebrow": "Cómo Trabajamos",
+    "svcpage.pricing.h2": "Después del Lanzamiento: Tres Formas de Seguir Vendiendo",
+    "svcpage.pricing.lede": "El sitio web es un proyecto único. CRM y Anuncios funcionan mes a mes, con mínimo de 90 días.",
     "svcpage.pricing.p1.tag": "Se construye una vez. Ajustado a lo que realmente necesitas.",
     "svcpage.pricing.p1.f1": "3–5 páginas, según tu negocio",
     "svcpage.pricing.p1.f2": "Bilingüe desde el primer día",
@@ -303,7 +289,7 @@ window.LITTLEMAN_I18N = {
     "svcpage.pricing.p3.f2": "Anuncios en Meta gestionados cada semana",
     "svcpage.pricing.p3.f3": "Landing pages dedicadas por campaña",
     "svcpage.pricing.p3.f4": "Soporte prioritario el mismo día",
-    "svcpage.pricing.note": "Precios + IVU. El alcance del sitio (páginas, backend) se define en la llamada gratis.",
+    "svcpage.pricing.note": "Cada proyecto es distinto — el alcance y costo se confirman en tu llamada gratis.",
 
     "svcpage.cta.h2": "¿No Sabes Cuál Plan Te Conviene?",
     "svcpage.cta.lede": "Cuéntanos sobre tu negocio — te recomendamos uno.",
