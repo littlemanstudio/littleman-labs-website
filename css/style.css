@@ -1,0 +1,846 @@
+/* ==========================================================================
+   Littleman Labs — "The Atelier" build
+   A gallery/exhibition system: the mascot as museum bronze, services as
+   an exhibition case. No cream/terracotta, no blue/glass carryover from
+   the old site — graphite + bone + a single bronze accent.
+   ========================================================================== */
+
+:root {
+  --graphite: #1c1a17;
+  --graphite-deep: #121110;
+  --bone: #f1ede4;
+  --bone-dim: rgba(241, 237, 228, 0.62);
+  --bone-faint: rgba(241, 237, 228, 0.34);
+  --line: rgba(241, 237, 228, 0.14);
+  --line-strong: rgba(241, 237, 228, 0.28);
+
+  --bronze: #b8874a;
+  --bronze-bright: #d8a869;
+  --patina: #5c8a75;
+
+  --font-display: "Libre Caslon Display", "Iowan Old Style", "Times New Roman", serif;
+  --font-body: "Inter Tight", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --fs-h1: clamp(2.6rem, 1.7rem + 4.2vw, 6rem);
+  --fs-h2: clamp(2.6rem, 1.6rem + 4.6vw, 6rem);
+  --fs-h3: clamp(1.7rem, 1.35rem + 1.6vw, 2.6rem);
+  --fs-lead: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+
+  --container: 1280px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --ease: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: transparent;
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ==========================================================================
+   Global scroll field — fixed behind everything, one instance per page.
+   This is now the site's actual background color layer; sections above it
+   stay transparent so the particle field reads through everywhere, not
+   just in the gaps between opaque blocks.
+   ========================================================================== */
+
+.bg-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--graphite);
+  pointer-events: none;
+}
+/* Kept deliberately faint — ambient texture, not a foreground pattern.
+   The shader's own colors/contrast were tuned for a standalone hero, not
+   as a backdrop sitting behind body text every page has. */
+#bg-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0.1; }
+
+/* Every direct content section sits above the field in its own stacking
+   context so z-index: 0 on .bg-field always stays at the back. (.preloader
+   and .contact-overlay already carry their own higher fixed z-index and
+   are intentionally left out of this rule so it doesn't clobber that.) */
+.navbar, .hero, .section, .exhibit, .cta-band, .footer {
+  position: relative;
+  z-index: 1;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+ul { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p { margin: 0; }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.005em;
+  color: var(--bone);
+}
+
+:focus-visible { outline: 2px solid var(--bronze-bright); outline-offset: 3px; }
+
+/* ==========================================================================
+   Placard — the gallery-tag device used across sections
+   ========================================================================== */
+
+.placard {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+}
+.placard::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: var(--bronze-bright);
+  flex: none;
+}
+.placard .num { color: var(--bronze-bright); white-space: nowrap; }
+
+.lead {
+  font-size: var(--fs-lead);
+  color: var(--bone-dim);
+  max-width: 42ch;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+/* No pill/chrome buttons — real award-winning studio sites (checked
+   makemepulse.com's actual nav DOM) ship plain text links with a bare
+   opacity/color hover, nothing else. Ours extends the hero's corner-tick
+   "specimen frame" as the one recurring UI signature instead of a button
+   component, so it reads as one system rather than a borrowed widget. */
+/* Ported from 21st.dev "Frame Button" (radiumcoders) — real sourced technique:
+   four chevron markers (Tabler chevron-up/down-left/right paths), always
+   visible at a fixed offset outside the button, each translating further
+   outward on hover via its own --move-x/--move-y. Markers are injected by
+   js/main.js so every .btn gets the same real markup without hand-typing
+   4 SVGs per instance. */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+  transition: color 0.3s var(--ease);
+}
+.btn:hover { color: var(--bone); }
+.btn-primary { color: var(--bone); padding: 12px 20px; }
+.btn-primary:hover { color: var(--bronze-bright); }
+
+.btn-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  color: var(--bone-faint);
+  pointer-events: none;
+  transition: transform 0.3s var(--ease), color 0.3s var(--ease);
+}
+.btn-corner svg { width: 100%; height: 100%; display: block; }
+.btn-corner.tl { top: -8px; left: -8px; }
+.btn-corner.tr { top: -8px; right: -8px; }
+.btn-corner.br { bottom: -8px; right: -8px; }
+.btn-corner.bl { bottom: -8px; left: -8px; }
+.btn:hover .btn-corner { color: var(--bronze-bright); }
+.btn:hover .btn-corner.tl { transform: translate(-4px, -4px); }
+.btn:hover .btn-corner.tr { transform: translate(4px, -4px); }
+.btn:hover .btn-corner.br { transform: translate(4px, 4px); }
+.btn:hover .btn-corner.bl { transform: translate(-4px, 4px); }
+
+.btn .arrow { display: inline-block; transition: transform 0.35s var(--ease); }
+.btn:hover .arrow { transform: translate(3px, -3px); }
+
+/* ==========================================================================
+   Preloader
+   ========================================================================== */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: var(--graphite-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s var(--ease), visibility 0.6s var(--ease);
+}
+.preloader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.preloader-mark {
+  position: relative;
+  display: inline-block;
+}
+.preloader-logo {
+  width: clamp(120px, 16vw, 220px);
+  height: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+.preloader-count {
+  position: absolute;
+  bottom: -46px;
+  right: -8px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--bronze-bright);
+}
+
+/* ==========================================================================
+   Navbar
+   ========================================================================== */
+
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 400;
+  padding: 24px 0;
+  transition: padding 0.35s var(--ease), background 0.35s ease, border-color 0.35s ease;
+  border-bottom: 1px solid transparent;
+}
+.navbar.is-scrolled {
+  padding: 16px 0;
+  background: rgba(28, 26, 23, 0.86);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom-color: var(--line);
+}
+.navbar .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+
+.nav-brand { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-size: 1.2rem; }
+.nav-logo {
+  height: 32px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-links { display: flex; align-items: center; gap: 6px; }
+.nav-link { padding: 8px 16px; border-radius: 999px; font-size: 0.86rem; color: var(--bone-dim); transition: color 0.25s ease, background 0.25s ease; }
+.nav-link.is-active { color: var(--bone); background: rgba(241,237,228,0.06); }
+
+/* Ported from 21st.dev "Flip Links" (vaib215/flip-links) — real sourced
+   technique: each letter exists in two stacked rows; hover slides the
+   visible row up and out while the hidden duplicate row slides up into
+   place, staggered per letter. Rows are injected by js/main.js. */
+.flip-link-inner { position: relative; overflow: hidden; display: inline-block; line-height: 1.1; vertical-align: middle; }
+.flip-row { display: block; }
+.flip-row span { display: inline-block; transition: transform 0.3s ease-in-out; }
+.flip-row-top { }
+.flip-row-bottom { position: absolute; inset: 0; }
+.flip-row-bottom span { transform: translateY(110%); }
+.nav-link:hover .flip-row-top span { transform: translateY(-110%); }
+.nav-link:hover .flip-row-bottom span { transform: translateY(0); color: var(--bronze-bright); }
+
+.nav-menu { display: flex; align-items: center; gap: 20px; }
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  overflow: hidden;
+  flex: none;
+}
+.lang-toggle button { padding: 7px 12px; color: var(--bone-faint); transition: color 0.25s ease, background 0.25s ease; }
+.lang-toggle button.is-active { color: var(--graphite-deep); background: var(--bronze-bright); }
+
+@media (max-width: 860px) {
+  .nav-menu .lang-toggle { margin-top: 4px; }
+}
+
+.nav-toggle {
+  display: none;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  position: relative;
+  flex: none;
+}
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+  content: ""; position: absolute; left: 12px; right: 12px; height: 1px; background: var(--bone);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.nav-toggle span { top: 20px; }
+.nav-toggle span::before { top: -6px; }
+.nav-toggle span::after { top: 6px; }
+.nav-toggle.is-active span { background: transparent; }
+.nav-toggle.is-active span::before { transform: translateY(6px) rotate(45deg); background: var(--bone); }
+.nav-toggle.is-active span::after { transform: translateY(-6px) rotate(-45deg); background: var(--bone); }
+
+@media (max-width: 860px) {
+  .nav-toggle { display: block; }
+  .nav-menu {
+    position: fixed; inset: 0;
+    background: var(--graphite-deep);
+    flex-direction: column; justify-content: center; align-items: flex-start;
+    padding: 0 32px; gap: 22px;
+    transform: translateY(-100%);
+    transition: transform 0.55s var(--ease);
+  }
+  .nav-menu.is-open { transform: translateY(0); }
+  .nav-links { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .nav-link { font-family: var(--font-display); font-size: 1.8rem; color: var(--bone); padding: 0; }
+  .nav-menu .btn { margin-top: 10px; }
+}
+
+/* ==========================================================================
+   Hero — the plinth
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 140px var(--gutter) 40px;
+  background: radial-gradient(120% 90% at 50% 8%, rgba(184,135,74,0.1) 0%, rgba(184,135,74,0) 55%);
+}
+
+/* The specimen: the sculpture is a precise, framed object — not a full-bleed
+   background. A "vitrine" viewport with a hairline frame and corner ticks,
+   like a museum case, sitting inside the huge type rather than behind it. */
+.hero-specimen {
+  position: absolute;
+  top: 50%;
+  right: clamp(0px, 4vw, 90px);
+  transform: translateY(-46%);
+  width: clamp(220px, 30vw, 460px);
+  aspect-ratio: 3/4;
+  z-index: 3;
+  border: 1px solid var(--line-strong);
+}
+.hero-specimen::before,
+.hero-specimen::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--bronze-bright);
+}
+.hero-specimen::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.hero-specimen::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+.hero-canvas-wrap { position: absolute; inset: 0; }
+#hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; }
+.specimen-tag {
+  position: absolute;
+  left: 14px;
+  bottom: -30px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone-faint);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+.hero-content > * { pointer-events: auto; }
+
+.hero-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 18px;
+}
+.hero-clock { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--bone-faint); text-transform: uppercase; }
+.hero-clock b { color: var(--bronze-bright); font-weight: 500; }
+
+/* The oversized headline is the primary graphic event of the page. */
+.hero-title {
+  font-size: clamp(3.2rem, 2rem + 8vw, 9.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  max-width: 15ch;
+}
+.hero-title em { font-style: italic; color: var(--bronze-bright); }
+.hero-title .line-2 { display: block; margin-left: clamp(0px, 8vw, 220px); }
+
+.hero-sub {
+  margin-top: 32px;
+  max-width: 36ch;
+  position: relative;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.8s var(--ease) 0.15s, transform 0.8s var(--ease) 0.15s;
+}
+
+.hero-meta {
+  margin-top: 48px;
+  display: flex;
+  align-items: flex-end;
+  gap: 40px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.8s var(--ease) 0.3s, transform 0.8s var(--ease) 0.3s;
+}
+.hero-specimen { opacity: 0; transition: opacity 1s var(--ease) 0.4s; }
+.hero.is-ready .hero-sub,
+.hero.is-ready .hero-meta { opacity: 1; transform: translateY(0); }
+.hero.is-ready .hero-specimen { opacity: 1; }
+.hero-meta .meta-block { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--bone-faint); text-transform: uppercase; }
+.hero-meta .meta-block b { display: block; font-family: var(--font-body); font-size: 0.95rem; letter-spacing: 0; text-transform: none; color: var(--bone-dim); margin-top: 6px; font-weight: 500; }
+
+@media (max-width: 980px) {
+  .hero-specimen { position: relative; top: auto; right: auto; transform: none; width: min(70vw, 340px); margin: 32px 0 0 auto; }
+  .hero { justify-content: flex-start; padding-top: 120px; }
+  .hero-title .line-2 { margin-left: 0; }
+}
+
+.scroll-cue {
+  position: absolute;
+  right: var(--gutter);
+  bottom: 28px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bone-faint);
+  writing-mode: vertical-rl;
+}
+.scroll-cue .line { width: 1px; height: 40px; background: var(--line-strong); position: relative; overflow: hidden; }
+.scroll-cue .line::after {
+  content: ""; position: absolute; top: -40px; left: 0; width: 100%; height: 40px; background: var(--bronze-bright);
+  animation: cue-drip 2.2s ease-in-out infinite;
+}
+@keyframes cue-drip { 0% { top: -40px; } 100% { top: 40px; } }
+
+@media (max-width: 720px) {
+  .scroll-cue { display: none; }
+}
+
+/* Word-reveal */
+.split-word { display: inline-block; overflow: hidden; vertical-align: top; }
+.split-word > span { display: inline-block; transform: translateY(112%); transition: transform 0.9s var(--ease); }
+.split-ready .split-word > span { transform: translateY(0); }
+
+/* ==========================================================================
+   Generic sections
+   ========================================================================== */
+
+.section { padding: clamp(64px, 9vw, 120px) var(--gutter); position: relative; }
+.section-inner { max-width: var(--container); margin: 0 auto; }
+.section-head { margin-bottom: clamp(40px, 5vw, 64px); }
+.section-head h2, .exhibit-head h2 { font-size: var(--fs-h2); max-width: 18ch; margin-top: 18px; }
+.section-divider { height: 1px; background: var(--line); }
+
+/* Interior page hero — lighter than the home hero (no 3D specimen; that
+   stays a home-only signature moment rather than tripling asset load). */
+.page-hero { padding: 180px var(--gutter) 50px; max-width: var(--container); margin: 0 auto; position: relative; z-index: 1; }
+.page-hero h1 { font-size: clamp(2.6rem, 1.7rem + 4.5vw, 5.5rem); max-width: 17ch; margin-top: 20px; line-height: 1; }
+.page-hero h1 em { font-style: italic; color: var(--bronze-bright); }
+.page-hero .lead { margin-top: 24px; }
+
+/* Quick services list — plain, no numbering (not a sequence), two columns */
+.quick-services { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.quick-services li { background: rgba(23,20,17,0.55); backdrop-filter: blur(6px); padding: 26px 28px; }
+.quick-services .service-name { font-family: var(--font-display); font-size: 1.15rem; }
+.quick-services .service-desc { margin-top: 6px; color: var(--bone-dim); font-size: 0.92rem; }
+@media (max-width: 700px) {
+  .quick-services { grid-template-columns: 1fr; }
+}
+
+/* Intro / about blurb */
+.intro-block { max-width: 880px; }
+.intro-block p {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 1.05rem + 1vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--bone-dim);
+}
+.intro-block p + p { margin-top: 24px; }
+.intro-block em { font-style: italic; color: var(--bone); }
+
+/* ==========================================================================
+   Photo frame — real photography, framed like the hero's vitrine (same
+   hairline + bronze corner-tick language), never full-bleed behind text.
+   ========================================================================== */
+.photo-frame {
+  position: relative;
+  border: 1px solid var(--line-strong);
+  overflow: hidden;
+}
+.photo-frame::before,
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--bronze-bright);
+  z-index: 2;
+}
+.photo-frame::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.photo-frame::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.9) contrast(1.05);
+}
+.photo-frame .specimen-tag { position: static; display: block; padding: 10px 14px; border-top: 1px solid var(--line); background: var(--graphite-deep); }
+
+/* Split block — copy on one side, a framed photo on the other. Order
+   flips per-section so the page doesn't repeat the same rhythm twice. */
+.split-block {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+.split-block .split-photo { aspect-ratio: 4 / 3; }
+.split-block.photo-first .split-photo { order: -1; }
+@media (min-width: 860px) {
+  .split-block { grid-template-columns: 1.05fr 0.95fr; gap: 64px; }
+}
+
+/* ==========================================================================
+   Code scroll — scroll-scrubbed frame sequence (same technique behind
+   "3D product" scroll showcases: a tall runway pins a sticky viewport,
+   and scroll progress alone picks which frame shows, so scrolling back
+   up reverses it for free). See js/code-scroll.js.
+   ========================================================================== */
+.code-scroll { position: relative; height: 400vh; }
+.code-scroll-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.code-scroll-frame {
+  position: relative;
+  width: min(1100px, 92vw);
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line-strong);
+}
+.code-scroll-frame::before,
+.code-scroll-frame::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--bronze-bright);
+  z-index: 2;
+}
+.code-scroll-frame::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.code-scroll-frame::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+.code-scroll-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.code-scroll-img.is-b { opacity: 0; }
+.code-scroll-caption {
+  position: absolute;
+  left: 0;
+  bottom: -32px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone-faint);
+}
+
+/* ==========================================================================
+   Services slider — native scroll-snap (no pin/scrub math, so it can't
+   collide with page content the way the old absolutely-positioned pinned
+   carousel did on shorter viewports).
+   ========================================================================== */
+
+.services-slider { margin-top: clamp(40px, 5vw, 64px); }
+
+.services-track {
+  display: flex;
+  gap: clamp(20px, 3vw, 36px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px var(--gutter) 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.services-track::-webkit-scrollbar { display: none; }
+
+.service-card {
+  flex: 0 0 min(520px, 84vw);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+.service-card-media { aspect-ratio: 4/3; margin-bottom: 24px; }
+.service-card-copy .num { font-family: var(--font-mono); font-size: 0.78rem; color: var(--bronze-bright); letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.service-card-copy h3 { margin-top: 14px; font-size: var(--fs-h3); max-width: 16ch; }
+.service-card-copy p { margin-top: 16px; color: var(--bone-dim); max-width: 42ch; }
+.service-card-copy ul { margin-top: 18px; display: flex; flex-direction: column; gap: 9px; }
+.service-card-copy li { font-size: 0.92rem; color: var(--bone-dim); display: flex; gap: 10px; }
+.service-card-copy li::before { content: "—"; color: var(--bronze-bright); flex: none; }
+.service-card-copy .btn { margin-top: 24px; }
+.service-card-copy .badge {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  color: var(--graphite-deep);
+  background: var(--bronze-bright);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.services-slider-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 32px;
+}
+.slider-arrow {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bone-dim);
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+  flex: none;
+}
+.slider-arrow:hover { border-color: var(--bronze-bright); color: var(--bronze-bright); }
+.slider-arrow:disabled { opacity: 0.3; pointer-events: none; }
+.slider-dots { display: flex; align-items: center; gap: 8px; }
+.slider-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--line-strong);
+  transition: background 0.3s var(--ease), width 0.3s var(--ease);
+}
+.slider-dot.is-active { background: var(--bronze-bright); width: 20px; }
+
+@media (max-width: 860px) {
+  .service-card { flex-basis: 88vw; }
+}
+
+/* ==========================================================================
+   Values / process row
+   ========================================================================== */
+
+.row-list { border-top: 1px solid var(--line); }
+.row-item {
+  display: grid;
+  grid-template-columns: 120px 1fr 40ch;
+  gap: 32px;
+  padding: clamp(28px, 4vw, 46px) 0;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+  transition: background 0.4s var(--ease);
+}
+.row-item:hover { background: rgba(184,135,74,0.04); }
+.row-item .row-num {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--bone-faint);
+  transition: color 0.4s var(--ease);
+}
+.row-item:hover .row-num { color: var(--bronze-bright); }
+.row-item h2 {
+  font-size: clamp(1.8rem, 1.3rem + 2.4vw, 3.4rem);
+  font-style: italic;
+  transition: transform 0.4s var(--ease), color 0.4s var(--ease);
+}
+.row-item:hover h2 { transform: translateX(14px); color: var(--bronze-bright); }
+.row-item p { color: var(--bone-dim); }
+
+@media (max-width: 860px) {
+  .row-item { grid-template-columns: 60px 1fr; }
+  .row-item p { grid-column: 1 / -1; max-width: 56ch; margin-top: 4px; }
+}
+@media (max-width: 640px) {
+  .row-item { grid-template-columns: 1fr; gap: 10px; }
+}
+
+/* ==========================================================================
+   CTA + Footer
+   ========================================================================== */
+
+.cta-band {
+  padding: clamp(90px, 14vw, 200px) var(--gutter);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.cta-band .container { display: flex; flex-direction: column; align-items: flex-start; gap: 40px; }
+.cta-band h2 {
+  font-size: clamp(2.6rem, 1.6rem + 5.5vw, 7rem);
+  line-height: 0.94;
+  max-width: 18ch;
+}
+.cta-band h2 em { font-style: italic; color: var(--bronze-bright); }
+
+/* Scattered mascot mark — a subtle brand texture in genuine negative
+   space (bottom-right, below the CTA button), never near the headline
+   column which can run wide at large font sizes. */
+.cta-mascot {
+  position: absolute;
+  right: clamp(20px, 6vw, 90px);
+  bottom: clamp(24px, 5vw, 60px);
+  width: clamp(56px, 7vw, 100px);
+  height: auto;
+  opacity: 0.14;
+  pointer-events: none;
+  z-index: 0;
+}
+@media (max-width: 760px) { .cta-mascot { display: none; } }
+
+.footer { padding: clamp(60px, 8vw, 100px) var(--gutter) 30px; }
+.footer-wordmark {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(3rem, 1.5rem + 9vw, 11rem);
+  line-height: 0.85;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--line-strong);
+  text-stroke: 1px var(--line-strong);
+  margin-bottom: clamp(40px, 6vw, 70px);
+  white-space: nowrap;
+}
+.footer-top { display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding-bottom: 50px; border-bottom: 1px solid var(--line); }
+.footer-brand { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bone-dim); }
+.footer-brand-sub { margin-top: 10px; color: var(--bone-faint); max-width: 32ch; font-size: 0.92rem; font-family: var(--font-body); text-transform: none; letter-spacing: 0; }
+.footer-cols { display: flex; gap: 64px; flex-wrap: wrap; }
+.footer-col-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone-faint); margin-bottom: 14px; }
+.footer-col a { display: block; padding: 5px 0; color: var(--bone-dim); font-size: 0.92rem; }
+.footer-col a:hover { color: var(--bronze-bright); }
+.footer-bottom { display: flex; justify-content: space-between; padding-top: 24px; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--bone-faint); flex-wrap: wrap; gap: 10px; }
+
+@media (max-width: 700px) {
+  .footer-wordmark { font-size: clamp(2.4rem, 1rem + 14vw, 5rem); white-space: normal; }
+}
+
+/* Reveal utility — animated by GSAP/ScrollTrigger in main.js (no CSS
+   transition here so GSAP's own easing owns the motion, not a fighting
+   CSS transition). .is-visible is a static fallback for the no-JS /
+   no-GSAP path only. */
+[data-reveal] { opacity: 0; transform: translateY(22px); }
+[data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+
+/* ==========================================================================
+   Contact — floating-label fields
+   ========================================================================== */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(24px, 5vw, 80px);
+}
+.field-group { position: relative; margin-bottom: 30px; }
+.field-group label {
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-size: 1rem;
+  color: var(--bone-faint);
+  pointer-events: none;
+  transition: transform 0.25s var(--ease), font-size 0.25s var(--ease), color 0.25s var(--ease);
+  transform-origin: left top;
+}
+.field-group input,
+.field-group textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line-strong);
+  color: var(--bone);
+  font: inherit;
+  font-size: 1rem;
+  padding: 16px 0 12px;
+  outline: none;
+  transition: border-color 0.25s ease;
+}
+.field-group textarea { resize: vertical; min-height: 90px; }
+.field-group input:focus,
+.field-group textarea:focus { border-color: var(--bronze-bright); }
+.field-group input:focus + label,
+.field-group input:not(:placeholder-shown) + label,
+.field-group textarea:focus + label,
+.field-group textarea:not(:placeholder-shown) + label {
+  transform: translateY(-14px) scale(0.78);
+  color: var(--bronze-bright);
+}
+.field-hint { margin-top: -18px; margin-bottom: 26px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--bone-faint); }
+.form-success { display: none; margin-top: 18px; color: var(--patina); font-size: 0.9rem; }
+.form-success.is-visible { display: block; }
+.form-success.is-error { color: #c07a5f; }
+
+.contact-details { display: flex; flex-direction: column; gap: 0; }
+.contact-details .detail-block { padding: 22px 0; border-top: 1px solid var(--line); }
+.contact-details .detail-block:last-child { border-bottom: 1px solid var(--line); }
+.contact-details .detail-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bone-faint); margin-bottom: 8px; }
+.contact-details .detail-value { font-family: var(--font-display); font-size: 1.2rem; }
+.contact-details a.detail-value:hover { color: var(--bronze-bright); }
+.detail-social-row { display: flex; gap: 18px; flex-wrap: wrap; }
+.detail-social-row a { font-family: var(--font-display); font-size: 1.2rem; color: var(--bone); }
+.detail-social-row a:hover { color: var(--bronze-bright); }
+
+@media (max-width: 860px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}

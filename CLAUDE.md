@@ -1,177 +1,125 @@
-# CLAUDE.md — Website Design Standards
+# CLAUDE.md — Littleman Labs ("The Atelier" build)
 
-This file governs how you build websites in this project. The goal is a site that looks
-**deliberately designed by a human studio**, not generated. Every rule below exists to keep
-the output from sliding into the default "AI / vibe-coded" look. Follow it on every build.
+This file governs how this project is built and edited. Base standards are inherited from the
+shared Littleman Labs design-standards doc (hard bans on purple/gradients/meaningless
+stats/glassmorphism/"Why Choose Us" sections still apply here in full). This file adds the
+brand-specific decisions for THIS site — the agency's own, currently deployed to
+littlemanlabs.com.
 
----
+## What this is
 
-## 0. The one rule that matters most
+Littleman Labs' own site — not a client build. Four pages (index, services, about, contact),
+static HTML/CSS/JS, no build step, no framework. Bilingual ES/EN, **Spanish primary** (default
+on first visit, unconditionally — not browser-detected — per the user 2026-08-06). English is
+available via the header `.lang-toggle`, persisted to `localStorage`.
 
-If a stranger could glance at the page for two seconds and say "an AI made this," you have
-failed, regardless of whether the code works. Distinctiveness and restraint are the job, not
-a bonus. When in doubt, make a *specific* choice tied to the subject instead of a safe,
-generic one.
+## Design concept: "The Atelier"
 
----
+A gallery/exhibition system — the crawling-baby mascot as museum bronze, services framed as an
+exhibition case. Structural devices (`No. 001`, `Fig. 02`, placards, specimen-tag frames) are
+real wayfinding, not decoration — every section genuinely is an numbered item in a sequence.
 
-## 1. Hard bans (never ship these)
+## Typography — verified 2026-08-06, consistent across all 4 pages
 
-These are the fingerprints of a vibe-coded site. Do not use them.
+Three fonts, loaded identically via the same Google Fonts `<link>` on every page:
 
-- **No purple/violet/indigo as the primary brand color.** This is the single biggest tell.
-  Avoid `#7c3aed`, `#8b5cf6`, `#a855f7`, `#6366f1` and their neighbors as the dominant hue.
-- **No purple-to-blue or purple-to-pink gradients** anywhere — backgrounds, buttons, or text.
-- **No gradient-filled headline words** (e.g. one word in the headline tinted with a
-  color gradient while the rest is dark). This is everywhere in generated sites.
-- **No meaningless stat blocks** — the "25% · 95% · 2025" row of giant numbers with vague
-  labels. Only show a number if it is real and sourced.
-- **No emoji inside headings or section titles** (🚀 ✨ 🔒 etc.). Use real iconography instead,
-  and use it sparingly.
-- **No "Why Choose [Brand]?" sections.** Same for "Transform your X into Y," "Start it. Build
-  it. Launch it." and other interchangeable SaaS slogans.
-- **No glassmorphism by default** — frosted translucent cards with heavy blur and soft glow.
-- **No pill-badge clutter** ("99.9% Uptime", "GDPR Compliant", "24/7 Support 🔒") stacked under
-  the hero.
-- **No default centered-everything layout** with a single column of centered text from top to
-  bottom. Use real composition.
-- **No raw system font / unstyled Inter** as the entire type system (see §3).
-- **No rainbow of soft drop shadows** on every card. Shadow is an accent, not a texture.
+```
+Libre Caslon Display | IBM Plex Mono:wght@400;500 | Inter Tight:wght@400;500;600
+```
 
-If a design brief or reference *explicitly* asks for one of these (e.g. the client genuinely
-wants purple), the brief wins — but confirm it's intentional, and execute it with care so it
-still looks designed rather than defaulted.
+Roles (`css/style.css` `:root`):
 
----
+- `--font-display: "Libre Caslon Display", "Iowan Old Style", "Times New Roman", serif` —
+  headlines, hero title, section H2/H3, pricing card titles. Never used for body copy or UI
+  chrome.
+- `--font-body: "Inter Tight", -apple-system, BlinkMacSystemFont, sans-serif` — paragraph copy,
+  nav links, buttons, form labels.
+- `--font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace` — placards
+  (`No. 001`), figure captions (`Fig. 02`), the clock, footer labels, lang-toggle, ticket-style
+  numbering. This is the "data/label" voice — never used for prose.
 
-## 2. Follow the user's references first
+Type scale (fluid, `clamp()`-based, defined once in `:root`, reused everywhere — do not
+hardcode a one-off `font-size` for a heading):
 
-If the user provides design examples, screenshots, links, or a brand, **those override
-everything below except the hard bans.** Before designing:
+- `--fs-h1: clamp(2.6rem, 1.7rem + 4.2vw, 6rem)`
+- `--fs-h2: clamp(2.6rem, 1.6rem + 4.6vw, 6rem)`
+- `--fs-h3: clamp(1.7rem, 1.35rem + 1.6vw, 2.6rem)`
+- `--fs-lead: clamp(1.05rem, 1rem + 0.3vw, 1.2rem)`
 
-1. Identify the reference's palette (pull actual hex values), type style, spacing rhythm,
-   and the one signature move that makes it feel like itself.
-2. Match that direction. Do not "improve" it toward a generic look.
-3. If the reference conflicts with a hard ban (e.g. it's purple), tell the user and ask
-   whether to match it or adapt it.
+**Rule confirmed clean on audit (2026-08-06):** no inline `style="font-family:…"` overrides
+exist anywhere in the 4 HTML files — every font reference goes through the three CSS variables
+above. Keep it that way; a one-off inline font-family is the first sign of drift.
 
-No references provided? Then pin the brief yourself: name the concrete subject, its audience,
-and the page's single job, and design specifically for that.
+**Heading hierarchy:** exactly one `<h1>` per page (the hero/page-hero title). `<h2>` is used
+for section titles AND the 3-step "How We Work" row items on the homepage (promoted from `<h3>`
+to `<h2>` on 2026-08-06 specifically to fix a heading-hierarchy SEO violation — there was no H2
+before those items on the page, which is a real skip, not a style choice. If you add a new
+section, check what heading level precedes it on that page before choosing H2 vs H3).
 
----
+## Color
 
-## 3. Typography (always beautiful, always intentional)
+```
+--graphite:      #1c1a17   (canvas)
+--graphite-deep: #121110   (deepest panels, e.g. mobile nav)
+--bone:          #f1ede4   (primary text)
+--bone-dim:      rgba(241,237,228,0.62)   (secondary text)
+--bone-faint:    rgba(241,237,228,0.34)   (tertiary/labels)
+--bronze:        #b8874a
+--bronze-bright: #d8a869   (the one accent — CTAs, active states, hover, lang-toggle active)
+--patina:        #5c8a75   (form-success only — do not use elsewhere)
+```
 
-Type carries the personality. Never leave it as a default.
+One accent (`--bronze-bright`), used sparingly — CTA buttons, hover states, the active
+lang-toggle pill, placard bullet, row-item hover. Never a second competing color. `--patina`
+(green) exists solely for form success state and should not spread into general UI.
 
-- **Pair two faces with intent:** a characterful display/heading face used with restraint,
-  plus a clean, legible body face. Optionally a third utility face for captions or data.
-- **Avoid the tired defaults** as your whole system: plain Inter, Roboto, Open Sans, system-ui.
-  They're fine as a *body* in some briefs, but pair them with a real display face and a
-  deliberate scale.
-- **Good starting palettes** (mix display + body, pick to fit the subject, not by habit):
-  - Editorial / trustworthy: *Fraunces* or *Libre Caslon* display + *Inter Tight* body
-  - Modern / technical: *Space Grotesk* or *General Sans* + *IBM Plex Sans*
-  - Warm / human: *Bricolage Grotesque* + *Source Serif* body
-  - Sharp / premium: *Geist* or *Satoshi* + *Newsreader* for long copy
-- **Set a real type scale.** Define explicit sizes, weights, line-heights, and letter-spacing.
-  Headlines get tighter leading and tracking; body copy gets generous line-height (~1.5–1.7).
-- **Load fonts properly** (self-host or use a reliable CDN), set `font-display: swap`, and
-  always declare fallbacks.
+## i18n system
 
----
+`js/i18n-dict.js` (data) + `js/i18n.js` (engine) — loaded on every page, in that order, before
+`main.js`. Every translatable string is `data-i18n="key"` on the element; the dictionary has
+matching `es`/`en` objects with **identical key sets** (verify with `node -e` diffing
+`Object.keys()` after any dictionary edit — a mismatch means a silent no-op on one language).
+The Spanish text baked into the raw HTML is the canonical source string for `es` — if you edit
+copy, edit both the HTML and the `es` dictionary entry to match, or a language-toggle-back will
+revert to stale text.
 
-## 4. Color
+`main.js`'s `initContactForm()` reads the current language from
+`document.documentElement.lang` **at submit time** (not cached at page load) for the
+success/error message — don't cache i18n strings in a JS variable at init if the user might
+toggle language after the page renders.
 
-- **Choose a palette of 4–6 named hex values** derived from the subject or reference — not a
-  framework default.
-- Anchor on a confident neutral base, add **one** disciplined accent, and use it sparingly.
-- Ensure text/background contrast meets **WCAG AA** (4.5:1 for body, 3:1 for large text).
-- If you want energy, get it from composition, type, and a single bold accent — not from a
-  gradient.
+## Motion
 
----
+- Preload count-up animation: gated to once per browser session via
+  `sessionStorage.getItem("llPreloaderSeen")` (added 2026-08-06) — it must never replay on
+  every internal navigation, only the first page of a session.
+- `data-reveal` + GSAP ScrollTrigger batch fade-up, IntersectionObserver fallback.
+- Ambient background: `js/scroll-thread.js` draws slow bronze contour wave-lines on
+  `#bg-canvas` (canvas2d), clock persisted across page navigations via `sessionStorage` so it
+  reads as one continuous background, not a per-page restart. `js/shader-background.js` is a
+  WebGL alternative (ported from a React/21st.dev shader component to vanilla JS since this
+  project has no framework) — **not wired into any page as of 2026-08-06**, sitting as a trial
+  the user asked to preview before deciding whether it replaces scroll-thread.js. Only one of
+  the two should ever be active on `#bg-canvas` at a time (a canvas can't hold both a 2d and a
+  webgl context).
+- Services slider (`services.html`): native CSS scroll-snap, not GSAP ScrollTrigger pin/scrub —
+  deliberately replaced a pinned-carousel version on 2026-08-06 that collided with page content
+  on short viewports. Don't reintroduce a scroll-pinned carousel for card sequences.
 
-## 5. Layout & composition
+## Contact numbers — do not merge into one
 
-- The hero is a thesis: open with the most characteristic thing about the subject, not a
-  centered slogan + two buttons + stat row.
-- Use real composition — asymmetry, an editorial grid, intentional whitespace. Vary section
-  rhythm; don't stack identical centered blocks.
-- Structural devices (numbers, eyebrows, dividers, labels) must encode something true.
-  Don't add `01 / 02 / 03` unless the content is genuinely a sequence.
-- Match complexity to the vision: minimal directions need precise spacing and detail;
-  maximal directions need committed execution.
+- WhatsApp: `+1 939-233-5269`
+- Direct `tel:` links / "Call" labels: `+1 787-901-9020` (avoids a forwarding fee on the 939
+  number — confirmed by the user 2026-08-06). These are intentionally different numbers for
+  different channels.
 
----
+## Deployment
 
-## 6. Motion (optional, never decorative)
-
-- Use motion only where it serves the subject: a considered page-load reveal, a scroll-
-  triggered moment, a subtle hover micro-interaction.
-- One orchestrated moment beats scattered effects. Excess animation reads as AI-generated.
-- Always respect `prefers-reduced-motion`.
-
----
-
-## 7. Responsive: desktop AND mobile, every time
-
-Non-negotiable. The site must look intentional at every width.
-
-- **Build mobile-first**, then scale up. Test at minimum **375px, 768px, 1024px, 1440px**.
-- Type, spacing, and layout all adapt — don't just let a desktop layout shrink.
-- Tap targets ≥ 44×44px; no horizontal scroll; no overlapping or clipped elements on small
-  screens.
-- Images and media are responsive (`max-width: 100%`, correct aspect ratios, sensible
-  `srcset` where relevant).
-- Navigation collapses sensibly on mobile (and the mobile menu actually works).
-
----
-
-## 8. Quality floor (build this in silently)
-
-- Visible keyboard focus states on all interactive elements.
-- Semantic HTML, alt text on meaningful images, labelled form controls.
-- `prefers-reduced-motion` respected.
-- Watch CSS specificity — don't let `.section` and element selectors cancel each other's
-  padding/margins. Verify spacing actually applies.
-
----
-
-## 9. Always check your work when done
-
-After building, **do a real review pass before calling it finished.** Do not just stop when
-the code runs.
-
-1. **Screenshot / preview** the page at desktop and mobile widths if the environment allows.
-   A picture is worth 1000 tokens.
-2. **Run the vibe-code checklist** below. If any box is checked, fix it.
-3. **Read your own copy** — does it sound like an interchangeable SaaS template? Rewrite it
-   to be specific and plain.
-4. **Click through** key interactions (nav, mobile menu, buttons, forms) and confirm they work.
-5. Apply Chanel's rule: look at the finished page and remove one thing that isn't earning its
-   place.
-6. Report back what you checked and what you changed.
-
-### Vibe-code checklist (every item must be NO)
-- [ ] Is purple/violet the dominant color?
-- [ ] Are there any purple/blue/pink gradients?
-- [ ] Are any headline words gradient-filled?
-- [ ] Is there a row of giant meaningless stats?
-- [ ] Are there emoji in headings?
-- [ ] Is there a "Why Choose us?" or generic SaaS-slogan section?
-- [ ] Is everything centered in one column?
-- [ ] Is the type just default Inter/system with no display face?
-- [ ] Do cards have frosted-glass + soft-glow styling?
-- [ ] Does it break or look unstyled on mobile?
-
----
-
-## 10. Process summary
-
-Brainstorm → pin the brief / match the reference → draft a small token system (color, type,
-layout, one signature element) → critique the plan against this file (would I produce this for
-*any* site? then change it) → build → check your work (§9) → critique again.
-
-Distinctiveness comes from the subject. Restraint makes it look designed. Beautiful type and a
-clean responsive build are the floor, not the goal.
+Live at littlemanlabs.com via Vercel (auto-deploys from the `main` branch of
+`littlemanstudio/littleman-labs-website` on GitHub — zero-config static site, no
+`vercel.json`). This `littleman-atelier/` directory is the **source** project; deploying means
+copying its `index.html` / `services.html` / `about.html` / `contact.html` / `css/` / `js/` /
+`assets/img/` / `assets/3d/` into that repo (top-level `css/`/`js/` paths, no collision with the
+repo's legacy `assets/css/`/`assets/js/` used by `privacy.html`/`terms.html`/`blog.html`, which
+are intentionally left on the old design — not part of this rebuild's scope), then commit and
+push to `main`.

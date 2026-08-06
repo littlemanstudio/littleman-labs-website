@@ -1,320 +1,209 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Littleman Labs | Web Design &amp; CRM Automation, Ponce PR</title>
-<meta name="description" content="Littleman Labs is a web design agency in Ponce, Puerto Rico. Websites, CRM, and automation — built as one system, not three vendors, and quoted for your business.">
-<link rel="canonical" href="https://littlemanlabs.com/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Littleman Labs">
-<meta property="og:title" content="Littleman Labs | Web Design &amp; CRM Automation, Ponce PR">
-<meta property="og:description" content="Littleman Labs is a web design agency in Ponce, Puerto Rico. Websites, CRM, and automation — built as one system, not three vendors, and quoted for your business.">
-<meta property="og:url" content="https://littlemanlabs.com/">
-<meta property="og:image" content="https://littlemanlabs.com/assets/img/littleman-labs-logo.png">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Littleman Labs | Web Design &amp; CRM Automation, Ponce PR">
-<meta name="twitter:description" content="Littleman Labs is a web design agency in Ponce, Puerto Rico. Websites, CRM, and automation — built as one system, not three vendors, and quoted for your business.">
-<meta name="theme-color" content="#044AB3">
-<link rel="icon" type="image/png" href="assets/img/littleman-labs-favicon-v2.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,380;0,9..144,500;1,9..144,340&family=Instrument+Sans:wght@400;500;600&family=Fragment+Mono&display=swap">
-<link rel="stylesheet" href="assets/css/style.css?v=3">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Littleman Labs",
-  "image": "https://littlemanlabs.com/assets/img/littleman-labs-logo.png",
-  "url": "https://littlemanlabs.com/",
-  "telephone": "+1-787-901-9020",
-  "email": "hello@littlemanlabs.com",
-  "areaServed": "Ponce, Puerto Rico",
-  "address": {"@type":"PostalAddress","addressLocality":"Ponce","addressRegion":"PR","addressCountry":"US"},
-  "geo": {"@type":"GeoCoordinates","latitude":18.0111,"longitude":-66.6141},
-  "openingHoursSpecification": {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"},
-  "sameAs": ["https://wa.me/17879019020"],
-  "makesOffer": [
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Custom Websites"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"CRM & Lead Inbox"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Missed-Call Text-Back"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Scheduling & Reminders"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Local SEO"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Paid Ads Management"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Monthly Reporting"}}
-  ]
-}
-</script>
+<script>if("scrollRestoration" in history){history.scrollRestoration="manual";}window.scrollTo(0,0);</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Littleman Labs — Diseño Web, CRM y Automatización, Ponce PR</title>
+<meta name="description" content="Littleman Labs construye sitios web, CRM y automatización en un solo sistema para negocios de Ponce, Puerto Rico. Agenda una llamada gratis de 20 minutos." />
+<link rel="icon" type="image/png" href="assets/img/favicon.png" />
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+<meta name="theme-color" content="#17140f" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Littleman Labs — Diseño Web, CRM y Automatización, Ponce PR" />
+<meta property="og:description" content="Littleman Labs construye sitios web, CRM y automatización en un solo sistema para negocios de Ponce, Puerto Rico. Agenda una llamada gratis de 20 minutos." />
+<meta property="og:image" content="assets/img/og-image.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Littleman Labs — Diseño Web, CRM y Automatización, Ponce PR" />
+<meta name="twitter:description" content="Littleman Labs construye sitios web, CRM y automatización en un solo sistema para negocios de Ponce, Puerto Rico. Agenda una llamada gratis de 20 minutos." />
+<meta name="twitter:image" content="assets/img/og-image.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
-  <filter id="liquid-glass-filter" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
-    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="noise"/>
-    <feGaussianBlur in="noise" stdDeviation="2.5" result="softNoise"/>
-    <feDisplacementMap in="SourceGraphic" in2="softNoise" scale="16" xChannelSelector="R" yChannelSelector="G"/>
-  </filter>
-</svg>
+<div class="bg-field"><canvas id="bg-canvas"></canvas></div>
 
-<a href="#main" class="visually-hidden">Skip to main content</a>
-
-<div class="mobile-panel" id="mobilePanel" aria-hidden="true">
-  <div class="panel-top">
-    <a href="index.html" class="brand"><img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs">Littleman</a>
-    <button type="button" class="close-btn" id="mobileClose" data-i18n="mobile.close">Close</button>
-  </div>
-  <nav>
-    <a href="index.html" aria-current="page" data-i18n="nav.home">Home</a>
-    <a href="services.html" data-i18n="nav.services">Services</a>
-    <a href="about.html" data-i18n="nav.about">About</a>
-    <a href="blog.html" data-i18n="nav.blog">Insights</a>
-    <a href="contact.html" data-i18n="nav.contact">Contact</a>
-  </nav>
-  <div class="lang-toggle" role="group" aria-label="Language selector">
-    <button type="button" data-lang="en">EN</button>
-    <button type="button" data-lang="es">ES</button>
-  </div>
-  <div class="panel-bottom">
-    <span data-i18n="footer.basedin">Ponce, Puerto Rico</span>
-    <a href="tel:+17879019020">(787) 901-9020</a>
-    <a href="https://wa.me/17879019020" target="_blank" rel="noopener">WhatsApp</a>
-  </div>
+<div class="preloader">
+  <div class="preloader-mark"><img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs" class="preloader-logo" /><span class="preloader-count">00</span></div>
 </div>
 
-<header class="site-header hero-mode" id="siteHeader">
-  <div class="header-flex">
-    <a href="index.html" class="brand"><img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs">Littleman</a>
-    <nav class="main-nav">
-      <a href="index.html" aria-current="page" data-i18n="nav.home">Home</a>
-      <a href="services.html" data-i18n="nav.services">Services</a>
-      <a href="about.html" data-i18n="nav.about">About</a>
-      <a href="blog.html" data-i18n="nav.blog">Insights</a>
-    </nav>
-    <div class="header-actions">
-      <div class="lang-toggle" role="group" aria-label="Language selector">
-        <button type="button" data-lang="en">EN</button>
-        <button type="button" data-lang="es">ES</button>
+<header class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs" class="nav-logo" />
+      Littleman
+    </a>
+    <nav class="nav-menu">
+      <div class="nav-links">
+        <a href="index.html" class="nav-link is-active" data-i18n="nav.home">Inicio</a>
+        <a href="services.html" class="nav-link" data-i18n="nav.services">Servicios</a>
+        <a href="about.html" class="nav-link" data-i18n="nav.about">Nosotros</a>
       </div>
-      <a href="contact.html" class="header-cta">
-        <span data-i18n="cta.getInTouch">Get in Touch</span>
-        <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="lang-toggle" role="group" aria-label="Selector de idioma">
+        <button type="button" data-lang="es">ES</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="contact.html" class="btn btn-primary">
+        <span data-i18n="cta.getInTouch">Contáctanos</span>
+        <span class="arrow">&rarr;</span>
       </a>
-      <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      </button>
-    </div>
+    </nav>
+    <button class="nav-toggle" aria-label="Menu"><span></span></button>
   </div>
 </header>
 
-<main id="main">
-
-  <!-- ============ HERO ============ -->
-  <section class="hero" id="top">
-    <div class="hero-canvas-wrap" aria-hidden="true">
-      <video class="hero-video" autoplay muted loop playsinline preload="metadata">
-        <source src="assets/video/logo-embroidery-loop.mp4" type="video/mp4">
-      </video>
-      <div class="hero-video-overlay"></div>
+<!-- Hero — massive type is the primary event; the sculpture is a framed specimen, not a backdrop -->
+<section class="hero">
+  <div class="hero-content container">
+    <div class="hero-top-row">
+      <p class="placard hero-placard"><span class="num">No. 001</span> — <span data-i18n="hero.eyebrow">Sistemas Sobre Software</span></p>
+      <p class="hero-clock">Ponce, PR — <b>00:00 AST</b></p>
     </div>
-    <div class="hero-inner">
-      <span class="eyebrow on-dark" data-i18n="hero.eyebrow">Systems Over Software</span>
-      <h1 data-i18n="hero.h1">Web Design, CRM &amp; Automation for Ponce, Puerto Rico Businesses</h1>
-      <p class="lede" data-i18n="hero.lede">The studio behind businesses that run themselves — websites, CRM, and automation built as one system, not three vendors.</p>
-      <div class="hero-ctas">
-        <a href="contact.html" class="btn btn-solid" data-i18n="cta.getInTouch">Get in Touch</a>
-        <a href="services.html" class="btn btn-outline" data-i18n="cta.seeServices">See Services</a>
-      </div>
-    </div>
-    <div class="hero-scroll" data-i18n="hero.scroll">Scroll</div>
-  </section>
-
-  <!-- ============ SERVICES ============ -->
-  <section class="section" id="services">
-    <div class="stars-bg" aria-hidden="true">
-      <div class="stars-parallax">
-        <div class="star-layer star-layer--sm"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--md"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--lg"><div class="dot"></div><div class="dot dot--b"></div></div>
-      </div>
-    </div>
-    <div class="section-inner">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow" data-i18n="nav.services">Services</span>
-        <h2 data-i18n="home.services.h2">What We Build</h2>
-      </div>
-
-      <div class="services-grid" data-reveal>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="1.5"/><path d="M3 8h18M7 12h4"/></svg>
-          <h3 data-i18n="svc.website.title">Custom Websites</h3>
-          <p data-i18n="home.svc.website.desc">Custom web design — fast, bilingual, built for your brand.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"/><circle cx="19" cy="19" r="2"/></svg>
-          <h3 data-i18n="svc.crm.title">CRM &amp; Lead Inbox</h3>
-          <p data-i18n="home.svc.crm.desc">Every lead, one place.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92Z"/></svg>
-          <h3 data-i18n="svc.textback.title">Missed-Call Text-Back</h3>
-          <p data-i18n="home.svc.textback.desc">Never lose a lead again.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="1.5"/><path d="M4 10h16M8 3v4M16 3v4"/></svg>
-          <h3 data-i18n="svc.scheduling.title">Scheduling</h3>
-          <p data-i18n="home.svc.scheduling.desc">Fewer no-shows, fuller calendar.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-          <h3 data-i18n="svc.seo.title">Local SEO</h3>
-          <p data-i18n="home.svc.seo.desc">Found first on Google.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
-          <h3 data-i18n="svc.ads.title">Paid Ads</h3>
-          <p data-i18n="home.svc.ads.desc">Google &amp; Meta, managed weekly.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
-          <h3 data-i18n="svc.reports.title">Monthly Reports</h3>
-          <p data-i18n="home.svc.reports.desc">Leads in, jobs booked.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.6 3.2 2.2 4.8 5.4 5.4-3.2.6-4.8 2.2-5.4 5.4-.6-3.2-2.2-4.8-5.4-5.4C9.8 7.8 11.4 6.2 12 3ZM19 15c.3 1.6 1.1 2.4 2.7 2.7-1.6.3-2.4 1.1-2.7 2.7-.3-1.6-1.1-2.4-2.7-2.7 1.6-.3 2.4-1.1 2.7-2.7Z"/></svg>
-          <h3 data-i18n="svc.brand.title">Brand &amp; Content</h3>
-          <p data-i18n="home.svc.brand.desc">Bilingual copy, done for you.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PROCESS ============ -->
-  <section class="section" id="process">
-    <div class="stars-bg" aria-hidden="true">
-      <div class="stars-parallax">
-        <div class="star-layer star-layer--sm"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--md"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--lg"><div class="dot"></div><div class="dot dot--b"></div></div>
-      </div>
-    </div>
-    <div class="section-inner">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow" data-i18n="process.eyebrow">Process</span>
-        <h2 data-i18n="process.h2">Three Steps to Live</h2>
-      </div>
-      <div class="process-row" data-reveal>
-        <div class="process-step">
-          <span class="process-num">01</span>
-          <h3 data-i18n="process.step1.title">Call</h3>
-          <p data-i18n="process.step1.desc">Free 20-minute strategy call.</p>
-        </div>
-        <div class="process-step">
-          <span class="process-num">02</span>
-          <h3 data-i18n="process.step2.title">Build</h3>
-          <p data-i18n="process.step2.desc">Site, CRM &amp; automations live in ~2 weeks.</p>
-        </div>
-        <div class="process-step">
-          <span class="process-num">03</span>
-          <h3 data-i18n="process.step3.title">Grow</h3>
-          <p data-i18n="process.step3.desc">We manage it. You get the leads.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ INDUSTRIES ============ -->
-  <section class="section industries">
-    <div class="stars-bg" aria-hidden="true">
-      <div class="stars-parallax">
-        <div class="star-layer star-layer--sm"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--md"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--lg"><div class="dot"></div><div class="dot dot--b"></div></div>
-      </div>
-    </div>
-    <div class="section-inner">
-      <div class="signal-line" aria-hidden="true" data-reveal>
-        <svg viewBox="0 0 220 22" preserveAspectRatio="none">
-          <path d="M2 11 H218"/>
-          <circle class="traveler" cx="2" cy="11" r="3"/>
-        </svg>
-      </div>
-      <span class="eyebrow" data-reveal style="justify-content:center;" data-i18n="industries.eyebrow">Who We Build For</span>
-      <div class="chip-row" data-reveal>
-        <span class="chip" data-i18n="industries.chip.home">Home Services</span>
-        <span class="chip" data-i18n="industries.chip.beauty">Beauty &amp; Wellness</span>
-        <span class="chip" data-i18n="industries.chip.professional">Professional Services</span>
-        <span class="chip" data-i18n="industries.chip.retail">Retail</span>
-        <span class="chip" data-i18n="industries.chip.hospitality">Hospitality</span>
-        <span class="chip" data-i18n="industries.chip.health">Health &amp; Wellness</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CTA ============ -->
-  <section class="section cta" id="contact">
-    <div class="stars-bg" aria-hidden="true">
-      <div class="stars-parallax">
-        <div class="star-layer star-layer--sm"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--md"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--lg"><div class="dot"></div><div class="dot dot--b"></div></div>
-      </div>
-    </div>
-    <div class="section-inner">
-      <span class="eyebrow on-dark" data-i18n="cta.letsBuild">Let's Build</span>
-      <h2 data-i18n="home.cta.h2">Start Building Your System</h2>
-      <p class="lede on-dark" data-i18n="cta.freeCallNote">Free 20-minute call. No pressure.</p>
-      <div class="cta-ctas">
-        <a href="tel:+17879019020" class="btn btn-solid" data-i18n="cta.callBtn">Call (787) 901-9020</a>
-        <a href="https://wa.me/17879019020" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="cta.whatsappBtn">WhatsApp Us</a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="stars-bg" aria-hidden="true">
-    <div class="stars-parallax">
-      <div class="star-layer star-layer--sm"><div class="dot"></div><div class="dot dot--b"></div></div>
-      <div class="star-layer star-layer--md"><div class="dot"></div><div class="dot dot--b"></div></div>
-      <div class="star-layer star-layer--lg"><div class="dot"></div><div class="dot dot--b"></div></div>
+    <h1 class="hero-title" data-i18n="hero.title">
+      <span class="split-word"><span style="transition-delay:0ms">Sistemas,</span></span>
+      <span class="line-2">
+        <span class="split-word"><span style="transition-delay:120ms"><em>esculpidos</em></span></span> <span class="split-word"><span style="transition-delay:160ms">para</span></span> <span class="split-word"><span style="transition-delay:200ms">funcionar</span></span> <span class="split-word"><span style="transition-delay:240ms">solos.</span></span>
+      </span>
+    </h1>
+    <p class="lead hero-sub" data-i18n="hero.sub">El estudio detrás de negocios que se manejan solos — sitios web, CRM y automatización construidos como un solo sistema, no tres proveedores compitiendo por tu atención. Con base en Ponce, Puerto Rico, bilingüe desde el primer día.</p>
+    <div class="hero-meta">
+      <div class="meta-block"><span data-i18n="hero.medium.label">Medio</span><b data-i18n="hero.medium.value">Bronce, patinado</b></div>
+      <div class="meta-block"><span data-i18n="hero.practice.label">Práctica</span><b data-i18n="hero.practice.value">Diseño Web, CRM y Automatización de Leads</b></div>
+      <a href="services.html" class="btn btn-ghost">
+        <span data-i18n="hero.seeServices">Ver todos los servicios</span>
+        <span class="arrow">&rarr;</span>
+      </a>
     </div>
   </div>
-  <div class="footer-inner">
-    <a href="index.html" class="footer-brand"><img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs">Littleman</a>
-    <p class="footer-tag" data-i18n="footer.tag">Websites, CRM &amp; automation for Ponce, PR businesses.</p>
+  <div class="hero-specimen">
+    <div class="hero-canvas-wrap"><canvas id="hero-canvas"></canvas></div>
+    <span class="specimen-tag" data-i18n="hero.specimenTag">Fig. 01 — Sin título (Littleman)</span>
+  </div>
+  <div class="scroll-cue"><span class="line"></span><span data-i18n="scroll.cue">Desplázate</span></div>
+</section>
 
-    <nav class="footer-nav">
-      <a href="index.html" data-i18n="nav.home">Home</a>
-      <a href="services.html" data-i18n="nav.services">Services</a>
-      <a href="about.html" data-i18n="nav.about">About</a>
-      <a href="blog.html" data-i18n="nav.blog">Insights</a>
-      <a href="contact.html" data-i18n="nav.contact">Contact</a>
-    </nav>
-
-    <div class="footer-contact-row">
-      <span data-i18n="footer.basedin">Ponce, Puerto Rico</span>
-      <a href="tel:+17879019020">(787) 901-9020</a>
-      <a href="mailto:hello@littlemanlabs.com">hello@littlemanlabs.com</a>
-      <a href="https://wa.me/17879019020" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="#" target="_blank" rel="noopener">Instagram</a>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© <span data-year>2026</span> Littleman Labs. <span data-i18n="footer.rights">All rights reserved.</span></p>
-      <div class="footer-legal">
-        <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
-        <a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a>
+<!-- Intro — the real founder/mascot story -->
+<section class="section">
+  <div class="section-inner">
+    <p class="placard" data-reveal><span class="num">No. 002</span> — <span data-i18n="home.why.eyebrow">Por qué &quot;Littleman&quot;</span></p>
+    <div class="split-block photo-first" data-reveal style="margin-top:32px;">
+      <figure class="photo-frame split-photo">
+        <img src="assets/img/photos/workspace-desk.jpg" alt="Un proyecto en curso — interfaz de un panel en un monitor del estudio" loading="lazy" />
+        <figcaption class="specimen-tag" data-i18n="home.why.figcaption">Fig. 02 — Trabajo en progreso</figcaption>
+      </figure>
+      <div class="intro-block" data-i18n="home.why.body">
+        <p><em>No es diferente. Es solo el que lo hace.</em> El Littleman no es especial — es solo el que actúa mientras los demás dudan, esperan, o lo posponen.</p>
+        <p>No siempre conoce el camino. Solo sigue gateando — hacia adelante, en una búsqueda interminable de más. Todo se trata de convertir ingresos en tiempo. El tiempo vale más que el dinero.</p>
+        <p>Ese mismo principio guía cada proyecto: construir el sistema una vez, bien hecho, para que deje de consumir tus horas todos los días.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Scroll-scrubbed build sequence -->
+<section class="code-scroll" id="codeScroll">
+  <div class="code-scroll-sticky">
+    <div class="code-scroll-frame">
+      <img class="code-scroll-img is-a" alt="Un proyecto, desde un editor en blanco hasta código publicado" />
+      <img class="code-scroll-img is-b" alt="" aria-hidden="true" />
+      <div class="code-scroll-caption">
+        <span>Fig. 03</span>
+        <span data-i18n="home.codeScroll.caption">Cómo sucede un proyecto, en realidad, de principio a fin</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process — three steps, reusing the same row-list device the rest of
+     the site never got around to using -->
+<section class="section">
+  <div class="section-inner">
+    <p class="placard" data-reveal><span class="num">No. 003</span> — <span data-i18n="home.process.eyebrow">Cómo Trabajamos</span></p>
+    <div class="row-list" style="margin-top:32px;">
+      <div class="row-item" data-reveal>
+        <span class="row-num">01</span>
+        <h2 data-i18n="home.process.step1.title">Llamada</h2>
+        <p data-i18n="home.process.step1.desc">Una llamada gratis de 20 minutos para entender lo que tu negocio necesita, sin guion de ventas.</p>
+      </div>
+      <div class="row-item" data-reveal>
+        <span class="row-num">02</span>
+        <h2 data-i18n="home.process.step2.title">Construcción</h2>
+        <p data-i18n="home.process.step2.desc">Sitio, CRM y automatizaciones listos en unas dos semanas, hablando directo con quien construye.</p>
+      </div>
+      <div class="row-item" data-reveal>
+        <span class="row-num">03</span>
+        <h2 data-i18n="home.process.step3.title">Crecimiento</h2>
+        <p data-i18n="home.process.step3.desc">Nosotros lo gestionamos mes a mes. Tú recibes los leads y un reporte claro de lo que entró.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" data-reveal>
+  <img class="cta-mascot" src="assets/img/mascots/mascot-wrench.png" alt="" aria-hidden="true" loading="lazy" />
+  <div class="container">
+    <h2 data-i18n="home.cta.h2">Una llamada <em>gratis, sin presión</em>. Definimos tu sistema juntos, sin obligación de firmar nada.</h2>
+    <a href="contact.html" class="btn btn-primary">
+      <span data-i18n="cta.getInTouch">Contáctanos</span>
+      <span class="arrow">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-wordmark" aria-hidden="true">Littleman Labs</div>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand" data-i18n="footer.est">Fundado en Ponce, Puerto Rico</div>
+      <p class="footer-brand-sub" data-i18n="footer.tagline">Creado en Ponce, para Puerto Rico. Español e inglés, desde el primer día.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label" data-i18n="footer.studio">Estudio</div>
+        <a href="index.html" data-i18n="nav.home">Inicio</a>
+        <a href="services.html" data-i18n="nav.services">Servicios</a>
+        <a href="about.html" data-i18n="nav.about">Nosotros</a>
+        <a href="contact.html" data-i18n="nav.contact">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label" data-i18n="footer.connect">Contacto</div>
+        <a href="tel:+17879019020">+1 (787) 901-9020</a>
+        <a href="https://wa.me/19392335269" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:littlemanfirm@gmail.com" data-i18n="footer.email">Correo</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label" data-i18n="footer.follow">Síguenos</div>
+        <a href="https://www.instagram.com/littlemanlabs" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@littlemanlabs" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.facebook.com/Littlemanlabs" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Littleman Labs</span>
+    <span>Ponce, Puerto Rico</span>
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script src="assets/js/i18n.js?v=2"></script>
-<script src="assets/js/main.js?v=3"></script>
-<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a6a33e83acf6f081744fa44" data-source="WEB_USER"></script>
+<script src="js/i18n-dict.js"></script>
+<script src="js/i18n.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/shader-background.js"></script>
+<script src="js/main.js"></script>
+<script src="js/code-scroll.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module" src="js/three-hero.js"></script>
 </body>
 </html>

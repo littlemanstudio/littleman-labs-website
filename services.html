@@ -1,332 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Services — Web Design, CRM &amp; Automation | Littleman</title>
-<meta name="description" content="Website design, CRM &amp; lead management, and Meta ads management for Ponce, Puerto Rico businesses — every engagement is scoped and quoted on a free call.">
-<link rel="canonical" href="https://littlemanlabs.com/services.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Littleman Labs">
-<meta property="og:title" content="Services — Web Design, CRM &amp; Automation | Littleman">
-<meta property="og:description" content="Website design, CRM &amp; lead management, and Meta ads management for Ponce, Puerto Rico businesses — every engagement is scoped and quoted on a free call.">
-<meta property="og:url" content="https://littlemanlabs.com/services.html">
-<meta name="twitter:card" content="summary">
-<meta name="theme-color" content="#044AB3">
-<link rel="icon" type="image/png" href="assets/img/littleman-labs-favicon-v2.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,380;0,9..144,500;1,9..144,340&family=Instrument+Sans:wght@400;500;600&family=Fragment+Mono&display=swap">
-<link rel="stylesheet" href="assets/css/style.css?v=3">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "OfferCatalog",
-  "name": "Littleman Labs — Services",
-  "itemListElement": [
-    {"@type":"Offer","name":"Website Design"},
-    {"@type":"Offer","name":"CRM & Lead Management"},
-    {"@type":"Offer","name":"Ads + CRM"}
-  ]
-}
-</script>
+<script>if("scrollRestoration" in history){history.scrollRestoration="manual";}window.scrollTo(0,0);</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Diseño Web, CRM y Anuncios — Littleman Labs, Ponce PR</title>
+<meta name="description" content="Diseño web, CRM y gestión de leads, y planes de anuncios + CRM para negocios de Ponce, PR. En línea en unas dos semanas. Empieza con una llamada gratis." />
+<link rel="icon" type="image/png" href="assets/img/favicon.png" />
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+<meta name="theme-color" content="#17140f" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Diseño Web, CRM y Anuncios — Littleman Labs, Ponce PR" />
+<meta property="og:description" content="Diseño web, CRM y gestión de leads, y planes de anuncios + CRM para negocios de Ponce, PR. En línea en unas dos semanas. Empieza con una llamada gratis." />
+<meta property="og:image" content="assets/img/og-image.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Diseño Web, CRM y Anuncios — Littleman Labs, Ponce PR" />
+<meta name="twitter:description" content="Diseño web, CRM y gestión de leads, y planes de anuncios + CRM para negocios de Ponce, PR. En línea en unas dos semanas. Empieza con una llamada gratis." />
+<meta name="twitter:image" content="assets/img/og-image.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
-  <filter id="liquid-glass-filter" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
-    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="noise"/>
-    <feGaussianBlur in="noise" stdDeviation="2.5" result="softNoise"/>
-    <feDisplacementMap in="SourceGraphic" in2="softNoise" scale="16" xChannelSelector="R" yChannelSelector="G"/>
-  </filter>
-</svg>
+<div class="bg-field"><canvas id="bg-canvas"></canvas></div>
 
-<a href="#main" class="visually-hidden">Skip to main content</a>
-
-<div class="mobile-panel" id="mobilePanel" aria-hidden="true">
-  <div class="panel-top">
-    <a href="index.html" class="brand"><img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs">Littleman</a>
-    <button type="button" class="close-btn" id="mobileClose" data-i18n="mobile.close">Close</button>
-  </div>
-  <nav>
-    <a href="index.html" data-i18n="nav.home">Home</a>
-    <a href="services.html" aria-current="page" data-i18n="nav.services">Services</a>
-    <a href="about.html" data-i18n="nav.about">About</a>
-    <a href="blog.html" data-i18n="nav.blog">Insights</a>
-    <a href="contact.html" data-i18n="nav.contact">Contact</a>
-  </nav>
-  <div class="lang-toggle" role="group" aria-label="Language selector">
-    <button type="button" data-lang="en">EN</button>
-    <button type="button" data-lang="es">ES</button>
-  </div>
-  <div class="panel-bottom">
-    <span data-i18n="footer.basedin">Ponce, Puerto Rico</span>
-    <a href="tel:+17879019020">(787) 901-9020</a>
-    <a href="https://wa.me/17879019020" target="_blank" rel="noopener">WhatsApp</a>
-  </div>
+<div class="preloader">
+  <div class="preloader-mark"><img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs" class="preloader-logo" /><span class="preloader-count">00</span></div>
 </div>
 
-<header class="site-header" id="siteHeader">
-  <div class="header-flex">
-    <a href="index.html" class="brand"><img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs">Littleman</a>
-    <nav class="main-nav">
-      <a href="index.html" data-i18n="nav.home">Home</a>
-      <a href="services.html" aria-current="page" data-i18n="nav.services">Services</a>
-      <a href="about.html" data-i18n="nav.about">About</a>
-      <a href="blog.html" data-i18n="nav.blog">Insights</a>
-    </nav>
-    <div class="header-actions">
-      <div class="lang-toggle" role="group" aria-label="Language selector">
-        <button type="button" data-lang="en">EN</button>
-        <button type="button" data-lang="es">ES</button>
+<header class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs" class="nav-logo" />
+      Littleman
+    </a>
+    <nav class="nav-menu">
+      <div class="nav-links">
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Inicio</a>
+        <a href="services.html" class="nav-link is-active" data-i18n="nav.services">Servicios</a>
+        <a href="about.html" class="nav-link" data-i18n="nav.about">Nosotros</a>
       </div>
-      <a href="contact.html" class="header-cta">
-        <span data-i18n="cta.getInTouch">Get in Touch</span>
-        <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <div class="lang-toggle" role="group" aria-label="Selector de idioma">
+        <button type="button" data-lang="es">ES</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="contact.html" class="btn btn-primary">
+        <span data-i18n="cta.getInTouch">Contáctanos</span>
+        <span class="arrow">&rarr;</span>
       </a>
-      <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      </button>
-    </div>
+    </nav>
+    <button class="nav-toggle" aria-label="Menu"><span></span></button>
   </div>
 </header>
 
-<main id="main">
+<section class="page-hero">
+  <p class="placard" data-reveal><span class="num">No. 001</span> — <span data-i18n="svcpage.eyebrow">Servicios</span></p>
+  <h1 data-reveal data-i18n="svcpage.h1">Todos los sistemas que tu negocio necesita, <em>bajo un mismo techo.</em></h1>
+  <p class="lead" data-reveal data-i18n="svcpage.lede">Una llamada gratis de 20 minutos. En línea en unas dos semanas. Luego lo gestionamos nosotros — tú recibes los leads.</p>
+</section>
 
-  <section class="page-header">
-    <div class="stars-bg" aria-hidden="true">
-      <div class="stars-parallax">
-        <div class="star-layer star-layer--sm"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--md"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--lg"><div class="dot"></div><div class="dot dot--b"></div></div>
-      </div>
-    </div>
-      <div class="deco-corner" aria-hidden="true">
-        <svg viewBox="0 0 56 56">
-          <circle class="ring" cx="28" cy="28" r="10"/>
-          <circle class="ring ring--b" cx="28" cy="28" r="10"/>
-          <circle class="dot" cx="28" cy="28" r="3"/>
-        </svg>
-      </div>
-    <div class="section-inner">
-      <span class="eyebrow" data-i18n="nav.services">Services</span>
-      <h1 data-i18n="svcpage.h1">Every system your business needs, under one roof.</h1>
-      <p class="lede" data-i18n="svcpage.lede">Custom builds. Clear monthly plans. Every engagement starts with a free call.</p>
-    </div>
-  </section>
+<!-- Plans — real photography per card, a scroll-snap slider (native, no
+     pin/scrub math to fight on short viewports) instead of the old
+     absolutely-positioned elecctro-style carousel. -->
+<section class="section" id="exhibit">
+  <div class="section-inner">
+    <p class="placard" data-reveal><span class="num">No. 002</span> — <span data-i18n="svcpage.plans.eyebrow">Planes</span></p>
+    <h2 style="margin-top:18px;" data-reveal data-i18n="svcpage.plans.h2">Después del lanzamiento: tres formas de seguir vendiendo.</h2>
+  </div>
 
-  <!-- ============ SERVICES ============ -->
-  <section class="section" id="services" style="padding-top:clamp(40px,6vw,64px);">
-    <h2 class="visually-hidden" data-i18n="svcpage.services.h2">Our Services</h2>
-    <div class="stars-bg" aria-hidden="true">
-      <div class="stars-parallax">
-        <div class="star-layer star-layer--sm"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--md"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--lg"><div class="dot"></div><div class="dot dot--b"></div></div>
-      </div>
-    </div>
-    <div class="section-inner">
-      <div class="services-grid" data-reveal>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="1.5"/><path d="M3 8h18M7 12h4"/></svg>
-          <h3 data-i18n="svc.website.title">Custom Websites</h3>
-          <p data-i18n="svcpage.svc.website.desc">Fast, bilingual, built for your brand — not a template.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"/><circle cx="19" cy="19" r="2"/></svg>
-          <h3 data-i18n="svc.crm.title">CRM &amp; Lead Inbox</h3>
-          <p data-i18n="svcpage.svc.crm.desc">Every call, form, and DM lands in one inbox.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92Z"/></svg>
-          <h3 data-i18n="svc.textback.title">Missed-Call Text-Back</h3>
-          <p data-i18n="svcpage.svc.textback.desc">An unanswered call gets an instant SMS reply.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="1.5"/><path d="M4 10h16M8 3v4M16 3v4"/></svg>
-          <h3 data-i18n="svc.scheduling.title">Scheduling</h3>
-          <p data-i18n="svcpage.svc.scheduling.desc">Online booking with reminders that cut no-shows.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-          <h3 data-i18n="svc.seo.title">Local SEO</h3>
-          <p data-i18n="svcpage.svc.seo.desc">Google Business Profile &amp; review requests, managed.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
-          <h3 data-i18n="svc.ads.title">Paid Ads</h3>
-          <p data-i18n="svcpage.svc.ads.desc">Google &amp; Meta campaigns, managed weekly.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
-          <h3 data-i18n="svc.reports.title">Monthly Reports</h3>
-          <p data-i18n="svcpage.svc.reports.desc">Leads in, jobs booked — plain language, every month.</p>
-        </div>
-        <div class="service-card">
-          <svg class="icn" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.6 3.2 2.2 4.8 5.4 5.4-3.2.6-4.8 2.2-5.4 5.4-.6-3.2-2.2-4.8-5.4-5.4C9.8 7.8 11.4 6.2 12 3ZM19 15c.3 1.6 1.1 2.4 2.7 2.7-1.6.3-2.4 1.1-2.7 2.7-.3-1.6-1.1-2.4-2.7-2.7 1.6-.3 2.4-1.1 2.7-2.7Z"/></svg>
-          <h3 data-i18n="svc.brand.title">Brand &amp; Content</h3>
-          <p data-i18n="svcpage.svc.brand.desc">Bilingual copywriting, done for you.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PRICING ============ -->
-  <section class="section pricing" id="plans">
-    <div class="stars-bg" aria-hidden="true">
-      <div class="stars-parallax">
-        <div class="star-layer star-layer--sm"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--md"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--lg"><div class="dot"></div><div class="dot dot--b"></div></div>
-      </div>
-    </div>
-    <div class="section-inner">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow" data-i18n="svcpage.pricing.eyebrow">How We Work</span>
-        <h2 data-i18n="svcpage.pricing.h2">After Launch: Three Ways We Keep It Selling</h2>
-        <p class="lede" data-i18n="svcpage.pricing.lede">Website is a one-time build. CRM and Ads run month to month, 90-day minimum.</p>
-      </div>
-
-      <div class="pricing-grid" data-reveal>
-        <div class="price-card">
-          <p class="price-name" data-i18n="pricing.name1">Website Design</p>
-          <p class="price-tag" data-i18n="svcpage.pricing.p1.tag">Built once. Scoped to what you actually need.</p>
-          <ul class="price-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p1.f1">3–5 pages, scoped to your business</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p1.f2">Bilingual from day one</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p1.f3">Backend or database, if you need one</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p1.f4">Yours forever — no monthly lock-in</span></li>
+  <div class="services-slider" data-reveal>
+    <div class="services-track" id="servicesTrack">
+      <article class="service-card">
+        <figure class="photo-frame service-card-media">
+          <img src="assets/img/photos/service-website.jpg" alt="Laptop en un escritorio oscuro mostrando la maqueta de una página de inicio, iluminado por una lámpara de escritorio" loading="lazy" />
+        </figure>
+        <div class="service-card-copy">
+          <span class="num" data-i18n="svcpage.p1.num">01 — Diseño Web</span>
+          <h3 data-i18n="svcpage.p1.title">Se construye una vez. Ajustado a lo que realmente necesitas.</h3>
+          <p data-i18n="svcpage.p1.tag">Tuyo para siempre — sin mensualidad obligatoria.</p>
+          <ul>
+            <li data-i18n="svcpage.p1.f1">3–5 páginas, según tu negocio</li>
+            <li data-i18n="svcpage.p1.f2">Bilingüe desde el primer día</li>
+            <li data-i18n="svcpage.p1.f3">Backend o base de datos, si lo necesitas</li>
           </ul>
-          <a href="contact.html" class="btn btn-dark" data-i18n="pricing.p1.cta">Start with a Website</a>
+          <a href="contact.html" class="btn btn-ghost"><span data-i18n="svcpage.p1.cta">Empieza con tu sitio web</span><span class="arrow">&rarr;</span></a>
         </div>
+      </article>
 
-        <div class="price-card is-featured">
-          <span class="price-badge" data-i18n="pricing.badge">Most Popular</span>
-          <p class="price-name" data-i18n="pricing.name2">CRM &amp; Lead Management</p>
-          <p class="price-tag" data-i18n="svcpage.pricing.p2.tag">Every lead followed up. Nothing falls through.</p>
-          <ul class="price-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p2.f1">Unified lead inbox — call, form, DM</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p2.f2">Missed-call text-back</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p2.f3">Booking &amp; reminders that cut no-shows</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p2.f4">Monthly report: leads in, jobs booked</span></li>
+      <article class="service-card">
+        <figure class="photo-frame service-card-media">
+          <img src="assets/img/photos/service-crm.jpg" alt="Monitor en un escritorio oscuro mostrando un panel de CRM con íconos de llamada, formulario y mensaje" loading="lazy" />
+        </figure>
+        <div class="service-card-copy">
+          <span class="num" data-i18n="svcpage.p2.num">02 — CRM y Gestión de Leads <span class="badge" data-i18n="svcpage.badge">Más Popular</span></span>
+          <h3 data-i18n="svcpage.p2.title">Cada lead con seguimiento. Nada se pierde.</h3>
+          <p data-i18n="svcpage.p2.tag">Buzón de leads unificado — llamada, formulario, mensaje.</p>
+          <ul>
+            <li data-i18n="svcpage.p2.f1">Texto automático a llamadas perdidas</li>
+            <li data-i18n="svcpage.p2.f2">Citas y recordatorios que reducen ausencias</li>
+            <li data-i18n="svcpage.p2.f3">Reporte mensual: leads que entran, trabajos agendados</li>
           </ul>
-          <a href="contact.html" class="btn btn-solid" data-i18n="pricing.p2.cta">Start CRM &amp; Leads</a>
+          <a href="contact.html" class="btn btn-ghost"><span data-i18n="svcpage.p2.cta">Empieza con CRM y leads</span><span class="arrow">&rarr;</span></a>
         </div>
+      </article>
 
-        <div class="price-card">
-          <p class="price-name" data-i18n="pricing.name3">Ads + CRM</p>
-          <p class="price-tag" data-i18n="svcpage.pricing.p3.tag">Your market, actively captured.</p>
-          <ul class="price-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p3.f1">Everything in CRM &amp; Lead Management</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p3.f2">Meta ads managed weekly</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p3.f3">Dedicated landing pages per campaign</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12l4.5 4.5L19 7"/></svg><span data-i18n="svcpage.pricing.p3.f4">Same-day priority support</span></li>
+      <article class="service-card">
+        <figure class="photo-frame service-card-media">
+          <img src="assets/img/photos/service-ads.jpg" alt="Monitor y teléfono en un escritorio oscuro mostrando un panel de análisis de campaña y una vista previa de anuncio" loading="lazy" />
+        </figure>
+        <div class="service-card-copy">
+          <span class="num" data-i18n="svcpage.p3.num">03 — Anuncios + CRM</span>
+          <h3 data-i18n="svcpage.p3.title">Tu mercado, capturado activamente.</h3>
+          <p data-i18n="svcpage.p3.tag">Todo lo de CRM y Gestión de Leads, más:</p>
+          <ul>
+            <li data-i18n="svcpage.p3.f1">Anuncios en Google y Meta gestionados cada semana</li>
+            <li data-i18n="svcpage.p3.f2">Landing pages dedicadas por campaña</li>
+            <li data-i18n="svcpage.p3.f3">Soporte prioritario el mismo día</li>
           </ul>
-          <a href="contact.html" class="btn btn-dark" data-i18n="pricing.p3.cta">Scale with Ads + CRM</a>
+          <a href="contact.html" class="btn btn-ghost"><span data-i18n="svcpage.p3.cta">Escala con anuncios + CRM</span><span class="arrow">&rarr;</span></a>
         </div>
-      </div>
-      <p class="pricing-note" data-reveal data-i18n="svcpage.pricing.note">Every engagement is different — scope and cost are confirmed on your free call.</p>
+      </article>
     </div>
-  </section>
 
-  <!-- ============ PROCESS ============ -->
-  <section class="section" id="process">
-    <div class="stars-bg" aria-hidden="true">
-      <div class="stars-parallax">
-        <div class="star-layer star-layer--sm"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--md"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--lg"><div class="dot"></div><div class="dot dot--b"></div></div>
-      </div>
-    </div>
-    <div class="section-inner">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow" data-i18n="process.eyebrow">Process</span>
-        <h2 data-i18n="process.h2">Three Steps to Live</h2>
-      </div>
-      <div class="process-row" data-reveal>
-        <div class="process-step">
-          <span class="process-num">01</span>
-          <h3 data-i18n="process.step1.title">Call</h3>
-          <p data-i18n="process.step1.desc">Free 20-minute strategy call.</p>
-        </div>
-        <div class="process-step">
-          <span class="process-num">02</span>
-          <h3 data-i18n="process.step2.title">Build</h3>
-          <p data-i18n="process.step2.desc">Site, CRM &amp; automations live in ~2 weeks.</p>
-        </div>
-        <div class="process-step">
-          <span class="process-num">03</span>
-          <h3 data-i18n="process.step3.title">Grow</h3>
-          <p data-i18n="process.step3.desc">We manage it. You get the leads.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CTA ============ -->
-  <section class="section cta">
-    <div class="stars-bg" aria-hidden="true">
-      <div class="stars-parallax">
-        <div class="star-layer star-layer--sm"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--md"><div class="dot"></div><div class="dot dot--b"></div></div>
-        <div class="star-layer star-layer--lg"><div class="dot"></div><div class="dot dot--b"></div></div>
-      </div>
-    </div>
-    <div class="section-inner">
-      <span class="eyebrow on-dark" data-i18n="cta.letsBuild">Let's Build</span>
-      <h2 data-i18n="svcpage.cta.h2">Not Sure Which Plan Fits?</h2>
-      <p class="lede on-dark" data-i18n="svcpage.cta.lede">Tell us about your business — we'll recommend one.</p>
-      <div class="cta-ctas">
-        <a href="contact.html" class="btn btn-solid" data-i18n="cta.getInTouch">Get in Touch</a>
-        <a href="https://wa.me/17879019020" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="cta.whatsappBtn">WhatsApp Us</a>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="stars-bg" aria-hidden="true">
-    <div class="stars-parallax">
-      <div class="star-layer star-layer--sm"><div class="dot"></div><div class="dot dot--b"></div></div>
-      <div class="star-layer star-layer--md"><div class="dot"></div><div class="dot dot--b"></div></div>
-      <div class="star-layer star-layer--lg"><div class="dot"></div><div class="dot dot--b"></div></div>
+    <div class="services-slider-nav container">
+      <button class="slider-arrow" type="button" data-dir="-1" aria-label="Plan anterior">&larr;</button>
+      <div class="slider-dots" role="tablist" aria-label="Planes"></div>
+      <button class="slider-arrow" type="button" data-dir="1" aria-label="Siguiente plan">&rarr;</button>
     </div>
   </div>
-  <div class="footer-inner">
-    <a href="index.html" class="footer-brand"><img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs">Littleman</a>
-    <p class="footer-tag" data-i18n="footer.tag">Websites, CRM &amp; automation for Ponce, PR businesses.</p>
+</section>
 
-    <nav class="footer-nav">
-      <a href="index.html" data-i18n="nav.home">Home</a>
-      <a href="services.html" data-i18n="nav.services">Services</a>
-      <a href="about.html" data-i18n="nav.about">About</a>
-      <a href="blog.html" data-i18n="nav.blog">Insights</a>
-      <a href="contact.html" data-i18n="nav.contact">Contact</a>
-    </nav>
-
-    <div class="footer-contact-row">
-      <span data-i18n="footer.basedin">Ponce, Puerto Rico</span>
-      <a href="tel:+17879019020">(787) 901-9020</a>
-      <a href="mailto:hello@littlemanlabs.com">hello@littlemanlabs.com</a>
-      <a href="https://wa.me/17879019020" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="#" target="_blank" rel="noopener">Instagram</a>
+<!-- Every piece — flowing prose, not a feature grid -->
+<section class="section">
+  <div class="section-inner">
+    <p class="placard" data-reveal><span class="num">No. 003</span> — <span data-i18n="svcpage.piece.eyebrow">Cada Pieza</span></p>
+    <div class="split-block" data-reveal style="margin-top:32px;">
+      <div class="intro-block" data-i18n="svcpage.piece.body">
+        <p>Sitios web a la medida. CRM y buzón de leads. Texto automático a llamadas perdidas. Citas. SEO local. Anuncios pagados. Reportes mensuales. Marca y contenido. <em>Cada pieza, bajo un mismo techo</em> — nunca tres proveedores fingiendo comunicarse entre sí.</p>
+        <p>La mayoría de las agencias te entregan un sitio web y luego te dirigen a una herramienta de CRM aparte, una agencia de anuncios aparte, y una hoja de reportes aparte — y tú eres quien tiene que unirlo todo. Littleman Labs construye y gestiona todo como un solo sistema, así que un lead que llama, llena un formulario, o escribe por mensaje directo llega al mismo buzón, recibe el mismo seguimiento, y aparece en el mismo reporte mensual.</p>
+      </div>
+      <figure class="photo-frame split-photo">
+        <img src="assets/img/photos/coding-over-shoulder.jpg" alt="Construyendo el sistema de un cliente — editor de código abierto, manos en el teclado" loading="lazy" />
+        <figcaption class="specimen-tag" data-i18n="svcpage.piece.figcaption">Fig. 03 — Bajo el capó</figcaption>
+      </figure>
     </div>
+  </div>
+</section>
 
-    <div class="footer-bottom">
-      <p>© <span data-year>2026</span> Littleman Labs. <span data-i18n="footer.rights">All rights reserved.</span></p>
-      <div class="footer-legal">
-        <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
-        <a href="terms.html" data-i18n="footer.terms">Terms &amp; Conditions</a>
+<section class="cta-band" data-reveal>
+  <img class="cta-mascot" src="assets/img/mascots/mascot-magnifier.png" alt="" aria-hidden="true" loading="lazy" />
+  <div class="container">
+    <h2 data-i18n="svcpage.cta.h2">¿No sabes cuál plan te conviene? <em>Cuéntanos</em> sobre tu negocio.</h2>
+    <a href="contact.html" class="btn btn-primary">
+      <span data-i18n="cta.getInTouch">Contáctanos</span>
+      <span class="arrow">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-wordmark" aria-hidden="true">Littleman Labs</div>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand" data-i18n="footer.est">Fundado en Ponce, Puerto Rico</div>
+      <p class="footer-brand-sub" data-i18n="footer.tagline">Creado en Ponce, para Puerto Rico. Español e inglés, desde el primer día.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label" data-i18n="footer.studio">Estudio</div>
+        <a href="index.html" data-i18n="nav.home">Inicio</a>
+        <a href="services.html" data-i18n="nav.services">Servicios</a>
+        <a href="about.html" data-i18n="nav.about">Nosotros</a>
+        <a href="contact.html" data-i18n="nav.contact">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label" data-i18n="footer.connect">Contacto</div>
+        <a href="tel:+17879019020">+1 (787) 901-9020</a>
+        <a href="https://wa.me/19392335269" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:littlemanfirm@gmail.com" data-i18n="footer.email">Correo</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label" data-i18n="footer.follow">Síguenos</div>
+        <a href="https://www.instagram.com/littlemanlabs" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@littlemanlabs" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.facebook.com/Littlemanlabs" target="_blank" rel="noopener">Facebook</a>
       </div>
     </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Littleman Labs</span>
+    <span>Ponce, Puerto Rico</span>
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-<script src="assets/js/i18n.js?v=2"></script>
-<script src="assets/js/main.js?v=3"></script>
-<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a6a33e83acf6f081744fa44" data-source="WEB_USER"></script>
+<script src="js/i18n-dict.js"></script>
+<script src="js/i18n.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/shader-background.js"></script>
+<script src="js/main.js"></script>
+<script src="js/services-slider.js"></script>
 </body>
 </html>
