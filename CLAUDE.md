@@ -94,14 +94,28 @@ toggle language after the page renders.
   `sessionStorage.getItem("llPreloaderSeen")` (added 2026-08-06) — it must never replay on
   every internal navigation, only the first page of a session.
 - `data-reveal` + GSAP ScrollTrigger batch fade-up, IntersectionObserver fallback.
-- Ambient background: `js/scroll-thread.js` draws slow bronze contour wave-lines on
-  `#bg-canvas` (canvas2d), clock persisted across page navigations via `sessionStorage` so it
-  reads as one continuous background, not a per-page restart. `js/shader-background.js` is a
-  WebGL alternative (ported from a React/21st.dev shader component to vanilla JS since this
-  project has no framework) — **not wired into any page as of 2026-08-06**, sitting as a trial
-  the user asked to preview before deciding whether it replaces scroll-thread.js. Only one of
-  the two should ever be active on `#bg-canvas` at a time (a canvas can't hold both a 2d and a
-  webgl context).
+- Ambient background: one continuous building, a different room per page — AI-rendered stills
+  (`assets/img/lab/{entry,workshop,studio,comms}.jpg`, generated to match the site's own
+  graphite/bone/bronze palette, no neon) painted onto `.bg-scene` via a per-zone CSS rule keyed
+  on `body[data-lab-zone]` — `index`="entry" (reception/lobby, the bronze piece on its plinth),
+  `services`="workshop" (the lab — server racks + workbench), `about`="studio" (founder's desk,
+  lamp, pinboard), `contact`="comms" (a more futuristic reception console + wall clock).
+  `js/lab-background.js` is deliberately small: it only adds pointer-parallax + slow idle drift
+  on `.bg-scene` (translate3d, plain rAF loop, no WebGL) for a 3D-ish depth cue;
+  `prefers-reduced-motion` skips it entirely (static frame). The room-to-room feel on navigation
+  comes from the native cross-document View Transition declared in `css/style.css`
+  (`@view-transition { navigation: auto; }` + `::view-transition-old/new(root)` keyframes) —
+  Chromium supports this today, other browsers just ignore the at-rule and hard-cut, so it's
+  progressive enhancement, not a dependency. `.bg-field::after`'s radial-gradient vignette keeps
+  the text column legible while the room reads at the framing edges — adjust that gradient (not
+  `.bg-scene` opacity alone) if legibility regresses after swapping an image. To regenerate a
+  room image, keep the prompt anchored to "graphite/bone/bronze, no neon/purple/blue" or it will
+  drift off-brand. `js/scroll-thread.js` (bronze contour wave-lines, canvas2d) and
+  `js/shader-background.js` (WebGL "silk" shader) are earlier ambient systems this replaced —
+  kept in the repo as reference, not wired into any page. `js/three-hero.js` is unrelated and
+  still active — it's the separate small Three.js scene inside `.hero-canvas-wrap` on the
+  homepage only (the bronze mascot sculpture on its plinth), not part of the full-page ambient
+  background.
 - Services slider (`services.html`): native CSS scroll-snap, not GSAP ScrollTrigger pin/scrub —
   deliberately replaced a pinned-carousel version on 2026-08-06 that collided with page content
   on short viewports. Don't reintroduce a scroll-pinned carousel for card sequences.

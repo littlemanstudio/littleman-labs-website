@@ -46,6 +46,14 @@ function initFrameButtons() {
    duplicate row offset below), staggered 25ms apart; hover slides the top
    row up and out while the duplicate row slides up into place. */
 function initFlipLinks() {
+  // Touch has no real :hover — tapping a link triggers the CSS hover state
+  // for an instant before the <a> navigates, so the per-letter stagger
+  // (up to ~300ms for a longer word) gets cut off mid-flight and reads as
+  // "only half the word animated." Real bug, found 2026-08-06. Skip the
+  // split-row treatment on touch devices entirely; plain text has no
+  // animation to interrupt. Matches the existing guard on magnetic buttons.
+  if (window.matchMedia("(hover: none)").matches) return;
+
   document.querySelectorAll(".nav-link").forEach((link) => {
     const text = link.textContent.trim();
     link.setAttribute("aria-label", text);

@@ -68,11 +68,58 @@ body {
   z-index: 0;
   background: var(--graphite);
   pointer-events: none;
+  overflow: hidden;
 }
-/* Kept deliberately faint — ambient texture, not a foreground pattern.
-   The shader's own colors/contrast were tuned for a standalone hero, not
-   as a backdrop sitting behind body text every page has. */
-#bg-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0.1; }
+/* One AI-rendered room per page, held to the same graphite/bone/bronze
+   palette as the rest of the site — see js/lab-background.js for the zone
+   map. Oversized + translated by JS (pointer parallax + idle drift) for a
+   3D-ish depth cue without WebGL; scale(1.06) here is the resting state so
+   the parallax translate never reveals an edge. */
+.bg-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.55;
+  transform: scale(1.06);
+  will-change: transform;
+}
+body[data-lab-zone="entry"] .bg-scene { background-image: url("../assets/img/lab/entry.jpg"); }
+body[data-lab-zone="workshop"] .bg-scene { background-image: url("../assets/img/lab/workshop.jpg"); }
+body[data-lab-zone="studio"] .bg-scene { background-image: url("../assets/img/lab/studio.jpg"); }
+body[data-lab-zone="comms"] .bg-scene { background-image: url("../assets/img/lab/comms.jpg"); }
+
+/* Vignette sits above the scene: keeps the text column legible (darkest
+   at center, where headlines/body copy live) while letting the room read
+   clearly at the framing edges instead of everywhere at low opacity. */
+.bg-field::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(62% 58% at 50% 42%, rgba(28, 26, 23, 0.82) 0%, rgba(28, 26, 23, 0.42) 55%, rgba(28, 26, 23, 0) 100%);
+}
+
+/* Cross-document View Transition: native browser support (Chromium) turns
+   every internal navigation into a real transition instead of a hard cut —
+   this is what actually sells "walking from one room into the next."
+   No-op/ignored in browsers that don't support it yet (progressive
+   enhancement, not a dependency). */
+@view-transition {
+  navigation: auto;
+}
+::view-transition-old(root) { animation: lm-room-exit 0.6s var(--ease) both; }
+::view-transition-new(root) { animation: lm-room-enter 0.6s var(--ease) both; }
+@keyframes lm-room-exit {
+  to { opacity: 0; transform: scale(1.03); }
+}
+@keyframes lm-room-enter {
+  from { opacity: 0; transform: scale(0.97); }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
+}
 
 /* Every direct content section sits above the field in its own stacking
    context so z-index: 0 on .bg-field always stays at the back. (.preloader
@@ -233,10 +280,26 @@ h1, h2, h3, .display {
 }
 .navbar.is-scrolled {
   padding: 16px 0;
+  border-bottom-color: var(--line);
+}
+/* The frosted-glass fill lives on a pseudo-element, not on .navbar itself.
+   .navbar is position:fixed, and backdrop-filter (like transform/filter/
+   contain) makes an element a new containing block for its own
+   position:fixed descendants — which broke the mobile nav-menu panel
+   (also position:fixed, inset:0) into sizing itself against the 75px
+   navbar instead of the real viewport the moment the page scrolled past
+   40px. Real bug, found 2026-08-06: the closed mobile menu (incl. the
+   "Contáctanos" button) would peek in at the top of the screen on any
+   scrolled page. A ::before can carry the blur without the containing-
+   block side effect, since it isn't an ancestor of .nav-menu. */
+.navbar.is-scrolled::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(28, 26, 23, 0.86);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border-bottom-color: var(--line);
 }
 .navbar .container { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 
