@@ -706,6 +706,11 @@ h1, h2, h3, .display {
 }
 .intro-block p + p { margin-top: 24px; }
 .intro-block em { font-style: normal; color: inherit; }
+/* Plain underline only, no color, per the no-colored-emphasis rule above.
+   Real affordance for the inline cross-links in FAQ copy without
+   reintroducing a decorative bronze/colored-word device. */
+.intro-block a { text-decoration: underline; text-underline-offset: 3px; }
+.intro-block a:hover { text-decoration-thickness: 2px; }
 
 /* ==========================================================================
    Photo frame, real photography, framed like the hero's vitrine (same

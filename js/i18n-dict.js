@@ -25,7 +25,7 @@ window.LITTLEMAN_I18N = {
     "scroll.cue": "Desplázate",
 
     "home.why.h2": "Cada pieza, bajo un mismo techo.",
-    "home.why.body": "<p>La mayoría de las agencias te entregan un sitio web y te mandan a buscar un CRM aparte, una agencia de anuncios aparte, y una hoja de reportes aparte. Tú tienes que unirlo todo. Nosotros construimos y gestionamos las tres piezas como un solo sistema: sitio web, CRM y automatización.</p><p>Un lead que llama, llena un formulario, o escribe por WhatsApp llega al mismo buzón, recibe el mismo seguimiento, y aparece en el mismo reporte mensual.</p><p>El tiempo vale más que el dinero. Por eso lo construimos una vez, bien hecho, para que deje de consumir tus horas todos los días.</p>",
+    "home.why.body": "<p>La mayoría de las agencias te entregan un sitio web y te mandan a buscar un CRM aparte, una agencia de anuncios aparte, y una hoja de reportes aparte. Tú tienes que unirlo todo. Nosotros construimos y gestionamos las tres piezas como un solo sistema: sitio web, CRM y automatización.</p><p>Un lead que llama, llena un formulario, o escribe por WhatsApp llega al mismo buzón, recibe el mismo seguimiento, y aparece en el mismo reporte mensual.</p><p>Cuando algo falla, sabes exactamente a quién llamar. Nadie te dice que eso no es con nosotros, es con la otra empresa. Y cuando todo funciona, tampoco tienes que coordinar entre tres calendarios distintos para lanzar una campaña o cambiar un texto en el sitio.</p><p>El tiempo vale más que el dinero. Por eso lo construimos una vez, bien hecho, para que deje de consumir tus horas todos los días.</p>",
 
     "home.codeScroll.caption": "Cómo sucede un proyecto, en realidad, de principio a fin",
 
@@ -33,15 +33,15 @@ window.LITTLEMAN_I18N = {
     "home.process.step1.title": "Llamada",
     "home.process.step1.desc": "Una llamada gratis de 20 minutos para entender lo que tu negocio necesita, sin guion de ventas.",
     "home.process.step2.title": "Construcción",
-    "home.process.step2.desc": "Sitio, CRM y automatizaciones listos en unas dos semanas, hablando directo con quien construye.",
+    "home.process.step2.desc": "Sitio, CRM y automatizaciones listos en unas dos semanas, hablando directo con quien construye. Ves avances reales cada semana, no solo un enlace al final.",
     "home.process.step3.title": "Crecimiento",
-    "home.process.step3.desc": "Nosotros lo gestionamos mes a mes. Tú recibes los leads y un reporte claro de lo que entró.",
+    "home.process.step3.desc": "Nosotros lo gestionamos mes a mes. Tú recibes los leads y un reporte claro de lo que entró. Nada se pierde entre correos ni hojas de cálculo sueltas.",
 
     "home.cta.h2": "Una llamada <em>gratis, sin presión</em>. Definimos tu sistema juntos, sin obligación de firmar nada.",
 
     /* ---------- Services ---------- */
     "svcpage.h1": "Todos los sistemas que tu negocio necesita, bajo un mismo techo.",
-    "svcpage.lede": "Una llamada gratis de 20 minutos. En línea en unas dos semanas. Luego lo gestionamos nosotros: tú recibes los leads.",
+    "svcpage.lede": "Una llamada gratis de 20 minutos. En línea en unas dos semanas. Luego lo gestionamos nosotros: tú recibes los leads. El alcance y costo exacto se confirman en esa primera llamada, no antes, así que nunca hay sorpresas en la factura.",
 
     "svcpage.plans.h2": "Después del lanzamiento: tres formas de seguir vendiendo.",
 
@@ -77,8 +77,8 @@ window.LITTLEMAN_I18N = {
     "about.h1": "Una persona construye tu sistema. <em>Sin intermediarios.</em>",
     "about.lede": "Littleman Labs, creado en Ponce, Puerto Rico por Allan Gianni Rosario Bobet.",
     "about.photoCaption": "Allan, construyendo tu sistema.",
-    "about.story": "<p>La mayoría de las agencias te entregan un sitio web y te mandan a buscar un CRM aparte, una agencia de anuncios aparte, y una hoja de reportes aparte. Tú tienes que unirlo todo. Littleman Labs construye y gestiona las tres piezas como un solo sistema, desde el primer día.</p><p>Empezamos a construir apenas definimos tu sistema contigo, sin esperar el plan perfecto. El tiempo vale más que el dinero. Por eso cada sistema está hecho para devolverte horas, no solo para verse bien.</p>",
-    "about.howItWorks": "<p><em>Cómo funciona, en realidad.</em> Una sola persona construye cada sitio, sin gerente de cuenta que le pasa notas a un diseñador que le pasa notas a un desarrollador. Hablas directamente con quien hace el trabajo, desde la primera llamada hasta el lanzamiento.</p><p>Empieza con una llamada gratis de 20 minutos para entender lo que tu negocio realmente necesita, no un guion de ventas. De ahí, la mayoría de los sitios de 3–5 páginas están en línea en unas dos semanas. Si quieres la pieza de CRM y gestión de leads (el buzón unificado que capta cada llamada, formulario y mensaje), se configura junto con el proyecto, no meses después.</p>",
+    "about.story": "<p>La mayoría de las agencias te entregan un sitio web y te mandan a buscar un CRM aparte, una agencia de anuncios aparte, y una hoja de reportes aparte. Tú tienes que unirlo todo. Littleman Labs construye y gestiona las tres piezas como un solo sistema, desde el primer día.</p><p>Empezamos a construir apenas definimos tu sistema contigo, sin esperar el plan perfecto. El tiempo vale más que el dinero. Por eso cada sistema está hecho para devolverte horas, no solo para verse bien.</p><p>Eso significa que un cambio de última hora no espera una semana de idas y vueltas entre departamentos internos. Lo hablas directamente con la persona que lo va a hacer, y usualmente se resuelve el mismo día, sin correos cruzados ni tickets de soporte perdidos.</p>",
+    "about.howItWorks": "<p><em>Cómo funciona, en realidad.</em> Una sola persona construye cada sitio, sin gerente de cuenta que le pasa notas a un diseñador que le pasa notas a un desarrollador. Hablas directamente con quien hace el trabajo, desde la primera llamada hasta el lanzamiento.</p><p>Empieza con una llamada gratis de 20 minutos. No es un guion de ventas disfrazado de conversación. Sirve para entender qué tienes, qué te falta, y si tiene sentido trabajar juntos antes de construir nada, sin obligación de ningún tipo.</p><p>De ahí, la mayoría de los sitios de 3–5 páginas están en línea en unas dos semanas. Si quieres la pieza de CRM y gestión de leads (el buzón unificado que capta cada llamada, formulario y mensaje), se configura junto con el proyecto, no meses después.</p>",
     "about.cta.h2": "Creado en Ponce, <em>para Puerto Rico.</em> Español e inglés, desde el primer día.",
     "about.cta.link": "Una llamada gratis, sin presión",
 
@@ -98,7 +98,7 @@ window.LITTLEMAN_I18N = {
     "contact.label.studio": "Estudio",
     "contact.islandNote": "Servimos negocios en toda la isla, en español e inglés.",
     "contact.faq.h2": "Antes de contactarnos",
-    "contact.faq.body": "<p><em>¿Qué pasa después de enviar el formulario?</em> Leemos cada consulta y te contestamos enseguida, usualmente con algunas preguntas y un horario para la llamada gratis de 20 minutos.</p><p><em>¿Solo trabajan con negocios en Ponce?</em> Ponce y Peñuelas son nuestra base, pero el estudio construye sitios web y sistemas de CRM bilingües para negocios en cualquier parte de Puerto Rico.</p><p><em>¿Qué tan rápido es &quot;en línea en unas dos semanas&quot;?</em> Eso es típico para un sitio de 3–5 páginas una vez tengamos tu contenido y fotos. La configuración de CRM y automatización corre en paralelo, no después del lanzamiento.</p><p><em>¿Qué pasa después del lanzamiento?</em> El sitio web es tuyo para siempre, sin mensualidad obligatoria. La mayoría de los clientes añaden CRM y gestión de leads después, para que cada llamada, formulario y mensaje llegue a un solo buzón sin que se pierda nada. Esa parte es un servicio mensual, y es la pieza que recomendamos conversar una vez el sitio esté en línea.</p>"
+    "contact.faq.body": "<p><em>¿Qué pasa después de enviar el formulario?</em> Leemos cada consulta y te contestamos enseguida, usualmente con algunas preguntas y un horario para la llamada gratis de 20 minutos.</p><p><em>¿Solo trabajan con negocios en Ponce?</em> Ponce y Peñuelas son nuestra base, pero <a href=\"/about\">el estudio</a> construye sitios web y sistemas de CRM bilingües para negocios en cualquier parte de Puerto Rico.</p><p><em>¿Atienden en inglés también?</em> Sí. <a href=\"/about\">El estudio</a> es bilingüe desde el primer día: hablamos español e inglés en la llamada, el sitio, y el soporte.</p><p><em>¿Qué pasa si ya tengo un sitio web?</em> Podemos evaluarlo en la llamada gratis y decirte honestamente si conviene reconstruirlo o solo añadir <a href=\"/services\">CRM y automatización</a> al que ya tienes.</p><p><em>¿Qué tan rápido es &quot;en línea en unas dos semanas&quot;?</em> Eso es típico para un sitio de 3–5 páginas una vez tengamos tu contenido y fotos. La configuración de CRM y automatización corre en paralelo, no después del lanzamiento.</p><p><em>¿Qué pasa después del lanzamiento?</em> El sitio web es tuyo para siempre, sin mensualidad obligatoria. La mayoría de los clientes añaden <a href=\"/services\">CRM y gestión de leads</a> después, para que cada llamada, formulario y mensaje llegue a un solo buzón sin que se pierda nada. Esa parte es un servicio mensual, y es la pieza que recomendamos conversar una vez el sitio esté en línea.</p>"
   },
 
   en: {
@@ -122,7 +122,7 @@ window.LITTLEMAN_I18N = {
     "scroll.cue": "Scroll",
 
     "home.why.h2": "Every piece, under one roof.",
-    "home.why.body": "<p>Most agencies hand you a website, then point you toward a separate CRM tool, a separate ads agency, and a separate reporting spreadsheet. You're the one stitching it together. We build and manage all three pieces as one system: website, CRM, and automation.</p><p>A lead that calls, fills out a form, or messages on WhatsApp lands in the same inbox, gets the same follow-up, and shows up in the same monthly report.</p><p>Time is worth more than money. That's why we build it once, done right, so it stops eating your hours every day.</p>",
+    "home.why.body": "<p>Most agencies hand you a website, then point you toward a separate CRM tool, a separate ads agency, and a separate reporting spreadsheet. You're the one stitching it together. We build and manage all three pieces as one system: website, CRM, and automation.</p><p>A lead that calls, fills out a form, or messages on WhatsApp lands in the same inbox, gets the same follow-up, and shows up in the same monthly report.</p><p>When something breaks, you know exactly who to call. Nobody tells you that's not us, that's the other company. And when everything's working, you're not coordinating three different calendars just to launch a campaign or change a line of text on the site.</p><p>Time is worth more than money. That's why we build it once, done right, so it stops eating your hours every day.</p>",
 
     "home.codeScroll.caption": "How a build actually happens, start to finish",
 
@@ -130,15 +130,15 @@ window.LITTLEMAN_I18N = {
     "home.process.step1.title": "Call",
     "home.process.step1.desc": "A free 20-minute call to understand what your business needs, no sales script.",
     "home.process.step2.title": "Build",
-    "home.process.step2.desc": "Site, CRM, and automations live in about two weeks, talking directly with the person building it.",
+    "home.process.step2.desc": "Site, CRM, and automations live in about two weeks, talking directly with the person building it. You see real progress every week, not just a link at the end.",
     "home.process.step3.title": "Grow",
-    "home.process.step3.desc": "We manage it month to month. You get the leads and a clear report of what came in.",
+    "home.process.step3.desc": "We manage it month to month. You get the leads and a clear report of what came in. Nothing gets lost between emails or loose spreadsheets.",
 
     "home.cta.h2": "A free, <em>no-pressure</em> call. We'll map out your system, no obligation to sign anything.",
 
     /* ---------- Services ---------- */
     "svcpage.h1": "Every system your business needs, under one roof.",
-    "svcpage.lede": "A free 20-minute call. Live in about two weeks. Then we manage it: you get the leads.",
+    "svcpage.lede": "A free 20-minute call. Live in about two weeks. Then we manage it: you get the leads. The exact scope and cost are confirmed on that first call, not before, so there are never surprises on the invoice.",
 
     "svcpage.plans.h2": "After launch: three ways we keep it selling.",
 
@@ -174,8 +174,8 @@ window.LITTLEMAN_I18N = {
     "about.h1": "One person builds your system. <em>No middlemen.</em>",
     "about.lede": "Littleman Labs, built in Ponce, Puerto Rico by Allan Gianni Rosario Bobet.",
     "about.photoCaption": "Allan, building your system.",
-    "about.story": "<p>Most agencies hand you a website, then point you toward a separate CRM tool, a separate ads agency, and a separate reporting spreadsheet. You're the one stitching it together. Littleman Labs builds and manages all three pieces as one system, from day one.</p><p>We start building as soon as we've mapped out your system together, without waiting for the perfect plan. Time is worth more than money. That's why every system is built to buy you back hours, not just look nice.</p>",
-    "about.howItWorks": "<p><em>How it actually works.</em> One person builds every site, no account manager relaying notes to a designer relaying notes to a developer. You talk to the person doing the work, from the first call to launch.</p><p>It starts with a free 20-minute call to understand what your business actually needs, not a sales script. From there, most 3–5 page websites are live in about two weeks. If you want the CRM & lead management piece (the unified inbox that catches every call, form, and DM), that gets set up alongside the build, not bolted on months later.</p>",
+    "about.story": "<p>Most agencies hand you a website, then point you toward a separate CRM tool, a separate ads agency, and a separate reporting spreadsheet. You're the one stitching it together. Littleman Labs builds and manages all three pieces as one system, from day one.</p><p>We start building as soon as we've mapped out your system together, without waiting for the perfect plan. Time is worth more than money. That's why every system is built to buy you back hours, not just look nice.</p><p>That means a last-minute change doesn't wait a week of back-and-forth between departments. You talk directly to the person doing it, and it usually gets resolved the same day, no crossed emails or support tickets.</p>",
+    "about.howItWorks": "<p><em>How it actually works.</em> One person builds every site, no account manager relaying notes to a designer relaying notes to a developer. You talk to the person doing the work, from the first call to launch.</p><p>It starts with a free 20-minute call. It's not a sales script disguised as a conversation. It's to understand what you have, what's missing, and whether it makes sense to work together before building anything, no obligation of any kind.</p><p>From there, most 3–5 page websites are live in about two weeks. If you want the CRM & lead management piece (the unified inbox that catches every call, form, and DM), that gets set up alongside the build, not bolted on months later.</p>",
     "about.cta.h2": "Built in Ponce, <em>for Puerto Rico.</em> English and Spanish, from day one.",
     "about.cta.link": "A free, no-pressure call",
 
@@ -195,6 +195,6 @@ window.LITTLEMAN_I18N = {
     "contact.label.studio": "Studio",
     "contact.islandNote": "Serving businesses across the island, in English and Spanish.",
     "contact.faq.h2": "Before you reach out",
-    "contact.faq.body": "<p><em>What happens after I submit the form?</em> We read every inquiry and get back to you right away, usually with a few questions and a time for the free 20-minute call.</p><p><em>Do you only work with businesses in Ponce?</em> Ponce and Peñuelas are home base, but the studio builds bilingual websites and CRM systems for businesses anywhere in Puerto Rico.</p><p><em>How fast is &quot;live in about two weeks&quot;?</em> That's typical for a 3–5 page website once we have your content and photos. CRM and automation setup runs in parallel, not after launch.</p><p><em>What happens after launch?</em> The website itself is yours forever, no monthly lock-in. Most clients add CRM & lead management afterward, so every call, form, and DM lands in one inbox with nothing missed. That part is a monthly service, and it's the piece we recommend starting a conversation about once the site is live.</p>"
+    "contact.faq.body": "<p><em>What happens after I submit the form?</em> We read every inquiry and get back to you right away, usually with a few questions and a time for the free 20-minute call.</p><p><em>Do you only work with businesses in Ponce?</em> Ponce and Peñuelas are home base, but <a href=\"/about\">the studio</a> builds bilingual websites and CRM systems for businesses anywhere in Puerto Rico.</p><p><em>Do you work in English too?</em> Yes. <a href=\"/about\">The studio</a> has been bilingual from day one: we speak Spanish and English on the call, on the site, and in support.</p><p><em>What if I already have a website?</em> We can look at it on the free call and tell you honestly whether it makes sense to rebuild it or just add <a href=\"/services\">CRM and automation</a> to what you already have.</p><p><em>How fast is &quot;live in about two weeks&quot;?</em> That's typical for a 3–5 page website once we have your content and photos. CRM and automation setup runs in parallel, not after launch.</p><p><em>What happens after launch?</em> The website itself is yours forever, no monthly lock-in. Most clients add <a href=\"/services\">CRM & lead management</a> afterward, so every call, form, and DM lands in one inbox with nothing missed. That part is a monthly service, and it's the piece we recommend starting a conversation about once the site is live.</p>"
   }
 };
