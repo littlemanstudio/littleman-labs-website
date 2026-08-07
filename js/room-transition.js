@@ -41,10 +41,17 @@ const CLIP_MS = 2200;
 const RING = ["entry", "workshop", "studio", "comms"];
 
 const PAGE_ZONE = {
-  "index.html": "entry",
+  // Clean-URL keys (vercel.json cleanUrls) are what location.pathname
+  // actually yields now — the .html keys stay only as a defensive
+  // fallback in case something ever links the old extension directly.
   "": "entry",
+  "index": "entry",
+  "index.html": "entry",
+  "services": "workshop",
   "services.html": "workshop",
+  "about": "studio",
   "about.html": "studio",
+  "contact": "comms",
   "contact.html": "comms",
 };
 
