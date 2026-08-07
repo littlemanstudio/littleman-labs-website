@@ -76,6 +76,7 @@ window.LITTLEMAN_I18N = {
     /* ---------- About ---------- */
     "about.h1": "Una persona construye tu sistema. <em>Sin intermediarios.</em>",
     "about.lede": "Littleman Labs, creado en Ponce, Puerto Rico por Allan Gianni Rosario Bobet.",
+    "about.photoCaption": "Allan, construyendo tu sistema.",
     "about.story": "<p>La mayoría de las agencias te entregan un sitio web y te mandan a buscar un CRM aparte, una agencia de anuncios aparte, y una hoja de reportes aparte. Tú tienes que unirlo todo. Littleman Labs construye y gestiona las tres piezas como un solo sistema, desde el primer día.</p><p>Empezamos a construir apenas definimos tu sistema contigo, sin esperar el plan perfecto. El tiempo vale más que el dinero. Por eso cada sistema está hecho para devolverte horas, no solo para verse bien.</p>",
     "about.howItWorks": "<p><em>Cómo funciona, en realidad.</em> Una sola persona construye cada sitio, sin gerente de cuenta que le pasa notas a un diseñador que le pasa notas a un desarrollador. Hablas directamente con quien hace el trabajo, desde la primera llamada hasta el lanzamiento.</p><p>Empieza con una llamada gratis de 20 minutos para entender lo que tu negocio realmente necesita, no un guion de ventas. De ahí, la mayoría de los sitios de 3–5 páginas están en línea en unas dos semanas. Si quieres la pieza de CRM y gestión de leads (el buzón unificado que capta cada llamada, formulario y mensaje), se configura junto con el proyecto, no meses después.</p>",
     "about.cta.h2": "Creado en Ponce, <em>para Puerto Rico.</em> Español e inglés, desde el primer día.",
@@ -172,6 +173,7 @@ window.LITTLEMAN_I18N = {
     /* ---------- About ---------- */
     "about.h1": "One person builds your system. <em>No middlemen.</em>",
     "about.lede": "Littleman Labs, built in Ponce, Puerto Rico by Allan Gianni Rosario Bobet.",
+    "about.photoCaption": "Allan, building your system.",
     "about.story": "<p>Most agencies hand you a website, then point you toward a separate CRM tool, a separate ads agency, and a separate reporting spreadsheet. You're the one stitching it together. Littleman Labs builds and manages all three pieces as one system, from day one.</p><p>We start building as soon as we've mapped out your system together, without waiting for the perfect plan. Time is worth more than money. That's why every system is built to buy you back hours, not just look nice.</p>",
     "about.howItWorks": "<p><em>How it actually works.</em> One person builds every site, no account manager relaying notes to a designer relaying notes to a developer. You talk to the person doing the work, from the first call to launch.</p><p>It starts with a free 20-minute call to understand what your business actually needs, not a sales script. From there, most 3–5 page websites are live in about two weeks. If you want the CRM & lead management piece (the unified inbox that catches every call, form, and DM), that gets set up alongside the build, not bolted on months later.</p>",
     "about.cta.h2": "Built in Ponce, <em>for Puerto Rico.</em> English and Spanish, from day one.",

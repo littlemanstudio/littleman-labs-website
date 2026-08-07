@@ -734,6 +734,15 @@ h1, h2, h3, .display {
   display: block;
   filter: saturate(0.9) contrast(1.05);
 }
+/* One-off photo credit, not a repeated eyebrow/caption system, just this
+   single instance where the person in the shot is named. */
+.photo-caption {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--bone-faint);
+  letter-spacing: 0.04em;
+}
 /* Split block, copy on one side, a framed photo on the other. Order
    flips per-section so the page doesn't repeat the same rhythm twice. */
 .split-block {
