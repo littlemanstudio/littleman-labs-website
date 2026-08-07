@@ -18,11 +18,11 @@
   --bronze-bright: #d8a869;
   --patina: #5c8a75;
 
-  --font-display: "Libre Caslon Display", "Iowan Old Style", "Times New Roman", serif;
-  --font-body: "Inter Tight", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --fs-h1: clamp(2.6rem, 1.7rem + 4.2vw, 6rem);
+  --fs-h1: clamp(3rem, 2rem + 5vw, 7rem);
   --fs-h2: clamp(2.6rem, 1.6rem + 4.6vw, 6rem);
   --fs-h3: clamp(1.7rem, 1.35rem + 1.6vw, 2.6rem);
   --fs-lead: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
@@ -49,7 +49,7 @@ body {
   color: var(--bone);
   font-family: var(--font-body);
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   position: relative;
@@ -82,7 +82,7 @@ body {
   height: 100%;
   background-size: cover;
   background-position: center;
-  opacity: 0.55;
+  opacity: 0.88;
   transform: scale(1.06);
   will-change: transform;
 }
@@ -98,27 +98,145 @@ body[data-lab-zone="comms"] .bg-scene { background-image: url("../assets/img/lab
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(62% 58% at 50% 42%, rgba(28, 26, 23, 0.82) 0%, rgba(28, 26, 23, 0.42) 55%, rgba(28, 26, 23, 0) 100%);
+  background: radial-gradient(58% 52% at 50% 46%, rgba(28, 26, 23, 0.58) 0%, rgba(28, 26, 23, 0.32) 50%, rgba(28, 26, 23, 0) 100%);
 }
 
-/* Cross-document View Transition: native browser support (Chromium) turns
-   every internal navigation into a real transition instead of a hard cut —
-   this is what actually sells "walking from one room into the next."
-   No-op/ignored in browsers that don't support it yet (progressive
-   enhancement, not a dependency). */
-@view-transition {
-  navigation: auto;
+/* Room-to-room transition — a real transform wipe, not a fade. Studied
+   from vectrfl.com's actual page-transition CSS (a fixed panel, rotated
+   90deg off-screen at rest, swung to 0deg on navigation): a full-bleed
+   panel pinned at the right edge swings across the viewport like a door
+   closing over the current room, the real navigation happens while it's
+   fully covered, then it's gone before the next room's first paint (see
+   js/room-transition.js for the click-intercept + timing, and the inline
+   script in <head> that keeps the incoming page covered until it's ready
+   so there's never a flash of the raw page underneath). */
+.room-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  pointer-events: none;
 }
-::view-transition-old(root) { animation: lm-room-exit 0.6s var(--ease) both; }
-::view-transition-new(root) { animation: lm-room-enter 0.6s var(--ease) both; }
-@keyframes lm-room-exit {
-  to { opacity: 0; transform: scale(1.03); }
+.room-transition::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
 }
-@keyframes lm-room-enter {
-  from { opacity: 0; transform: scale(0.97); }
+.room-transition::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--graphite-deep);
+  border-left: 2px solid var(--bronze-bright);
+  transform-origin: right top;
+  transform: rotate(-90deg) translateZ(0);
+}
+.room-transition.is-covering::after {
+  transform: rotate(0deg) translateZ(0);
+  transition: transform 0.58s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.room-transition.is-covering::before {
+  opacity: 0.28;
+  transition: opacity 0.4s ease;
+}
+.room-transition.is-covered::after { transform: rotate(0deg) translateZ(0); }
+.room-transition.is-covered::before { opacity: 0.28; }
+.room-transition.is-revealing::after {
+  opacity: 0;
+  transition: opacity 0.32s ease;
+}
+.room-transition.is-revealing::before {
+  opacity: 0;
+  transition: opacity 0.32s ease;
+}
+/* Set synchronously, pre-paint, by the inline <head> script when the
+   sessionStorage flag says a navigation is mid-wipe — keeps the incoming
+   page's first frame already covered instead of flashing raw content. */
+html.lm-precovered .room-transition::after { transform: rotate(0deg) translateZ(0); }
+html.lm-precovered .room-transition::before { opacity: 0.28; }
+
+/* Photo precover — used only after a video-clip room transition (not the
+   plain wipe above). The generated hallway clips end on the destination
+   room's own assets/img/lab/*.jpg still frame, so holding that exact same
+   image as the incoming page's cover (instead of the flat graphite panel)
+   removes the visual seam that made a video transition look like a second,
+   unrelated "loading screen" cut — it should read as one continuous walk
+   into the room, not a page refresh. Set via the `data-precover-zone`
+   attribute the inline <head> script adds pre-paint from sessionStorage
+   (see js/room-transition.js). The flat panel still renders underneath as
+   a safety backdrop in case this image hasn't hit cache yet. */
+.room-transition-photo {
+  position: fixed;
+  inset: 0;
+  z-index: 550;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  pointer-events: none;
+}
+html[data-precover-zone="entry"] .room-transition-photo { background-image: url("../assets/img/lab/entry.jpg"); }
+html[data-precover-zone="workshop"] .room-transition-photo { background-image: url("../assets/img/lab/workshop.jpg"); }
+html[data-precover-zone="studio"] .room-transition-photo { background-image: url("../assets/img/lab/studio.jpg"); }
+html[data-precover-zone="comms"] .room-transition-photo { background-image: url("../assets/img/lab/comms.jpg"); }
+html.lm-precovered[data-precover-zone] .room-transition-photo { opacity: 1; }
+html.lm-precovered[data-precover-zone] .room-transition-photo.is-revealing {
+  opacity: 0;
+  transition: opacity 0.36s ease;
+}
+
+/* The real "walk the hallway" transition — a generated video plays full-
+   screen over everything while js/room-transition.js waits for it to
+   finish before the actual (hard) navigation happens. Hidden/inert until
+   `.is-playing` is added. */
+.room-transition-video {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  background: var(--graphite-deep);
+}
+.room-transition-video.is-playing { opacity: 1; visibility: visible; }
+
+@media (prefers-reduced-motion: reduce) {
+  .room-transition, .room-transition-video { display: none; }
+}
+
+/* Floating WhatsApp button — on every page so it's visible without having
+   to scroll to the footer or land on Contact. Kept to the site's own
+   graphite/bone/bronze palette rather than WhatsApp's stock green, which
+   would be a second competing accent color (hard-banned elsewhere in this
+   file) sitting on top of every single page. */
+.whatsapp-fab {
+  position: fixed;
+  right: clamp(16px, 4vw, 32px);
+  bottom: clamp(16px, 4vw, 32px);
+  z-index: 90;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--graphite-deep);
+  border: 1px solid var(--line-strong);
+  color: var(--bone);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.whatsapp-fab svg { width: 26px; height: 26px; display: block; }
+.whatsapp-fab:hover, .whatsapp-fab:focus-visible {
+  border-color: var(--bronze-bright);
+  color: var(--bronze-bright);
+  transform: translateY(-2px);
 }
 @media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(root), ::view-transition-new(root) { animation: none !important; }
+  .whatsapp-fab { transition: none; }
 }
 
 /* Every direct content section sits above the field in its own stacking
@@ -139,37 +257,32 @@ h1, h2, h3, p { margin: 0; }
 
 h1, h2, h3, .display {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.04;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.02em;
   color: var(--bone);
 }
 
 :focus-visible { outline: 2px solid var(--bronze-bright); outline-offset: 3px; }
 
-/* ==========================================================================
-   Placard — the gallery-tag device used across sections
-   ========================================================================== */
+/* Colored-word headline emphasis (bronze <em>/.accent) removed per the
+   user 2026-08-07 — reads as an AI-template tic ("gradient/colored word
+   in the headline"), same complaint that already ruled out gradients and
+   italic. Emphasized words now render as plain headline text — no color,
+   no italic, no separate treatment. Do not reintroduce a colored-word
+   device anywhere in this stylesheet. */
+.accent { font-style: normal; color: inherit; }
 
-.placard {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+/* A single static location marker (no live clock, no label/value pairing) —
+   kept minimal so it doesn't recreate the placard/specimen-tag device it
+   replaced. */
+.location-tag {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--bone-dim);
+  color: var(--bone-faint);
 }
-.placard::before {
-  content: "";
-  width: 5px;
-  height: 5px;
-  background: var(--bronze-bright);
-  flex: none;
-}
-.placard .num { color: var(--bronze-bright); white-space: nowrap; }
 
 .lead {
   font-size: var(--fs-lead);
@@ -210,6 +323,21 @@ h1, h2, h3, .display {
 .btn-primary { color: var(--bone); padding: 12px 20px; }
 .btn-primary:hover { color: var(--bronze-bright); }
 
+/* Ghost CTA (e.g. hero "Ver todos los servicios") sat too close in weight
+   to plain body text to catch the eye on its own — an underline gives it
+   a clear affordance without introducing a filled background or a second
+   accent color; brightens to bronze on hover like the rest of the site's
+   link/hover language. */
+.btn-ghost {
+  color: var(--bone);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: var(--line-strong);
+  text-decoration-thickness: 1px;
+  transition: color 0.3s var(--ease), text-decoration-color 0.3s var(--ease);
+}
+.btn-ghost:hover { text-decoration-color: var(--bronze-bright); }
+
 .btn-corner {
   position: absolute;
   width: 14px;
@@ -236,6 +364,11 @@ h1, h2, h3, .display {
    Preloader
    ========================================================================== */
 
+/* Hidden by default — only the very first page of a session ever adds
+   .is-active (see js/main.js initPreloader). Every internal navigation
+   after that is a real document load too, but with no class added the
+   element never paints, so there's no black flash stomping on the
+   cross-document room transition in css/style.css's @view-transition. */
 .preloader {
   position: fixed;
   inset: 0;
@@ -244,9 +377,17 @@ h1, h2, h3, .display {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.preloader.is-active { opacity: 1; visibility: visible; pointer-events: auto; }
+.preloader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
   transition: opacity 0.6s var(--ease), visibility 0.6s var(--ease);
 }
-.preloader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .preloader-mark {
   position: relative;
   display: inline-block;
@@ -404,10 +545,17 @@ h1, h2, h3, .display {
    like a museum case, sitting inside the huge type rather than behind it. */
 .hero-specimen {
   position: absolute;
-  top: 50%;
+  /* Bottom-anchored, not vertically centered (was top:50%/translateY) —
+     centering put a box this tall right over the 3-line Outfit headline
+     no matter how far down it was nudged. Anchoring to the hero's bottom
+     edge + shrinking the frame is what actually keeps the whole thing
+     both fully visible (not clipped by the viewport) and clear of the
+     text at once; verified against getBoundingClientRect() at 1440x840
+     and 1024x768 — real headroom in both, not just a visual approximation. */
+  bottom: clamp(24px, 5vh, 56px);
+  top: auto;
   right: clamp(0px, 4vw, 90px);
-  transform: translateY(-46%);
-  width: clamp(220px, 30vw, 460px);
+  width: clamp(140px, 13vw, 195px);
   aspect-ratio: 3/4;
   z-index: 3;
   border: 1px solid var(--line-strong);
@@ -424,16 +572,6 @@ h1, h2, h3, .display {
 .hero-specimen::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
 .hero-canvas-wrap { position: absolute; inset: 0; }
 #hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; }
-.specimen-tag {
-  position: absolute;
-  left: 14px;
-  bottom: -30px;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--bone-faint);
-}
 
 .hero-content {
   position: relative;
@@ -444,21 +582,19 @@ h1, h2, h3, .display {
 
 .hero-top-row {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  justify-content: flex-end;
   margin-bottom: 18px;
 }
-.hero-clock { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--bone-faint); text-transform: uppercase; }
-.hero-clock b { color: var(--bronze-bright); font-weight: 500; }
 
 /* The oversized headline is the primary graphic event of the page. */
 .hero-title {
   font-size: clamp(3.2rem, 2rem + 8vw, 9.5rem);
+  font-weight: 800;
   line-height: 0.92;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
   max-width: 15ch;
 }
-.hero-title em { font-style: italic; color: var(--bronze-bright); }
+.hero-title em { font-style: normal; color: inherit; }
 .hero-title .line-2 { display: block; margin-left: clamp(0px, 8vw, 220px); }
 
 .hero-sub {
@@ -471,14 +607,8 @@ h1, h2, h3, .display {
   transition: opacity 0.8s var(--ease) 0.15s, transform 0.8s var(--ease) 0.15s;
 }
 
-.hero-meta {
-  margin-top: 48px;
-  display: flex;
-  align-items: flex-end;
-  gap: 40px;
-  padding-top: 22px;
-  border-top: 1px solid var(--line);
-  flex-wrap: wrap;
+.hero-cta {
+  margin-top: 40px;
   position: relative;
   z-index: 4;
   opacity: 0;
@@ -487,13 +617,18 @@ h1, h2, h3, .display {
 }
 .hero-specimen { opacity: 0; transition: opacity 1s var(--ease) 0.4s; }
 .hero.is-ready .hero-sub,
-.hero.is-ready .hero-meta { opacity: 1; transform: translateY(0); }
+.hero.is-ready .hero-cta { opacity: 1; transform: translateY(0); }
 .hero.is-ready .hero-specimen { opacity: 1; }
-.hero-meta .meta-block { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--bone-faint); text-transform: uppercase; }
-.hero-meta .meta-block b { display: block; font-family: var(--font-body); font-size: 0.95rem; letter-spacing: 0; text-transform: none; color: var(--bone-dim); margin-top: 6px; font-weight: 500; }
 
 @media (max-width: 980px) {
-  .hero-specimen { position: relative; top: auto; right: auto; transform: none; width: min(70vw, 340px); margin: 32px 0 0 auto; }
+  /* bottom: auto is required here, not optional — the desktop rule's
+     bottom: clamp(...) otherwise survives the cascade (this query never
+     used to touch `bottom` because the desktop rule didn't use it before).
+     For a position:relative element, top:auto with a real `bottom` value
+     mirrors into top:-bottom per spec, which silently pulled this element
+     up into the CTA link above it on mobile — a real, reproducible bug,
+     not just a visual nitpick. */
+  .hero-specimen { position: relative; top: auto; bottom: auto; right: auto; transform: none; width: min(70vw, 340px); margin: 32px 0 0 auto; }
   .hero { justify-content: flex-start; padding-top: 120px; }
   .hero-title .line-2 { margin-left: 0; }
 }
@@ -537,14 +672,22 @@ h1, h2, h3, .display {
 .section-inner { max-width: var(--container); margin: 0 auto; }
 .section-head { margin-bottom: clamp(40px, 5vw, 64px); }
 .section-head h2, .exhibit-head h2 { font-size: var(--fs-h2); max-width: 18ch; margin-top: 18px; }
+/* A section can open directly on a real heading (no small label above it) —
+   used where a section needs a title but shouldn't repeat the placard/
+   eyebrow formula removed elsewhere. */
+.section-inner > h2 { font-size: var(--fs-h2); max-width: 18ch; }
 .section-divider { height: 1px; background: var(--line); }
 
 /* Interior page hero — lighter than the home hero (no 3D specimen; that
    stays a home-only signature moment rather than tripling asset load). */
 .page-hero { padding: 180px var(--gutter) 50px; max-width: var(--container); margin: 0 auto; position: relative; z-index: 1; }
-.page-hero h1 { font-size: clamp(2.6rem, 1.7rem + 4.5vw, 5.5rem); max-width: 17ch; margin-top: 20px; line-height: 1; }
-.page-hero h1 em { font-style: italic; color: var(--bronze-bright); }
+.page-hero h1 { font-size: var(--fs-h1); font-weight: 800; max-width: 17ch; margin-top: 0; line-height: 1; }
+.page-hero h1 em { font-style: normal; color: inherit; }
 .page-hero .lead { margin-top: 24px; }
+/* Asymmetric variant — pulls the lead paragraph right instead of stacking
+   it flush under the H1, so this page-hero doesn't read as an identical
+   reskin of the other interior-page heroes. Used on contact.html only. */
+.page-hero.is-offset .lead { margin-left: clamp(0px, 14vw, 220px); }
 
 /* Quick services list — plain, no numbering (not a sequence), two columns */
 .quick-services { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
@@ -565,7 +708,7 @@ h1, h2, h3, .display {
   color: var(--bone-dim);
 }
 .intro-block p + p { margin-top: 24px; }
-.intro-block em { font-style: italic; color: var(--bone); }
+.intro-block em { font-style: normal; color: inherit; }
 
 /* ==========================================================================
    Photo frame — real photography, framed like the hero's vitrine (same
@@ -594,8 +737,6 @@ h1, h2, h3, .display {
   display: block;
   filter: saturate(0.9) contrast(1.05);
 }
-.photo-frame .specimen-tag { position: static; display: block; padding: 10px 14px; border-top: 1px solid var(--line); background: var(--graphite-deep); }
-
 /* Split block — copy on one side, a framed photo on the other. Order
    flips per-section so the page doesn't repeat the same rhythm twice. */
 .split-block {
@@ -692,7 +833,7 @@ h1, h2, h3, .display {
   flex-direction: column;
 }
 .service-card-media { aspect-ratio: 4/3; margin-bottom: 24px; }
-.service-card-copy .num { font-family: var(--font-mono); font-size: 0.78rem; color: var(--bronze-bright); letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.service-card-copy .card-label { font-family: var(--font-mono); font-size: 0.78rem; color: var(--bronze-bright); letter-spacing: 0.1em; display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .service-card-copy h3 { margin-top: 14px; font-size: var(--fs-h3); max-width: 16ch; }
 .service-card-copy p { margin-top: 16px; color: var(--bone-dim); max-width: 42ch; }
 .service-card-copy ul { margin-top: 18px; display: flex; flex-direction: column; gap: 9px; }
@@ -708,6 +849,19 @@ h1, h2, h3, .display {
   padding: 3px 9px;
   border-radius: 999px;
 }
+
+/* Featured card (CRM & Lead Management) — made structurally different from
+   the other two cards instead of relying on the badge alone: wider, a
+   bronze-tinted frame, and its copy/media order flipped (text first, photo
+   second) so it doesn't repeat the photo-first rhythm of its neighbors. */
+.service-card.is-featured {
+  flex-basis: min(620px, 90vw);
+  border: 1px solid var(--bronze);
+  background: linear-gradient(180deg, rgba(184, 135, 74, 0.07), transparent 45%);
+  padding: 22px;
+}
+.service-card.is-featured .service-card-media { order: 2; margin-bottom: 0; margin-top: 24px; }
+.service-card.is-featured .service-card-copy { order: 1; }
 
 .services-slider-nav {
   display: flex;
@@ -768,7 +922,6 @@ h1, h2, h3, .display {
 .row-item:hover .row-num { color: var(--bronze-bright); }
 .row-item h2 {
   font-size: clamp(1.8rem, 1.3rem + 2.4vw, 3.4rem);
-  font-style: italic;
   transition: transform 0.4s var(--ease), color 0.4s var(--ease);
 }
 .row-item:hover h2 { transform: translateX(14px); color: var(--bronze-bright); }
@@ -794,10 +947,11 @@ h1, h2, h3, .display {
 .cta-band .container { display: flex; flex-direction: column; align-items: flex-start; gap: 40px; }
 .cta-band h2 {
   font-size: clamp(2.6rem, 1.6rem + 5.5vw, 7rem);
+  font-weight: 800;
   line-height: 0.94;
   max-width: 18ch;
 }
-.cta-band h2 em { font-style: italic; color: var(--bronze-bright); }
+.cta-band h2 em { font-style: normal; color: inherit; }
 
 /* Scattered mascot mark — a subtle brand texture in genuine negative
    space (bottom-right, below the CTA button), never near the headline
@@ -817,7 +971,8 @@ h1, h2, h3, .display {
 .footer { padding: clamp(60px, 8vw, 100px) var(--gutter) 30px; }
 .footer-wordmark {
   font-family: var(--font-display);
-  font-style: italic;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   font-size: clamp(3rem, 1.5rem + 9vw, 11rem);
   line-height: 0.85;
   color: transparent;

@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initSplitWords();
   initReveal();
   initContactForm();
-  initClock();
   initFrameButtons();
   initFlipLinks();
   initMagneticButtons();
@@ -82,16 +81,19 @@ function initPreloader() {
 
   // The full animated count-up is a nice first-impression moment, but
   // replaying it on every single page navigation adds a needless ~1.1s
-  // delay to perceived load time and hurts conversion. Play it once per
-  // session; every page after that reveals instantly.
+  // delay to perceived load time, hurts conversion, and (now that
+  // navigation plays a room-to-room view transition) reads as the site
+  // reloading instead of transitioning. Play it once per session; every
+  // page after that never activates the preloader at all — it stays
+  // hidden by its CSS default, so there's nothing to fade out and no flash.
   const alreadySeen = sessionStorage.getItem("llPreloaderSeen") === "1";
 
   if (alreadySeen || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    el.classList.add("is-hidden");
     revealHero();
     return;
   }
 
+  el.classList.add("is-active");
   sessionStorage.setItem("llPreloaderSeen", "1");
   let n = 0;
   const start = performance.now();
@@ -103,27 +105,12 @@ function initPreloader() {
     if (elapsed < minDuration) {
       requestAnimationFrame(tick);
     } else {
+      el.classList.remove("is-active");
       el.classList.add("is-hidden");
       revealHero();
     }
   };
   requestAnimationFrame(tick);
-}
-
-function initClock() {
-  const el = document.querySelector(".hero-clock b");
-  if (!el) return;
-  const update = () => {
-    const time = new Intl.DateTimeFormat("en-US", {
-      timeZone: "America/Puerto_Rico",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-    }).format(new Date());
-    el.textContent = `${time} AST`;
-  };
-  update();
-  setInterval(update, 15000);
 }
 
 const CONTACT_FORM_ENDPOINT = "https://formsubmit.co/ajax/littlemanfirm@gmail.com";

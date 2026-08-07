@@ -1,8 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<script>if("scrollRestoration" in history){history.scrollRestoration="manual";}window.scrollTo(0,0);</script>
 <meta charset="utf-8" />
+<script>if("scrollRestoration" in history){history.scrollRestoration="manual";}window.scrollTo(0,0);</script>
+<script>if(sessionStorage.getItem("lm-room-covered")==="1"){var lmz=sessionStorage.getItem("lm-room-zone");document.documentElement.classList.add("lm-precovered");if(lmz){document.documentElement.setAttribute("data-precover-zone",lmz);}setTimeout(function(){document.documentElement.classList.remove("lm-precovered");document.documentElement.removeAttribute("data-precover-zone");sessionStorage.removeItem("lm-room-covered");sessionStorage.removeItem("lm-room-zone");},1500);}</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2527987917650629');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2527987917650629&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Diseño Web, CRM y Anuncios — Littleman Labs, Ponce PR</title>
 <meta name="description" content="Diseño web, CRM y gestión de leads, y planes de anuncios + CRM para negocios de Ponce, PR. En línea en unas dos semanas. Empieza con una llamada gratis." />
@@ -19,45 +37,29 @@
 <meta name="twitter:image" content="assets/img/og-image.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="assets/react/site-widgets.css" />
 </head>
 <body data-lab-zone="workshop">
 
+<div class="room-transition"></div>
+<div class="room-transition-photo"></div>
+<video class="room-transition-video" muted playsinline preload="none"></video>
 <div class="bg-field"><div class="bg-scene"></div></div>
+
+<a class="whatsapp-fab" href="https://wa.me/19392335269" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="currentColor"/><path d="M12.004 2.003c-5.523 0-10 4.477-10 10 0 1.766.464 3.482 1.345 4.997L2 22l5.13-1.335a9.958 9.958 0 0 0 4.874 1.24h.004c5.522 0 9.998-4.478 9.998-10.001 0-2.67-1.04-5.18-2.929-7.07a9.935 9.935 0 0 0-7.073-2.831zm0 18.156h-.003a8.28 8.28 0 0 1-4.223-1.156l-.303-.18-3.044.792.813-2.968-.198-.305a8.264 8.264 0 0 1-1.267-4.406c0-4.564 3.715-8.278 8.229-8.278a8.223 8.223 0 0 1 5.83 2.421 8.194 8.194 0 0 1 2.412 5.835c-.002 4.564-3.717 8.245-8.246 8.245z" fill="currentColor"/></svg>
+</a>
 
 <div class="preloader">
   <div class="preloader-mark"><img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs" class="preloader-logo" /><span class="preloader-count">00</span></div>
 </div>
 
-<header class="navbar">
-  <div class="container">
-    <a href="index.html" class="nav-brand">
-      <img src="assets/img/littleman-labs-logo.png" alt="Littleman Labs" class="nav-logo" />
-      Littleman
-    </a>
-    <nav class="nav-menu">
-      <div class="nav-links">
-        <a href="index.html" class="nav-link" data-i18n="nav.home">Inicio</a>
-        <a href="services.html" class="nav-link is-active" data-i18n="nav.services">Servicios</a>
-        <a href="about.html" class="nav-link" data-i18n="nav.about">Nosotros</a>
-      </div>
-      <div class="lang-toggle" role="group" aria-label="Selector de idioma">
-        <button type="button" data-lang="es">ES</button>
-        <button type="button" data-lang="en">EN</button>
-      </div>
-      <a href="contact.html" class="btn btn-primary">
-        <span data-i18n="cta.getInTouch">Contáctanos</span>
-        <span class="arrow">&rarr;</span>
-      </a>
-    </nav>
-    <button class="nav-toggle" aria-label="Menu"><span></span></button>
-  </div>
-</header>
+<div id="lm-navbar-root"></div>
 
 <section class="page-hero">
-  <p class="placard" data-reveal><span class="num">No. 001</span> — <span data-i18n="svcpage.eyebrow">Servicios</span></p>
-  <h1 data-reveal data-i18n="svcpage.h1">Todos los sistemas que tu negocio necesita, <em>bajo un mismo techo.</em></h1>
+  <h1 data-reveal data-i18n="svcpage.h1">Todos los sistemas que tu negocio necesita, bajo un mismo techo.</h1>
   <p class="lead" data-reveal data-i18n="svcpage.lede">Una llamada gratis de 20 minutos. En línea en unas dos semanas. Luego lo gestionamos nosotros — tú recibes los leads.</p>
 </section>
 
@@ -66,8 +68,7 @@
      absolutely-positioned elecctro-style carousel. -->
 <section class="section" id="exhibit">
   <div class="section-inner">
-    <p class="placard" data-reveal><span class="num">No. 002</span> — <span data-i18n="svcpage.plans.eyebrow">Planes</span></p>
-    <h2 style="margin-top:18px;" data-reveal data-i18n="svcpage.plans.h2">Después del lanzamiento: tres formas de seguir vendiendo.</h2>
+    <h2 data-reveal data-i18n="svcpage.plans.h2">Después del lanzamiento: tres formas de seguir vendiendo.</h2>
   </div>
 
   <div class="services-slider" data-reveal>
@@ -77,7 +78,7 @@
           <img src="assets/img/photos/service-website.jpg" alt="Laptop en un escritorio oscuro mostrando la maqueta de una página de inicio, iluminado por una lámpara de escritorio" loading="lazy" />
         </figure>
         <div class="service-card-copy">
-          <span class="num" data-i18n="svcpage.p1.num">01 — Diseño Web</span>
+          <span class="card-label" data-i18n="svcpage.p1.label">Diseño Web</span>
           <h3 data-i18n="svcpage.p1.title">Se construye una vez. Ajustado a lo que realmente necesitas.</h3>
           <p data-i18n="svcpage.p1.tag">Tuyo para siempre — sin mensualidad obligatoria.</p>
           <ul>
@@ -89,12 +90,12 @@
         </div>
       </article>
 
-      <article class="service-card">
+      <article class="service-card is-featured">
         <figure class="photo-frame service-card-media">
           <img src="assets/img/photos/service-crm.jpg" alt="Monitor en un escritorio oscuro mostrando un panel de CRM con íconos de llamada, formulario y mensaje" loading="lazy" />
         </figure>
         <div class="service-card-copy">
-          <span class="num" data-i18n="svcpage.p2.num">02 — CRM y Gestión de Leads <span class="badge" data-i18n="svcpage.badge">Más Popular</span></span>
+          <span class="card-label" data-i18n="svcpage.p2.label">CRM y Gestión de Leads <span class="badge" data-i18n="svcpage.badge">Más Popular</span></span>
           <h3 data-i18n="svcpage.p2.title">Cada lead con seguimiento. Nada se pierde.</h3>
           <p data-i18n="svcpage.p2.tag">Buzón de leads unificado — llamada, formulario, mensaje.</p>
           <ul>
@@ -111,7 +112,7 @@
           <img src="assets/img/photos/service-ads.jpg" alt="Monitor y teléfono en un escritorio oscuro mostrando un panel de análisis de campaña y una vista previa de anuncio" loading="lazy" />
         </figure>
         <div class="service-card-copy">
-          <span class="num" data-i18n="svcpage.p3.num">03 — Anuncios + CRM</span>
+          <span class="card-label" data-i18n="svcpage.p3.label">Anuncios + CRM</span>
           <h3 data-i18n="svcpage.p3.title">Tu mercado, capturado activamente.</h3>
           <p data-i18n="svcpage.p3.tag">Todo lo de CRM y Gestión de Leads, más:</p>
           <ul>
@@ -135,15 +136,13 @@
 <!-- Every piece — flowing prose, not a feature grid -->
 <section class="section">
   <div class="section-inner">
-    <p class="placard" data-reveal><span class="num">No. 003</span> — <span data-i18n="svcpage.piece.eyebrow">Cada Pieza</span></p>
-    <div class="split-block" data-reveal style="margin-top:32px;">
+    <div class="split-block" data-reveal>
       <div class="intro-block" data-i18n="svcpage.piece.body">
         <p>Sitios web a la medida. CRM y buzón de leads. Texto automático a llamadas perdidas. Citas. SEO local. Anuncios pagados. Reportes mensuales. Marca y contenido. <em>Cada pieza, bajo un mismo techo</em> — nunca tres proveedores fingiendo comunicarse entre sí.</p>
         <p>La mayoría de las agencias te entregan un sitio web y luego te dirigen a una herramienta de CRM aparte, una agencia de anuncios aparte, y una hoja de reportes aparte — y tú eres quien tiene que unirlo todo. Littleman Labs construye y gestiona todo como un solo sistema, así que un lead que llama, llena un formulario, o escribe por mensaje directo llega al mismo buzón, recibe el mismo seguimiento, y aparece en el mismo reporte mensual.</p>
       </div>
       <figure class="photo-frame split-photo">
         <img src="assets/img/photos/coding-over-shoulder.jpg" alt="Construyendo el sistema de un cliente — editor de código abierto, manos en el teclado" loading="lazy" />
-        <figcaption class="specimen-tag" data-i18n="svcpage.piece.figcaption">Fig. 03 — Bajo el capó</figcaption>
       </figure>
     </div>
   </div>
@@ -160,47 +159,16 @@
   </div>
 </section>
 
-<footer class="footer">
-  <div class="footer-wordmark" aria-hidden="true">Littleman Labs</div>
-  <div class="footer-top">
-    <div>
-      <div class="footer-brand" data-i18n="footer.est">Fundado en Ponce, Puerto Rico</div>
-      <p class="footer-brand-sub" data-i18n="footer.tagline">Creado en Ponce, para Puerto Rico. Español e inglés, desde el primer día.</p>
-    </div>
-    <div class="footer-cols">
-      <div class="footer-col">
-        <div class="footer-col-label" data-i18n="footer.studio">Estudio</div>
-        <a href="index.html" data-i18n="nav.home">Inicio</a>
-        <a href="services.html" data-i18n="nav.services">Servicios</a>
-        <a href="about.html" data-i18n="nav.about">Nosotros</a>
-        <a href="contact.html" data-i18n="nav.contact">Contacto</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label" data-i18n="footer.connect">Contacto</div>
-        <a href="tel:+17879019020">+1 (787) 901-9020</a>
-        <a href="https://wa.me/19392335269" target="_blank" rel="noopener">WhatsApp</a>
-        <a href="mailto:littlemanfirm@gmail.com" data-i18n="footer.email">Correo</a>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-label" data-i18n="footer.follow">Síguenos</div>
-        <a href="https://www.instagram.com/littlemanlabs" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.tiktok.com/@littlemanlabs" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.facebook.com/Littlemanlabs" target="_blank" rel="noopener">Facebook</a>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Littleman Labs</span>
-    <span>Ponce, Puerto Rico</span>
-  </div>
-</footer>
+<div id="lm-footer-root"></div>
 
 <script src="js/i18n-dict.js"></script>
 <script src="js/i18n.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="js/lab-background.js"></script>
+<script src="js/room-transition.js"></script>
 <script src="js/main.js"></script>
 <script src="js/services-slider.js"></script>
+<script src="assets/react/site-widgets.js" defer></script>
 </body>
 </html>

@@ -35,7 +35,16 @@
       btn.classList.toggle("is-active", btn.getAttribute("data-lang") === lang);
     });
     localStorage.setItem(LANG_KEY, lang);
+    // Lets non-vanilla-DOM consumers (the React navbar/footer island in
+    // ui-lab/) react to a language change without duplicating this dictionary
+    // or fighting React's own re-renders by mutating its DOM directly.
+    window.dispatchEvent(new CustomEvent("littleman:langchange", { detail: { lang: lang } }));
   }
+
+  // Exposed so the React island can trigger the exact same language switch
+  // the vanilla .lang-toggle buttons do (single source of truth), and read
+  // the current language on first mount before any event has fired.
+  window.LittlemanI18n = { applyLang: applyLang, detectLang: detectLang };
 
   function initLangToggle() {
     applyLang(detectLang());
