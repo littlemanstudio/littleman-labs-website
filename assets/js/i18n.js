@@ -121,25 +121,6 @@ window.LITTLEMAN_I18N = {
     "svcpage.cta.h2": "Not Sure Which Plan Fits?",
     "svcpage.cta.lede": "Tell us about your business — we'll recommend one.",
 
-    /* ---------- About ---------- */
-    "about.eyebrow": "Why \"Littleman\"",
-    "about.h1": "He's not different. He's just the one who does it.",
-    "about.lede": "Littleman Labs — built in Ponce, Puerto Rico by Allan Gianni Rosario Bobet.",
-    "about.story.p1": "The Littleman isn't special. He's just the one who takes action while everyone else hesitates, waits, or puts it off.",
-    "about.story.p2": "He doesn't always know the path. He just keeps crawling — forward, in an endless search for more.",
-    "about.story.p3": "The whole point is leveraging income into time. Time is worth more than money.",
-    "about.pillars.eyebrow": "How He Works",
-    "about.pillars.h2": "Three Things That Don't Change",
-    "about.pillar1.title": "Execute, don't wait",
-    "about.pillar1.desc": "Most people wait for the perfect plan. We just start crawling.",
-    "about.pillar2.title": "Time over money",
-    "about.pillar2.desc": "Every system is built to buy you back hours, not just look nice.",
-    "about.pillar3.title": "Brief, not empty",
-    "about.pillar3.desc": "Minimal because it's considered — never because we ran out of things to say.",
-    "about.local": "Built in Ponce, for Puerto Rico. English and Spanish, from day one.",
-    "about.cta.h2": "A Free, No-Pressure Call",
-    "about.cta.lede": "We'll map out your system.",
-
     /* ---------- Blog ---------- */
     "blog.posts.h2": "Latest Insights",
     "blog.h1": "Ideas on automation, CRM, and growth for PR businesses.",
@@ -293,25 +274,6 @@ window.LITTLEMAN_I18N = {
 
     "svcpage.cta.h2": "¿No Sabes Cuál Plan Te Conviene?",
     "svcpage.cta.lede": "Cuéntanos sobre tu negocio — te recomendamos uno.",
-
-    /* ---------- About ---------- */
-    "about.eyebrow": "Por Qué \"Littleman\"",
-    "about.h1": "No es diferente. Es solo el que lo hace.",
-    "about.lede": "Littleman Labs — creado en Ponce, Puerto Rico por Allan Gianni Rosario Bobet.",
-    "about.story.p1": "El Littleman no es especial. Es solo el que actúa mientras los demás dudan, esperan, o lo posponen.",
-    "about.story.p2": "No siempre conoce el camino. Solo sigue gateando — hacia adelante, en una búsqueda interminable de más.",
-    "about.story.p3": "Todo se trata de convertir ingresos en tiempo. El tiempo vale más que el dinero.",
-    "about.pillars.eyebrow": "Cómo Trabaja",
-    "about.pillars.h2": "Tres Cosas Que No Cambian",
-    "about.pillar1.title": "Ejecutar, no esperar",
-    "about.pillar1.desc": "La mayoría espera el plan perfecto. Nosotros solo empezamos a gatear.",
-    "about.pillar2.title": "Tiempo sobre dinero",
-    "about.pillar2.desc": "Cada sistema está hecho para devolverte horas, no solo para verse bien.",
-    "about.pillar3.title": "Breve, no vacío",
-    "about.pillar3.desc": "Minimalista porque es pensado — nunca porque se nos acabaron las ideas.",
-    "about.local": "Creado en Ponce, para Puerto Rico. Inglés y español, desde el día uno.",
-    "about.cta.h2": "Una Llamada Gratis, Sin Presión",
-    "about.cta.lede": "Definimos tu sistema juntos.",
 
     /* ---------- Blog ---------- */
     "blog.posts.h2": "Últimos Artículos",

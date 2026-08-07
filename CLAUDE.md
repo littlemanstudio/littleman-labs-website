@@ -13,6 +13,26 @@ static HTML/CSS/JS, no build step, no framework. Bilingual ES/EN, **Spanish prim
 on first visit, unconditionally — not browser-detected — per the user 2026-08-06). English is
 available via the header `.lang-toggle`, persisted to `localStorage`.
 
+**Canonical source note (2026-08-07):** the user has stated `littleman-atelier/` is the
+Littleman website project going forward. This `littleman-v2/` repo exists only because it's the
+actual git clone tracking `littlemanstudio/littleman-labs-website` on GitHub (what Vercel
+deploys from) — treat it as deploy plumbing, not the place to originate new design/copy work.
+
+## Banned copy — never reintroduce
+
+The "Littleman isn't different / isn't special — he's just the one who does it / keeps
+crawling / endless search for more" mascot-mythology copy is **permanently banned**, in ES or
+EN, anywhere on this site or in any other site/design for this user — headlines, body copy,
+meta descriptions, alt text, everything. Removed 2026-08-07 from `index.html` (`home.why.*`),
+`about.html` (`about.h1`/`about.story`), `js/i18n-dict.js` (both language blocks), that same
+`about.html`'s meta/OG/Twitter descriptions (which referenced "Por qué el nombre Littleman"
+without repeating the lines verbatim — that still counted), and the dead legacy `about.*` keys
+in `assets/js/i18n.js` (unused by any live page but deleted anyway per the user's "not one line
+anywhere in the whole project" instruction). Replaced with concrete "one system, not three
+vendors" positioning (see `svcpage.piece.body` in `services.html` as the model). If writing new
+About/brand-story copy for this user, lead with the mechanism (what's built, how fast, what it
+replaces) — never a mascot/metaphor angle.
+
 ## Design concept: "The Atelier"
 
 A gallery/exhibition system — the crawling-baby mascot as museum bronze, services framed as an

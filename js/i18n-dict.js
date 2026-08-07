@@ -24,8 +24,8 @@ window.LITTLEMAN_I18N = {
     "hero.seeServices": "Ver todos los servicios",
     "scroll.cue": "Desplázate",
 
-    "home.why.h2": "Por qué &quot;Littleman&quot;",
-    "home.why.body": "<p><em>No es diferente. Es solo el que lo hace.</em> El Littleman no es especial — es solo el que actúa mientras los demás dudan, esperan, o lo posponen.</p><p>No siempre conoce el camino. Solo sigue gateando — hacia adelante, en una búsqueda interminable de más. Todo se trata de convertir ingresos en tiempo. El tiempo vale más que el dinero.</p><p>Ese mismo principio guía cada proyecto: construir el sistema una vez, bien hecho, para que deje de consumir tus horas todos los días.</p>",
+    "home.why.h2": "Cada pieza, bajo un mismo techo.",
+    "home.why.body": "<p>La mayoría de las agencias te entregan un sitio web y te mandan a buscar un CRM aparte, una agencia de anuncios aparte, y una hoja de reportes aparte — y tú tienes que unirlo todo. Nosotros construimos y gestionamos las tres piezas como un solo sistema: sitio web, CRM y automatización.</p><p>Un lead que llama, llena un formulario, o escribe por WhatsApp llega al mismo buzón, recibe el mismo seguimiento, y aparece en el mismo reporte mensual.</p><p>El tiempo vale más que el dinero — por eso lo construimos una vez, bien hecho, para que deje de consumir tus horas todos los días.</p>",
 
     "home.codeScroll.caption": "Cómo sucede un proyecto, en realidad, de principio a fin",
 
@@ -74,9 +74,9 @@ window.LITTLEMAN_I18N = {
     "svcpage.cta.h2": "¿No sabes cuál plan te conviene? <em>Cuéntanos</em> sobre tu negocio.",
 
     /* ---------- About ---------- */
-    "about.h1": "No es diferente. <em>Es solo el que lo hace.</em>",
+    "about.h1": "Una persona construye tu sistema. <em>Sin intermediarios.</em>",
     "about.lede": "Littleman Labs — creado en Ponce, Puerto Rico por Allan Gianni Rosario Bobet.",
-    "about.story": "<p>El Littleman no es especial. Es solo el que actúa mientras los demás dudan, esperan, o lo posponen. No siempre conoce el camino — solo sigue gateando, hacia adelante, en una búsqueda interminable de más.</p><p>Tres cosas no cambian: <em>ejecutar, no esperar</em> — la mayoría espera el plan perfecto, nosotros solo empezamos a gatear. <em>Tiempo sobre dinero</em> — cada sistema está hecho para devolverte horas, no solo para verse bien. <em>Breve, no vacío</em> — minimalista porque es pensado, nunca porque se nos acabaron las ideas.</p><p>Todo se trata de convertir ingresos en tiempo. El tiempo vale más que el dinero.</p>",
+    "about.story": "<p>La mayoría de las agencias te entregan un sitio web y te mandan a buscar un CRM aparte, una agencia de anuncios aparte, y una hoja de reportes aparte — y tú tienes que unirlo todo. Littleman Labs construye y gestiona las tres piezas como un solo sistema, desde el primer día.</p><p>Empezamos a construir apenas definimos tu sistema contigo, sin esperar el plan perfecto. El tiempo vale más que el dinero — por eso cada sistema está hecho para devolverte horas, no solo para verse bien.</p>",
     "about.howItWorks": "<p><em>Cómo funciona, en realidad.</em> Una sola persona construye cada sitio — sin gerente de cuenta que le pasa notas a un diseñador que le pasa notas a un desarrollador. Hablas directamente con quien hace el trabajo, desde la primera llamada hasta el lanzamiento.</p><p>Empieza con una llamada gratis de 20 minutos para entender lo que tu negocio realmente necesita, no un guion de ventas. De ahí, la mayoría de los sitios de 3–5 páginas están en línea en unas dos semanas. Si quieres la pieza de CRM y gestión de leads — el buzón unificado que capta cada llamada, formulario y mensaje — se configura junto con el proyecto, no meses después.</p>",
     "about.cta.h2": "Creado en Ponce, <em>para Puerto Rico.</em> Español e inglés, desde el primer día.",
     "about.cta.link": "Una llamada gratis, sin presión",
@@ -120,8 +120,8 @@ window.LITTLEMAN_I18N = {
     "hero.seeServices": "See services",
     "scroll.cue": "Scroll",
 
-    "home.why.h2": "Why &quot;Littleman&quot;",
-    "home.why.body": "<p><em>He's not different. He's just the one who does it.</em> The Littleman isn't special — he's just the one who takes action while everyone else hesitates, waits, or puts it off.</p><p>He doesn't always know the path. He just keeps crawling — forward, in an endless search for more. The whole point is leveraging income into time. Time is worth more than money.</p><p>That same principle guides every project: build the system once, done right, so it stops eating your hours every day.</p>",
+    "home.why.h2": "Every piece, under one roof.",
+    "home.why.body": "<p>Most agencies hand you a website, then point you toward a separate CRM tool, a separate ads agency, and a separate reporting spreadsheet — and you're the one stitching it together. We build and manage all three pieces as one system: website, CRM, and automation.</p><p>A lead that calls, fills out a form, or messages on WhatsApp lands in the same inbox, gets the same follow-up, and shows up in the same monthly report.</p><p>Time is worth more than money — that's why we build it once, done right, so it stops eating your hours every day.</p>",
 
     "home.codeScroll.caption": "How a build actually happens, start to finish",
 
@@ -170,9 +170,9 @@ window.LITTLEMAN_I18N = {
     "svcpage.cta.h2": "Not sure which plan fits? <em>Tell us</em> about your business.",
 
     /* ---------- About ---------- */
-    "about.h1": "He's not different. <em>He's just the one who does it.</em>",
+    "about.h1": "One person builds your system. <em>No middlemen.</em>",
     "about.lede": "Littleman Labs — built in Ponce, Puerto Rico by Allan Gianni Rosario Bobet.",
-    "about.story": "<p>The Littleman isn't special. He's just the one who takes action while everyone else hesitates, waits, or puts it off. He doesn't always know the path — he just keeps crawling, forward, in an endless search for more.</p><p>Three things don't change: <em>execute, don't wait</em> — most people wait for the perfect plan, we just start crawling. <em>Time over money</em> — every system is built to buy you back hours, not just look nice. <em>Brief, not empty</em> — minimal because it's considered, never because we ran out of things to say.</p><p>The whole point is leveraging income into time. Time is worth more than money.</p>",
+    "about.story": "<p>Most agencies hand you a website, then point you toward a separate CRM tool, a separate ads agency, and a separate reporting spreadsheet — and you're the one stitching it together. Littleman Labs builds and manages all three pieces as one system, from day one.</p><p>We start building as soon as we've mapped out your system together, without waiting for the perfect plan. Time is worth more than money — that's why every system is built to buy you back hours, not just look nice.</p>",
     "about.howItWorks": "<p><em>How it actually works.</em> One person builds every site — no account manager relaying notes to a designer relaying notes to a developer. You talk to the person doing the work, from the first call to launch.</p><p>It starts with a free 20-minute call to understand what your business actually needs, not a sales script. From there, most 3–5 page websites are live in about two weeks. If you want the CRM & lead management piece — the unified inbox that catches every call, form, and DM — that gets set up alongside the build, not bolted on months later.</p>",
     "about.cta.h2": "Built in Ponce, <em>for Puerto Rico.</em> English and Spanish, from day one.",
     "about.cta.link": "A free, no-pressure call",
