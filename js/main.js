@@ -113,7 +113,7 @@ function initPreloader() {
   requestAnimationFrame(tick);
 }
 
-const CONTACT_FORM_ENDPOINT = "https://formsubmit.co/ajax/littlemanfirm@gmail.com";
+const CONTACT_FORM_ENDPOINT = "https://formsubmit.co/ajax/info@littlemanlabs.com";
 
 function initContactForm() {
   const form = document.querySelector("#contact-form");
