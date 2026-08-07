@@ -1,14 +1,14 @@
-/* Littleman Labs — global background: slow bronze contour waves.
+/* Littleman Labs, global background: slow bronze contour waves.
    Replaces the earlier orbital-ring/glow-orb system, which read as
    decorative "AI ambient art" with nothing real behind it. This is a
-   quieter, more disciplined effect — a handful of thin flowing wave
-   lines, one accent color, low opacity — closer to how real premium
+   quieter, more disciplined effect, a handful of thin flowing wave
+   lines, one accent color, low opacity, closer to how real premium
    sites use ambient motion (as a restrained atmosphere, not a focal
    object).
 
    The animation clock persists across page navigations via
    sessionStorage, so the waves don't visibly "restart" when you move
-   from page to page — the motion reads as one continuous background
+   from page to page, the motion reads as one continuous background
    the whole site shares, not a fresh instance per page. */
 
 const TIME_KEY = "lm-wave-t";

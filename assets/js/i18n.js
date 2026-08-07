@@ -1,4 +1,4 @@
-/* Littleman Labs v2 — i18n dictionary (EN / ES) */
+/* Littleman Labs v2, i18n dictionary (EN / ES) */
 window.LITTLEMAN_I18N = {
   en: {
     "nav.home": "Home",
@@ -51,11 +51,11 @@ window.LITTLEMAN_I18N = {
     /* ---------- Home ---------- */
     "hero.eyebrow": "Systems Over Software",
     "hero.h1": "Web Design, CRM &amp; Automation for Ponce, Puerto Rico Businesses",
-    "hero.lede": "The studio behind businesses that run themselves — websites, CRM, and automation built as one system, not three vendors.",
+    "hero.lede": "The studio behind businesses that run themselves, websites, CRM, and automation built as one system, not three vendors.",
     "hero.scroll": "Scroll",
 
     "home.services.h2": "What We Build",
-    "home.svc.website.desc": "Custom web design — fast, bilingual, built for your brand.",
+    "home.svc.website.desc": "Custom web design, fast, bilingual, built for your brand.",
     "home.svc.crm.desc": "Every lead, one place.",
     "home.svc.textback.desc": "Never lose a lead again.",
     "home.svc.scheduling.desc": "Fewer no-shows, fuller calendar.",
@@ -89,13 +89,13 @@ window.LITTLEMAN_I18N = {
     "svcpage.services.h2": "Our Services",
     "svcpage.h1": "Every system your business needs, under one roof.",
     "svcpage.lede": "Custom builds. Clear monthly plans. Every engagement starts with a free call.",
-    "svcpage.svc.website.desc": "Fast, bilingual, built for your brand — not a template.",
+    "svcpage.svc.website.desc": "Fast, bilingual, built for your brand, not a template.",
     "svcpage.svc.crm.desc": "Every call, form, and DM lands in one inbox.",
     "svcpage.svc.textback.desc": "An unanswered call gets an instant SMS reply.",
     "svcpage.svc.scheduling.desc": "Online booking with reminders that cut no-shows.",
     "svcpage.svc.seo.desc": "Google Business Profile &amp; review requests, managed.",
     "svcpage.svc.ads.desc": "Google &amp; Meta campaigns, managed weekly.",
-    "svcpage.svc.reports.desc": "Leads in, jobs booked — plain language, every month.",
+    "svcpage.svc.reports.desc": "Leads in, jobs booked, plain language, every month.",
     "svcpage.svc.brand.desc": "Bilingual copywriting, done for you.",
 
     "svcpage.pricing.eyebrow": "How We Work",
@@ -105,9 +105,9 @@ window.LITTLEMAN_I18N = {
     "svcpage.pricing.p1.f1": "3–5 pages, scoped to your business",
     "svcpage.pricing.p1.f2": "Bilingual from day one",
     "svcpage.pricing.p1.f3": "Backend or database, if you need one",
-    "svcpage.pricing.p1.f4": "Yours forever — no monthly lock-in",
+    "svcpage.pricing.p1.f4": "Yours forever, no monthly lock-in",
     "svcpage.pricing.p2.tag": "Every lead followed up. Nothing falls through.",
-    "svcpage.pricing.p2.f1": "Unified lead inbox — call, form, DM",
+    "svcpage.pricing.p2.f1": "Unified lead inbox, call, form, DM",
     "svcpage.pricing.p2.f2": "Missed-call text-back",
     "svcpage.pricing.p2.f3": "Booking &amp; reminders that cut no-shows",
     "svcpage.pricing.p2.f4": "Monthly report: leads in, jobs booked",
@@ -116,15 +116,15 @@ window.LITTLEMAN_I18N = {
     "svcpage.pricing.p3.f2": "Meta ads managed weekly",
     "svcpage.pricing.p3.f3": "Dedicated landing pages per campaign",
     "svcpage.pricing.p3.f4": "Same-day priority support",
-    "svcpage.pricing.note": "Every engagement is different — scope and cost are confirmed on your free call.",
+    "svcpage.pricing.note": "Every engagement is different, scope and cost are confirmed on your free call.",
 
     "svcpage.cta.h2": "Not Sure Which Plan Fits?",
-    "svcpage.cta.lede": "Tell us about your business — we'll recommend one.",
+    "svcpage.cta.lede": "Tell us about your business, we'll recommend one.",
 
     /* ---------- Blog ---------- */
     "blog.posts.h2": "Latest Insights",
     "blog.h1": "Ideas on automation, CRM, and growth for PR businesses.",
-    "blog.lede": "Practical notes — coming soon.",
+    "blog.lede": "Practical notes, coming soon.",
     "blog.comingSoon": "Coming Soon",
     "blog.tag.automation": "Automation",
     "blog.tag.crm": "CRM",
@@ -151,7 +151,7 @@ window.LITTLEMAN_I18N = {
     "contact.form.message": "Tell us about your business",
     "contact.form.placeholder": "A few sentences about your business...",
     "contact.form.submit": "Request My Strategy Call",
-    "contact.form.success": "Thanks — message received. We'll follow up within one business day."
+    "contact.form.success": "Thanks, message received. We'll follow up within one business day."
   },
 
   es: {
@@ -205,11 +205,11 @@ window.LITTLEMAN_I18N = {
     /* ---------- Home ---------- */
     "hero.eyebrow": "Sistemas Sobre Software",
     "hero.h1": "Diseño Web, CRM y Automatización para Negocios en Ponce, Puerto Rico",
-    "hero.lede": "El estudio detrás de negocios que se manejan solos — sitios web, CRM y automatización en un solo sistema, no tres proveedores.",
+    "hero.lede": "El estudio detrás de negocios que se manejan solos, sitios web, CRM y automatización en un solo sistema, no tres proveedores.",
     "hero.scroll": "Desliza",
 
     "home.services.h2": "Lo Que Construimos",
-    "home.svc.website.desc": "Diseño web personalizado — rápido, bilingüe, hecho para tu marca.",
+    "home.svc.website.desc": "Diseño web personalizado, rápido, bilingüe, hecho para tu marca.",
     "home.svc.crm.desc": "Cada lead, un solo lugar.",
     "home.svc.textback.desc": "Nunca vuelvas a perder un lead.",
     "home.svc.scheduling.desc": "Menos ausencias, calendario lleno.",
@@ -243,13 +243,13 @@ window.LITTLEMAN_I18N = {
     "svcpage.services.h2": "Nuestros Servicios",
     "svcpage.h1": "Todos los sistemas que tu negocio necesita, bajo un mismo techo.",
     "svcpage.lede": "Diseño a la medida. Planes mensuales claros. Empieza con una llamada gratis.",
-    "svcpage.svc.website.desc": "Rápidos, bilingües, hechos para tu marca — no una plantilla.",
+    "svcpage.svc.website.desc": "Rápidos, bilingües, hechos para tu marca, no una plantilla.",
     "svcpage.svc.crm.desc": "Cada llamada, formulario y mensaje llega a un solo buzón.",
     "svcpage.svc.textback.desc": "Una llamada perdida recibe un SMS al instante.",
     "svcpage.svc.scheduling.desc": "Citas en línea con recordatorios que reducen ausencias.",
     "svcpage.svc.seo.desc": "Perfil de Google y solicitudes de reseñas, gestionados.",
     "svcpage.svc.ads.desc": "Campañas en Google y Meta, gestionadas cada semana.",
-    "svcpage.svc.reports.desc": "Leads que entran, trabajos agendados — cada mes, en lenguaje claro.",
+    "svcpage.svc.reports.desc": "Leads que entran, trabajos agendados, cada mes, en lenguaje claro.",
     "svcpage.svc.brand.desc": "Copywriting bilingüe, listo para ti.",
 
     "svcpage.pricing.eyebrow": "Cómo Trabajamos",
@@ -259,9 +259,9 @@ window.LITTLEMAN_I18N = {
     "svcpage.pricing.p1.f1": "3–5 páginas, según tu negocio",
     "svcpage.pricing.p1.f2": "Bilingüe desde el primer día",
     "svcpage.pricing.p1.f3": "Backend o base de datos, si lo necesitas",
-    "svcpage.pricing.p1.f4": "Tuyo para siempre — sin mensualidad obligatoria",
+    "svcpage.pricing.p1.f4": "Tuyo para siempre, sin mensualidad obligatoria",
     "svcpage.pricing.p2.tag": "Cada lead con seguimiento. Nada se pierde.",
-    "svcpage.pricing.p2.f1": "Buzón de leads unificado — llamada, formulario, mensaje",
+    "svcpage.pricing.p2.f1": "Buzón de leads unificado, llamada, formulario, mensaje",
     "svcpage.pricing.p2.f2": "Texto automático a llamadas perdidas",
     "svcpage.pricing.p2.f3": "Citas y recordatorios que reducen ausencias",
     "svcpage.pricing.p2.f4": "Reporte mensual: leads que entran, trabajos agendados",
@@ -270,15 +270,15 @@ window.LITTLEMAN_I18N = {
     "svcpage.pricing.p3.f2": "Anuncios en Meta gestionados cada semana",
     "svcpage.pricing.p3.f3": "Landing pages dedicadas por campaña",
     "svcpage.pricing.p3.f4": "Soporte prioritario el mismo día",
-    "svcpage.pricing.note": "Cada proyecto es distinto — el alcance y costo se confirman en tu llamada gratis.",
+    "svcpage.pricing.note": "Cada proyecto es distinto, el alcance y costo se confirman en tu llamada gratis.",
 
     "svcpage.cta.h2": "¿No Sabes Cuál Plan Te Conviene?",
-    "svcpage.cta.lede": "Cuéntanos sobre tu negocio — te recomendamos uno.",
+    "svcpage.cta.lede": "Cuéntanos sobre tu negocio, te recomendamos uno.",
 
     /* ---------- Blog ---------- */
     "blog.posts.h2": "Últimos Artículos",
     "blog.h1": "Ideas sobre automatización, CRM y crecimiento para negocios en PR.",
-    "blog.lede": "Notas prácticas — próximamente.",
+    "blog.lede": "Notas prácticas, próximamente.",
     "blog.comingSoon": "Próximamente",
     "blog.tag.automation": "Automatización",
     "blog.tag.crm": "CRM",
@@ -305,6 +305,6 @@ window.LITTLEMAN_I18N = {
     "contact.form.message": "Cuéntanos sobre tu negocio",
     "contact.form.placeholder": "Unas líneas sobre tu negocio...",
     "contact.form.submit": "Solicitar Mi Llamada Estratégica",
-    "contact.form.success": "Gracias — mensaje recibido. Respondemos en un día laborable."
+    "contact.form.success": "Gracias, mensaje recibido. Respondemos en un día laborable."
   }
 };

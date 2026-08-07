@@ -1,4 +1,4 @@
-/* Littleman Labs — hero Three.js scene.
+/* Littleman Labs, hero Three.js scene.
    Loads the bronze mascot sculpture GLB onto a lit plinth. Idle: slow
    auto-rotation + subtle pointer parallax. Scroll: GSAP ScrollTrigger
    scrubs rotation/camera as the hero passes, so the piece feels like
@@ -113,14 +113,14 @@ function initHero() {
     },
     undefined,
     () => {
-      // GLB missing/failed — keep the bronze placeholder, fail silently.
+      // GLB missing/failed, keep the bronze placeholder, fail silently.
     }
   );
 
   // ---- idle motion + pointer parallax + scroll rotation, unified into a
   // single writer of subject.rotation.y (mixing a GSAP-scrubbed tween with a
   // per-frame rAF write on the same property caused visible stutter/fighting
-  // as the two systems raced each other every frame — fixed by having the
+  // as the two systems raced each other every frame, fixed by having the
   // scroll and idle systems only update plain numbers, and one tick() apply
   // the combined result).
   let idleRotY = 0.35;
@@ -150,7 +150,7 @@ function initHero() {
   tick();
 
   // ---- scroll-driven rotation (the piece turns as you pass it, like walking
-  // around a vitrine — no camera dolly, the frame is small and fixed now)
+  // around a vitrine, no camera dolly, the frame is small and fixed now)
   if (typeof ScrollTrigger !== "undefined" && !reduceMotion) {
     ScrollTrigger.create({
       trigger: ".hero",

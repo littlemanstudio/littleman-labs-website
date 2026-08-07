@@ -1,8 +1,8 @@
 /* ==========================================================================
-   Littleman Labs — "The Atelier" build
+   Littleman Labs, "The Atelier" build
    A gallery/exhibition system: the mascot as museum bronze, services as
    an exhibition case. No cream/terracotta, no blue/glass carryover from
-   the old site — graphite + bone + a single bronze accent.
+   the old site, graphite + bone + a single bronze accent.
    ========================================================================== */
 
 :root {
@@ -56,7 +56,7 @@ body {
 }
 
 /* ==========================================================================
-   Global scroll field — fixed behind everything, one instance per page.
+   Global scroll field, fixed behind everything, one instance per page.
    This is now the site's actual background color layer; sections above it
    stay transparent so the particle field reads through everywhere, not
    just in the gaps between opaque blocks.
@@ -71,7 +71,7 @@ body {
   overflow: hidden;
 }
 /* One AI-rendered room per page, held to the same graphite/bone/bronze
-   palette as the rest of the site — see js/lab-background.js for the zone
+   palette as the rest of the site, see js/lab-background.js for the zone
    map. Oversized + translated by JS (pointer parallax + idle drift) for a
    3D-ish depth cue without WebGL; scale(1.06) here is the resting state so
    the parallax translate never reveals an edge. */
@@ -101,7 +101,7 @@ body[data-lab-zone="comms"] .bg-scene { background-image: url("../assets/img/lab
   background: radial-gradient(58% 52% at 50% 46%, rgba(28, 26, 23, 0.58) 0%, rgba(28, 26, 23, 0.32) 50%, rgba(28, 26, 23, 0) 100%);
 }
 
-/* Room-to-room transition — a real transform wipe, not a fade. Studied
+/* Room-to-room transition, a real transform wipe, not a fade. Studied
    from vectrfl.com's actual page-transition CSS (a fixed panel, rotated
    90deg off-screen at rest, swung to 0deg on navigation): a full-bleed
    panel pinned at the right edge swings across the viewport like a door
@@ -151,17 +151,17 @@ body[data-lab-zone="comms"] .bg-scene { background-image: url("../assets/img/lab
   transition: opacity 0.32s ease;
 }
 /* Set synchronously, pre-paint, by the inline <head> script when the
-   sessionStorage flag says a navigation is mid-wipe — keeps the incoming
+   sessionStorage flag says a navigation is mid-wipe, keeps the incoming
    page's first frame already covered instead of flashing raw content. */
 html.lm-precovered .room-transition::after { transform: rotate(0deg) translateZ(0); }
 html.lm-precovered .room-transition::before { opacity: 0.28; }
 
-/* Photo precover — used only after a video-clip room transition (not the
+/* Photo precover, used only after a video-clip room transition (not the
    plain wipe above). The generated hallway clips end on the destination
    room's own assets/img/lab/*.jpg still frame, so holding that exact same
    image as the incoming page's cover (instead of the flat graphite panel)
    removes the visual seam that made a video transition look like a second,
-   unrelated "loading screen" cut — it should read as one continuous walk
+   unrelated "loading screen" cut, it should read as one continuous walk
    into the room, not a page refresh. Set via the `data-precover-zone`
    attribute the inline <head> script adds pre-paint from sessionStorage
    (see js/room-transition.js). The flat panel still renders underneath as
@@ -185,7 +185,7 @@ html.lm-precovered[data-precover-zone] .room-transition-photo.is-revealing {
   transition: opacity 0.36s ease;
 }
 
-/* The real "walk the hallway" transition — a generated video plays full-
+/* The real "walk the hallway" transition, a generated video plays full-
    screen over everything while js/room-transition.js waits for it to
    finish before the actual (hard) navigation happens. Hidden/inert until
    `.is-playing` is added. */
@@ -207,7 +207,7 @@ html.lm-precovered[data-precover-zone] .room-transition-photo.is-revealing {
   .room-transition, .room-transition-video { display: none; }
 }
 
-/* Floating WhatsApp button — on every page so it's visible without having
+/* Floating WhatsApp button, on every page so it's visible without having
    to scroll to the footer or land on Contact. Kept to the site's own
    graphite/bone/bronze palette rather than WhatsApp's stock green, which
    would be a second competing accent color (hard-banned elsewhere in this
@@ -266,15 +266,14 @@ h1, h2, h3, .display {
 :focus-visible { outline: 2px solid var(--bronze-bright); outline-offset: 3px; }
 
 /* Colored-word headline emphasis (bronze <em>/.accent) removed per the
-   user 2026-08-07 — reads as an AI-template tic ("gradient/colored word
+   user 2026-08-07, reads as an AI-template tic ("gradient/colored word
    in the headline"), same complaint that already ruled out gradients and
-   italic. Emphasized words now render as plain headline text — no color,
+   italic. Emphasized words now render as plain headline text, no color,
    no italic, no separate treatment. Do not reintroduce a colored-word
    device anywhere in this stylesheet. */
 .accent { font-style: normal; color: inherit; }
 
-/* A single static location marker (no live clock, no label/value pairing) —
-   kept minimal so it doesn't recreate the placard/specimen-tag device it
+/* A single static location marker (no live clock, no label/value pairing), kept minimal so it doesn't recreate the placard/specimen-tag device it
    replaced. */
 .location-tag {
   font-family: var(--font-mono);
@@ -295,12 +294,12 @@ h1, h2, h3, .display {
    Buttons
    ========================================================================== */
 
-/* No pill/chrome buttons — real award-winning studio sites (checked
+/* No pill/chrome buttons, real award-winning studio sites (checked
    makemepulse.com's actual nav DOM) ship plain text links with a bare
    opacity/color hover, nothing else. Ours extends the hero's corner-tick
    "specimen frame" as the one recurring UI signature instead of a button
    component, so it reads as one system rather than a borrowed widget. */
-/* Ported from 21st.dev "Frame Button" (radiumcoders) — real sourced technique:
+/* Ported from 21st.dev "Frame Button" (radiumcoders), real sourced technique:
    four chevron markers (Tabler chevron-up/down-left/right paths), always
    visible at a fixed offset outside the button, each translating further
    outward on hover via its own --move-x/--move-y. Markers are injected by
@@ -324,7 +323,7 @@ h1, h2, h3, .display {
 .btn-primary:hover { color: var(--bronze-bright); }
 
 /* Ghost CTA (e.g. hero "Ver todos los servicios") sat too close in weight
-   to plain body text to catch the eye on its own — an underline gives it
+   to plain body text to catch the eye on its own, an underline gives it
    a clear affordance without introducing a filled background or a second
    accent color; brightens to bronze on hover like the rest of the site's
    link/hover language. */
@@ -364,7 +363,7 @@ h1, h2, h3, .display {
    Preloader
    ========================================================================== */
 
-/* Hidden by default — only the very first page of a session ever adds
+/* Hidden by default, only the very first page of a session ever adds
    .is-active (see js/main.js initPreloader). Every internal navigation
    after that is a real document load too, but with no class added the
    element never paints, so there's no black flash stomping on the
@@ -426,7 +425,7 @@ h1, h2, h3, .display {
 /* The frosted-glass fill lives on a pseudo-element, not on .navbar itself.
    .navbar is position:fixed, and backdrop-filter (like transform/filter/
    contain) makes an element a new containing block for its own
-   position:fixed descendants — which broke the mobile nav-menu panel
+   position:fixed descendants, which broke the mobile nav-menu panel
    (also position:fixed, inset:0) into sizing itself against the 75px
    navbar instead of the real viewport the moment the page scrolled past
    40px. Real bug, found 2026-08-06: the closed mobile menu (incl. the
@@ -457,7 +456,7 @@ h1, h2, h3, .display {
 .nav-link { padding: 8px 16px; border-radius: 999px; font-size: 0.86rem; color: var(--bone-dim); transition: color 0.25s ease, background 0.25s ease; }
 .nav-link.is-active { color: var(--bone); background: rgba(241,237,228,0.06); }
 
-/* Ported from 21st.dev "Flip Links" (vaib215/flip-links) — real sourced
+/* Ported from 21st.dev "Flip Links" (vaib215/flip-links), real sourced
    technique: each letter exists in two stacked rows; hover slides the
    visible row up and out while the hidden duplicate row slides up into
    place, staggered per letter. Rows are injected by js/main.js. */
@@ -526,7 +525,7 @@ h1, h2, h3, .display {
 }
 
 /* ==========================================================================
-   Hero — the plinth
+   Hero, the plinth
    ========================================================================== */
 
 .hero {
@@ -540,18 +539,17 @@ h1, h2, h3, .display {
   background: radial-gradient(120% 90% at 50% 8%, rgba(184,135,74,0.1) 0%, rgba(184,135,74,0) 55%);
 }
 
-/* The specimen: the sculpture is a precise, framed object — not a full-bleed
+/* The specimen: the sculpture is a precise, framed object, not a full-bleed
    background. A "vitrine" viewport with a hairline frame and corner ticks,
    like a museum case, sitting inside the huge type rather than behind it. */
 .hero-specimen {
   position: absolute;
-  /* Bottom-anchored, not vertically centered (was top:50%/translateY) —
-     centering put a box this tall right over the 3-line Outfit headline
+  /* Bottom-anchored, not vertically centered (was top:50%/translateY), centering put a box this tall right over the 3-line Outfit headline
      no matter how far down it was nudged. Anchoring to the hero's bottom
      edge + shrinking the frame is what actually keeps the whole thing
      both fully visible (not clipped by the viewport) and clear of the
      text at once; verified against getBoundingClientRect() at 1440x840
-     and 1024x768 — real headroom in both, not just a visual approximation. */
+     and 1024x768, real headroom in both, not just a visual approximation. */
   bottom: clamp(24px, 5vh, 56px);
   top: auto;
   right: clamp(0px, 4vw, 90px);
@@ -621,12 +619,12 @@ h1, h2, h3, .display {
 .hero.is-ready .hero-specimen { opacity: 1; }
 
 @media (max-width: 980px) {
-  /* bottom: auto is required here, not optional — the desktop rule's
+  /* bottom: auto is required here, not optional, the desktop rule's
      bottom: clamp(...) otherwise survives the cascade (this query never
      used to touch `bottom` because the desktop rule didn't use it before).
      For a position:relative element, top:auto with a real `bottom` value
      mirrors into top:-bottom per spec, which silently pulled this element
-     up into the CTA link above it on mobile — a real, reproducible bug,
+     up into the CTA link above it on mobile, a real, reproducible bug,
      not just a visual nitpick. */
   .hero-specimen { position: relative; top: auto; bottom: auto; right: auto; transform: none; width: min(70vw, 340px); margin: 32px 0 0 auto; }
   .hero { justify-content: flex-start; padding-top: 120px; }
@@ -672,24 +670,23 @@ h1, h2, h3, .display {
 .section-inner { max-width: var(--container); margin: 0 auto; }
 .section-head { margin-bottom: clamp(40px, 5vw, 64px); }
 .section-head h2, .exhibit-head h2 { font-size: var(--fs-h2); max-width: 18ch; margin-top: 18px; }
-/* A section can open directly on a real heading (no small label above it) —
-   used where a section needs a title but shouldn't repeat the placard/
+/* A section can open directly on a real heading (no small label above it), used where a section needs a title but shouldn't repeat the placard/
    eyebrow formula removed elsewhere. */
 .section-inner > h2 { font-size: var(--fs-h2); max-width: 18ch; }
 .section-divider { height: 1px; background: var(--line); }
 
-/* Interior page hero — lighter than the home hero (no 3D specimen; that
+/* Interior page hero, lighter than the home hero (no 3D specimen; that
    stays a home-only signature moment rather than tripling asset load). */
 .page-hero { padding: 180px var(--gutter) 50px; max-width: var(--container); margin: 0 auto; position: relative; z-index: 1; }
 .page-hero h1 { font-size: var(--fs-h1); font-weight: 800; max-width: 17ch; margin-top: 0; line-height: 1; }
 .page-hero h1 em { font-style: normal; color: inherit; }
 .page-hero .lead { margin-top: 24px; }
-/* Asymmetric variant — pulls the lead paragraph right instead of stacking
+/* Asymmetric variant, pulls the lead paragraph right instead of stacking
    it flush under the H1, so this page-hero doesn't read as an identical
    reskin of the other interior-page heroes. Used on contact.html only. */
 .page-hero.is-offset .lead { margin-left: clamp(0px, 14vw, 220px); }
 
-/* Quick services list — plain, no numbering (not a sequence), two columns */
+/* Quick services list, plain, no numbering (not a sequence), two columns */
 .quick-services { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .quick-services li { background: rgba(23,20,17,0.55); backdrop-filter: blur(6px); padding: 26px 28px; }
 .quick-services .service-name { font-family: var(--font-display); font-size: 1.15rem; }
@@ -711,7 +708,7 @@ h1, h2, h3, .display {
 .intro-block em { font-style: normal; color: inherit; }
 
 /* ==========================================================================
-   Photo frame — real photography, framed like the hero's vitrine (same
+   Photo frame, real photography, framed like the hero's vitrine (same
    hairline + bronze corner-tick language), never full-bleed behind text.
    ========================================================================== */
 .photo-frame {
@@ -737,7 +734,7 @@ h1, h2, h3, .display {
   display: block;
   filter: saturate(0.9) contrast(1.05);
 }
-/* Split block — copy on one side, a framed photo on the other. Order
+/* Split block, copy on one side, a framed photo on the other. Order
    flips per-section so the page doesn't repeat the same rhythm twice. */
 .split-block {
   display: grid;
@@ -752,7 +749,7 @@ h1, h2, h3, .display {
 }
 
 /* ==========================================================================
-   Code scroll — scroll-scrubbed frame sequence (same technique behind
+   Code scroll, scroll-scrubbed frame sequence (same technique behind
    "3D product" scroll showcases: a tall runway pins a sticky viewport,
    and scroll progress alone picks which frame shows, so scrolling back
    up reverses it for free). See js/code-scroll.js.
@@ -808,7 +805,7 @@ h1, h2, h3, .display {
 }
 
 /* ==========================================================================
-   Services slider — native scroll-snap (no pin/scrub math, so it can't
+   Services slider, native scroll-snap (no pin/scrub math, so it can't
    collide with page content the way the old absolutely-positioned pinned
    carousel did on shorter viewports).
    ========================================================================== */
@@ -838,7 +835,7 @@ h1, h2, h3, .display {
 .service-card-copy p { margin-top: 16px; color: var(--bone-dim); max-width: 42ch; }
 .service-card-copy ul { margin-top: 18px; display: flex; flex-direction: column; gap: 9px; }
 .service-card-copy li { font-size: 0.92rem; color: var(--bone-dim); display: flex; gap: 10px; }
-.service-card-copy li::before { content: "—"; color: var(--bronze-bright); flex: none; }
+.service-card-copy li::before { content: "•"; color: var(--bronze-bright); flex: none; }
 .service-card-copy .btn { margin-top: 24px; }
 .service-card-copy .badge {
   font-family: var(--font-mono);
@@ -850,7 +847,7 @@ h1, h2, h3, .display {
   border-radius: 999px;
 }
 
-/* Featured card (CRM & Lead Management) — made structurally different from
+/* Featured card (CRM & Lead Management), made structurally different from
    the other two cards instead of relying on the badge alone: wider, a
    bronze-tinted frame, and its copy/media order flipped (text first, photo
    second) so it doesn't repeat the photo-first rhythm of its neighbors. */
@@ -953,7 +950,7 @@ h1, h2, h3, .display {
 }
 .cta-band h2 em { font-style: normal; color: inherit; }
 
-/* Scattered mascot mark — a subtle brand texture in genuine negative
+/* Scattered mascot mark, a subtle brand texture in genuine negative
    space (bottom-right, below the CTA button), never near the headline
    column which can run wide at large font sizes. */
 .cta-mascot {
@@ -994,7 +991,7 @@ h1, h2, h3, .display {
   .footer-wordmark { font-size: clamp(2.4rem, 1rem + 14vw, 5rem); white-space: normal; }
 }
 
-/* Reveal utility — animated by GSAP/ScrollTrigger in main.js (no CSS
+/* Reveal utility, animated by GSAP/ScrollTrigger in main.js (no CSS
    transition here so GSAP's own easing owns the motion, not a fighting
    CSS transition). .is-visible is a static fallback for the no-JS /
    no-GSAP path only. */
@@ -1002,7 +999,7 @@ h1, h2, h3, .display {
 [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
 
 /* ==========================================================================
-   Contact — floating-label fields
+   Contact, floating-label fields
    ========================================================================== */
 
 .contact-grid {

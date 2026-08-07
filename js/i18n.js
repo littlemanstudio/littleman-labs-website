@@ -1,5 +1,5 @@
-/* Littleman Labs — i18n engine. Spanish is the primary/default language
-   (Ponce, PR market) — browser-language detection only switches to English
+/* Littleman Labs, i18n engine. Spanish is the primary/default language
+   (Ponce, PR market), browser-language detection only switches to English
    when the visitor's browser clearly prefers it; the ultimate fallback is
    Spanish, not English. Dictionary lives in js/i18n-dict.js. */
 
@@ -9,7 +9,7 @@
   var LANG_KEY = "littleman-lang";
 
   function detectLang() {
-    // Spanish is the unconditional default for first-time visitors — this
+    // Spanish is the unconditional default for first-time visitors, this
     // is a Ponce, PR business site and Spanish is primary regardless of
     // the visitor's browser/OS language. Only an explicit manual toggle
     // (persisted below) ever switches it to English.

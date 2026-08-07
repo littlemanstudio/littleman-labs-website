@@ -1,4 +1,4 @@
-/* Littleman Labs — services plan slider. Native scroll-snap driven by
+/* Littleman Labs, services plan slider. Native scroll-snap driven by
    arrow buttons and dot indicators; no pin/scrub timeline to fight, so it
    can't collide with page content the way a scroll-pinned carousel can on
    shorter viewports. Works via mouse drag / trackpad / touch out of the

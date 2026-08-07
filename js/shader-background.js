@@ -1,9 +1,8 @@
-/* Littleman Labs — WebGL "silk" shader background, ported to vanilla JS
-   from a 21st.dev Shader Builder React component (no framework here —
-   this site is plain HTML/CSS/JS, so the port strips the React wrapper
+/* Littleman Labs, WebGL "silk" shader background, ported to vanilla JS
+   from a 21st.dev Shader Builder React component (no framework here, this site is plain HTML/CSS/JS, so the port strips the React wrapper
    and keeps the actual WebGL logic: one full-screen triangle, one
    fragment shader, a small uniform set). Trial alternative to the
-   existing canvas2d wave-line background in scroll-thread.js — not
+   existing canvas2d wave-line background in scroll-thread.js, not
    wired into any page until it's chosen. */
 
 const VERT = `attribute vec2 a_position;

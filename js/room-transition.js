@@ -1,21 +1,21 @@
-/* Littleman Labs — room-to-room transition.
+/* Littleman Labs, room-to-room transition.
 
-   Primary path: real generated video, not a fade — a camera walking down
+   Primary path: real generated video, not a fade, a camera walking down
    the corridor from one room's photo into the next (start/end frames were
    the actual assets/img/lab/*.jpg stills, run through Higgsfield, then
    sped up + motion-interpolated smooth with ffmpeg). The four rooms sit on
    a loop (entry -> workshop -> studio -> comms -> entry), and every one of
    the 4 edges has a clip in BOTH directions (the "reverse" ones are the
    same footage played backward via ffmpeg's `reverse` filter, not the
-   video element's playbackRate — Chromium doesn't support negative
+   video element's playbackRate, Chromium doesn't support negative
    playbackRate reliably). Going somewhere that isn't a direct neighbor
    (e.g. About -> Contact skips nothing, but Home -> Nosotros is 2 hops the
    "wrong way" round) plays two clips back-to-back through the connecting
-   room — see RING + clipSequence(). Every one of the 4 pages can reach
+   room, see RING + clipSequence(). Every one of the 4 pages can reach
    every other page this way; the plain CSS wipe below is a last-resort
    fallback, not the normal path.
 
-   Fallback path: a transform wipe, not a fade — a fixed panel rotated
+   Fallback path: a transform wipe, not a fade, a fixed panel rotated
    90deg off-screen at rest, swung to 0deg on navigation to cover the
    viewport like a door (mechanic studied from vectrfl.com's own
    transition CSS).
@@ -24,7 +24,7 @@
    client-side router), so both paths have to survive an actual document
    unload/reload: play the cover animation, THEN navigate once the screen
    is fully covered. The incoming page would otherwise flash its raw,
-   uncovered content for a frame before this file even runs — so a tiny
+   uncovered content for a frame before this file even runs, so a tiny
    inline script in <head> (see index.html etc.) reads the sessionStorage
    flags this file sets and adds `.lm-precovered` (+ `data-precover-zone`
    for the video path, so the incoming page can hold on the destination
@@ -42,7 +42,7 @@ const RING = ["entry", "workshop", "studio", "comms"];
 
 const PAGE_ZONE = {
   // Clean-URL keys (vercel.json cleanUrls) are what location.pathname
-  // actually yields now — the .html keys stay only as a defensive
+  // actually yields now, the .html keys stay only as a defensive
   // fallback in case something ever links the old extension directly.
   "": "entry",
   "index": "entry",

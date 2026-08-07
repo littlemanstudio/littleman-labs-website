@@ -1,12 +1,12 @@
-/* Littleman Labs — scroll-scrubbed coding sequence.
+/* Littleman Labs, scroll-scrubbed coding sequence.
    Same technique behind "3D product" scroll showcases (Apple's AirPods/
    Vision Pro pages, etc): not real-time 3D, just a short frame sequence
    swapped based on scroll position inside a pinned section. Because the
    frame shown is a pure function of scroll progress (not time), scrolling
-   back up naturally reverses it — no extra logic needed for that part.
+   back up naturally reverses it, no extra logic needed for that part.
 
    4 frames, image-to-image chained during generation so the person/desk/
-   room stay consistent — only the screen content and posture change.
+   room stay consistent, only the screen content and posture change.
    Crossfades between the two nearest frames to hide the low frame count. */
 
 const FRAME_COUNT = 4;

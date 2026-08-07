@@ -1,14 +1,14 @@
-/* Littleman Labs — ambient background: one continuous building, a different
+/* Littleman Labs, ambient background: one continuous building, a different
    room per page (set via body[data-lab-zone], images + CSS in style.css):
 
-     index    -> "entry"    Entry Bay      — reception, the bronze piece on its plinth
-     services -> "workshop" The Lab        — server racks + workbench, where builds happen
-     about    -> "studio"   The Founder's Bench — one desk, one lamp, a pinboard
-     contact  -> "comms"    The Comms Desk — a futuristic reception console + wall clock
+     index    -> "entry"    Entry Bay, reception, the bronze piece on its plinth
+     services -> "workshop" The Lab, server racks + workbench, where builds happen
+     about    -> "studio"   The Founder's Bench, one desk, one lamp, a pinboard
+     contact  -> "comms"    The Comms Desk, a futuristic reception console + wall clock
 
    The room image itself just sits in CSS (per-zone background-image rule on
-   .bg-scene); this file only adds the "3D-ish" feel — a subtle parallax
-   drift toward the pointer, plus slow idle motion — and the room-to-room
+   .bg-scene); this file only adds the "3D-ish" feel, a subtle parallax
+   drift toward the pointer, plus slow idle motion, and the room-to-room
    feel is finished by the native cross-document View Transition in
    style.css (`@view-transition { navigation: auto; }`), not JS. */
 

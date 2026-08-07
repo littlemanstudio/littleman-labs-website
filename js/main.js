@@ -1,4 +1,4 @@
-/* Littleman Labs — shared site behavior */
+/* Littleman Labs, shared site behavior */
 
 if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMagneticButtons();
 });
 
-/* Ported from 21st.dev "Frame Button" (radiumcoders/frame-button) — the
+/* Ported from 21st.dev "Frame Button" (radiumcoders/frame-button), the
    real component injects 4 chevron markers (Tabler chevron-left/right-up/
    down paths) around the button that translate outward on hover. Applied
    here via JS injection instead of hand-typing 4 SVGs per button instance. */
@@ -27,7 +27,7 @@ const FRAME_CHEVRON_PATHS = {
   bl: "M8 8v8h8",
 };
 function initFrameButtons() {
-  // Scoped to the primary CTA only — applying this to every button on every
+  // Scoped to the primary CTA only, applying this to every button on every
   // page read as decorative chrome rather than a real signature moment.
   document.querySelectorAll(".btn-primary").forEach((btn) => {
     Object.entries(FRAME_CHEVRON_PATHS).forEach(([corner, d]) => {
@@ -40,12 +40,12 @@ function initFrameButtons() {
   });
 }
 
-/* Ported from 21st.dev "Flip Links" (vaib215/flip-links) — per-letter
+/* Ported from 21st.dev "Flip Links" (vaib215/flip-links), per-letter
    vertical flip reveal on hover: each letter exists twice (current row +
    duplicate row offset below), staggered 25ms apart; hover slides the top
    row up and out while the duplicate row slides up into place. */
 function initFlipLinks() {
-  // Touch has no real :hover — tapping a link triggers the CSS hover state
+  // Touch has no real :hover, tapping a link triggers the CSS hover state
   // for an instant before the <a> navigates, so the per-letter stagger
   // (up to ~300ms for a longer word) gets cut off mid-flight and reads as
   // "only half the word animated." Real bug, found 2026-08-06. Skip the
@@ -84,7 +84,7 @@ function initPreloader() {
   // delay to perceived load time, hurts conversion, and (now that
   // navigation plays a room-to-room view transition) reads as the site
   // reloading instead of transitioning. Play it once per session; every
-  // page after that never activates the preloader at all — it stays
+  // page after that never activates the preloader at all, it stays
   // hidden by its CSS default, so there's nothing to fade out and no flash.
   const alreadySeen = sessionStorage.getItem("llPreloaderSeen") === "1";
 
@@ -148,7 +148,7 @@ function initContactForm() {
     })
       .then(() => {
         if (status) {
-          status.textContent = i18nText("contact.form.success", "Thanks — got it. We're on it right away.");
+          status.textContent = i18nText("contact.form.success", "Thanks, got it. We're on it right away.");
           status.classList.remove("is-error");
           status.classList.add("is-visible");
         }
@@ -156,7 +156,7 @@ function initContactForm() {
       })
       .catch(() => {
         if (status) {
-          status.textContent = i18nText("contact.form.error", "Something went wrong — please call or WhatsApp us directly instead.");
+          status.textContent = i18nText("contact.form.error", "Something went wrong. Please call or WhatsApp us directly instead.");
           status.classList.add("is-visible", "is-error");
         }
       })
@@ -213,7 +213,7 @@ function initReveal() {
   }
 
   // GSAP + ScrollTrigger give the reveal a real spring-out ease instead of
-  // a linear/CSS-eased fade — the one orchestrated scroll moment, applied
+  // a linear/CSS-eased fade, the one orchestrated scroll moment, applied
   // consistently everywhere [data-reveal] is used, rather than one-off effects.
   if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
     ScrollTrigger.batch("[data-reveal]", {
@@ -237,7 +237,7 @@ function initReveal() {
     });
 
     // Trigger positions are measured against whatever's laid out at this
-    // point — before web fonts swap in (Libre Caslon Display reflows
+    // point, before web fonts swap in (Libre Caslon Display reflows
     // headings taller/shorter once it loads) and before lazy images settle.
     // Without a refresh after both, ScrollTrigger's start points go stale
     // and onEnter can silently never fire for content below the hero,
@@ -271,7 +271,7 @@ function initReveal() {
   });
 }
 
-/* Magnetic hover — the button eases a few px toward the cursor while inside
+/* Magnetic hover, the button eases a few px toward the cursor while inside
    its bounds, and springs back on leave. A tactile, premium-feeling detail
    that layers on top of the existing corner-chevron hover, not a
    replacement for it. */
