@@ -148,7 +148,7 @@ function initContactForm() {
     })
       .then(() => {
         if (status) {
-          status.textContent = i18nText("contact.form.success", "Thanks — that's on its way.");
+          status.textContent = i18nText("contact.form.success", "Thanks — got it. We're on it right away.");
           status.classList.remove("is-error");
           status.classList.add("is-visible");
         }
