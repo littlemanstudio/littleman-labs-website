@@ -60,7 +60,7 @@ window.LITTLEMAN_I18N = {
     "home.svc.textback.desc": "Never lose a lead again.",
     "home.svc.scheduling.desc": "Fewer no-shows, fuller calendar.",
     "home.svc.seo.desc": "Found first on Google.",
-    "home.svc.ads.desc": "Google &amp; Meta, managed weekly.",
+    "home.svc.ads.desc": "Meta, managed weekly.",
     "home.svc.reports.desc": "Leads in, jobs booked.",
     "home.svc.brand.desc": "Bilingual copy, done for you.",
 
@@ -94,7 +94,7 @@ window.LITTLEMAN_I18N = {
     "svcpage.svc.textback.desc": "An unanswered call gets an instant SMS reply.",
     "svcpage.svc.scheduling.desc": "Online booking with reminders that cut no-shows.",
     "svcpage.svc.seo.desc": "Google Business Profile &amp; review requests, managed.",
-    "svcpage.svc.ads.desc": "Google &amp; Meta campaigns, managed weekly.",
+    "svcpage.svc.ads.desc": "Meta campaigns, managed weekly.",
     "svcpage.svc.reports.desc": "Leads in, jobs booked, plain language, every month.",
     "svcpage.svc.brand.desc": "Bilingual copywriting, done for you.",
 
@@ -214,7 +214,7 @@ window.LITTLEMAN_I18N = {
     "home.svc.textback.desc": "Nunca vuelvas a perder un lead.",
     "home.svc.scheduling.desc": "Menos ausencias, calendario lleno.",
     "home.svc.seo.desc": "Que te encuentren primero en Google.",
-    "home.svc.ads.desc": "Google y Meta, gestionados cada semana.",
+    "home.svc.ads.desc": "Meta, gestionados cada semana.",
     "home.svc.reports.desc": "Leads que entran, trabajos agendados.",
     "home.svc.brand.desc": "Textos bilingües, listos para ti.",
 
@@ -248,7 +248,7 @@ window.LITTLEMAN_I18N = {
     "svcpage.svc.textback.desc": "Una llamada perdida recibe un SMS al instante.",
     "svcpage.svc.scheduling.desc": "Citas en línea con recordatorios que reducen ausencias.",
     "svcpage.svc.seo.desc": "Perfil de Google y solicitudes de reseñas, gestionados.",
-    "svcpage.svc.ads.desc": "Campañas en Google y Meta, gestionadas cada semana.",
+    "svcpage.svc.ads.desc": "Campañas en Meta, gestionadas cada semana.",
     "svcpage.svc.reports.desc": "Leads que entran, trabajos agendados, cada mes, en lenguaje claro.",
     "svcpage.svc.brand.desc": "Copywriting bilingüe, listo para ti.",
 
