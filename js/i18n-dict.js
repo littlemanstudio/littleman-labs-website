@@ -83,7 +83,7 @@ window.LITTLEMAN_I18N = {
 
     /* ---------- Contact ---------- */
     "contact.h1": "Cuéntanos sobre <span class=\"accent\">tu negocio.</span>",
-    "contact.lede": "Definimos tu sistema juntos. Envía un mensaje, llama, o escríbenos por WhatsApp — respondemos en un día laborable, sin presión de venta, sin obligación de firmar nada.",
+    "contact.lede": "Definimos tu sistema juntos. Envía un mensaje, llama, o escríbenos por WhatsApp — te contestamos enseguida, sin presión de venta, sin obligación de firmar nada.",
     "contact.form.name": "Nombre completo",
     "contact.form.email": "Correo electrónico",
     "contact.form.org": "Nombre del negocio",
@@ -97,7 +97,7 @@ window.LITTLEMAN_I18N = {
     "contact.label.studio": "Estudio",
     "contact.islandNote": "Servimos negocios en toda la isla, en español e inglés.",
     "contact.faq.h2": "Antes de contactarnos",
-    "contact.faq.body": "<p><em>¿Qué pasa después de enviar el formulario?</em> Leemos cada consulta el mismo día y respondemos en un día laborable — usualmente con algunas preguntas y un horario para la llamada gratis de 20 minutos.</p><p><em>¿Solo trabajan con negocios en Ponce?</em> Ponce y Peñuelas son nuestra base, pero el estudio construye sitios web y sistemas de CRM bilingües para negocios en cualquier parte de Puerto Rico.</p><p><em>¿Qué tan rápido es &quot;en línea en unas dos semanas&quot;?</em> Eso es típico para un sitio de 3–5 páginas una vez tengamos tu contenido y fotos. La configuración de CRM y automatización corre en paralelo, no después del lanzamiento.</p><p><em>¿Qué pasa después del lanzamiento?</em> El sitio web es tuyo para siempre, sin mensualidad obligatoria. La mayoría de los clientes añaden CRM y gestión de leads después, para que cada llamada, formulario y mensaje llegue a un solo buzón sin que se pierda nada — esa parte es un servicio mensual, y es la pieza que recomendamos conversar una vez el sitio esté en línea.</p>"
+    "contact.faq.body": "<p><em>¿Qué pasa después de enviar el formulario?</em> Leemos cada consulta y te contestamos enseguida — usualmente con algunas preguntas y un horario para la llamada gratis de 20 minutos.</p><p><em>¿Solo trabajan con negocios en Ponce?</em> Ponce y Peñuelas son nuestra base, pero el estudio construye sitios web y sistemas de CRM bilingües para negocios en cualquier parte de Puerto Rico.</p><p><em>¿Qué tan rápido es &quot;en línea en unas dos semanas&quot;?</em> Eso es típico para un sitio de 3–5 páginas una vez tengamos tu contenido y fotos. La configuración de CRM y automatización corre en paralelo, no después del lanzamiento.</p><p><em>¿Qué pasa después del lanzamiento?</em> El sitio web es tuyo para siempre, sin mensualidad obligatoria. La mayoría de los clientes añaden CRM y gestión de leads después, para que cada llamada, formulario y mensaje llegue a un solo buzón sin que se pierda nada — esa parte es un servicio mensual, y es la pieza que recomendamos conversar una vez el sitio esté en línea.</p>"
   },
 
   en: {
@@ -179,7 +179,7 @@ window.LITTLEMAN_I18N = {
 
     /* ---------- Contact ---------- */
     "contact.h1": "Tell us about <span class=\"accent\">your business.</span>",
-    "contact.lede": "We'll map out your system. Send an inquiry, call, or message us on WhatsApp — we reply within one business day, no sales pressure, no obligation to sign anything.",
+    "contact.lede": "We'll map out your system. Send an inquiry, call, or message us on WhatsApp — we get back to you right away, no sales pressure, no obligation to sign anything.",
     "contact.form.name": "Full name",
     "contact.form.email": "Email address",
     "contact.form.org": "Business name",
@@ -193,6 +193,6 @@ window.LITTLEMAN_I18N = {
     "contact.label.studio": "Studio",
     "contact.islandNote": "Serving businesses across the island, in English and Spanish.",
     "contact.faq.h2": "Before you reach out",
-    "contact.faq.body": "<p><em>What happens after I submit the form?</em> We read every inquiry the same day and reply within one business day — usually with a few questions and a time for the free 20-minute call.</p><p><em>Do you only work with businesses in Ponce?</em> Ponce and Peñuelas are home base, but the studio builds bilingual websites and CRM systems for businesses anywhere in Puerto Rico.</p><p><em>How fast is &quot;live in about two weeks&quot;?</em> That's typical for a 3–5 page website once we have your content and photos. CRM and automation setup runs in parallel, not after launch.</p><p><em>What happens after launch?</em> The website itself is yours forever, no monthly lock-in. Most clients add CRM & lead management afterward, so every call, form, and DM lands in one inbox with nothing missed — that part is a monthly service, and it's the piece we recommend starting a conversation about once the site is live.</p>"
+    "contact.faq.body": "<p><em>What happens after I submit the form?</em> We read every inquiry and get back to you right away — usually with a few questions and a time for the free 20-minute call.</p><p><em>Do you only work with businesses in Ponce?</em> Ponce and Peñuelas are home base, but the studio builds bilingual websites and CRM systems for businesses anywhere in Puerto Rico.</p><p><em>How fast is &quot;live in about two weeks&quot;?</em> That's typical for a 3–5 page website once we have your content and photos. CRM and automation setup runs in parallel, not after launch.</p><p><em>What happens after launch?</em> The website itself is yours forever, no monthly lock-in. Most clients add CRM & lead management afterward, so every call, form, and DM lands in one inbox with nothing missed — that part is a monthly service, and it's the piece we recommend starting a conversation about once the site is live.</p>"
   }
 };
