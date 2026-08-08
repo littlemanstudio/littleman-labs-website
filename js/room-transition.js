@@ -154,9 +154,25 @@ function playSequenceThenGo(videoEl, clips, href) {
     }
     videoEl.src = "assets/video/" + clips[i];
     i++;
-    videoEl.classList.add("is-playing");
-    const playPromise = videoEl.play();
-    if (playPromise && playPromise.catch) playPromise.catch(go);
+
+    // Don't reveal the video element until it actually has a frame ready.
+    // Adding `is-playing` immediately (before any data has loaded) exposes
+    // the element's graphite background as a bare flash, since preload is
+    // "none" and there's nothing decoded yet, negligible on fast desktop
+    // connections but a visible black-then-choppy stutter on slower mobile
+    // ones. Wait for canplay (with a safety timeout in case it never fires,
+    // e.g. the clip fails to load) so the current page stays on screen
+    // until the clip is actually ready to play smoothly.
+    let revealed = false;
+    const reveal = () => {
+      if (revealed) return;
+      revealed = true;
+      videoEl.classList.add("is-playing");
+      const playPromise = videoEl.play();
+      if (playPromise && playPromise.catch) playPromise.catch(go);
+    };
+    videoEl.addEventListener("canplay", reveal, { once: true });
+    window.setTimeout(reveal, 800);
   };
   videoEl.addEventListener("ended", playNext);
   playNext();
