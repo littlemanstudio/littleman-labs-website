@@ -153,16 +153,16 @@ function initIntercept() {
       sessionStorage.setItem(ZONE_FLAG, toZone);
       const preload = new Image();
       preload.src = "assets/img/lab/" + toZone + ".jpg";
-      // Cover with the plain wipe panel immediately, same as the fallback
-      // path below. The video (z-index 600) paints on top of it once ready
-      // and the panel is never seen once that happens, but on a slow phone
-      // this guarantees the screen is always in a deliberate covered state
-      // between click and video-ready instead of depending on the video
-      // itself (network, decode, first-paint) to cover anything. That gap
-      // was the real cause of the reported black flash surviving the
-      // earlier canplay/prefetch fixes: nothing was covering the screen
-      // while the video wasn't ready yet.
-      el.classList.add("is-covering");
+      // Deliberately NOT covering with the plain wipe panel here (tried
+      // that, user rejected it, a visible panel/door-swing before the
+      // video reads as a distinct "block" interrupting the one-continuous-
+      // hallway-walk illusion, not as a smooth transition). The current
+      // page just stays on screen, unchanged, until the video is truly
+      // ready (see playSequenceThenGo's canplay wait) and then fades in
+      // via CSS opacity instead of a hard cut, see .room-transition-video
+      // in style.css. Reliability now comes from prefetchNeighborClips
+      // warming the HTTP cache ahead of the click, not from a fallback
+      // cover element.
       playSequenceThenGo(videoEl, clips, link.href);
     } else {
       sessionStorage.removeItem(ZONE_FLAG);
@@ -195,17 +195,20 @@ function playSequenceThenGo(videoEl, clips, href) {
 
     // Don't reveal the video element until it actually has a frame ready.
     // Adding `is-playing` immediately (before any data has loaded) exposes
-    // the element's graphite background as a bare flash, since preload is
-    // "none" and there's nothing decoded yet, negligible on fast desktop
-    // connections but a visible black-then-choppy stutter on slower mobile
-    // ones. Wait for canplay (with a safety timeout in case it never fires,
-    // e.g. the clip fails to load) so the current page stays on screen
-    // until the clip is actually ready to play smoothly.
+    // the element's graphite background as a bare flash, negligible on a
+    // fast desktop connection but visible on slower mobile ones. Wait for
+    // canplay, then one more animation frame (canplay can fire a tick
+    // before the first frame is actually composited), then reveal. The
+    // reveal itself is a CSS opacity fade (not a class-toggle hard cut,
+    // see .room-transition-video in style.css) so even a slightly late
+    // first frame reads as a soft cross-fade instead of a snap. Safety
+    // timeout covers the case where canplay never fires at all (clip
+    // failed to load): the current page just stays visible until go().
     let revealed = false;
     const reveal = () => {
       if (revealed) return;
       revealed = true;
-      videoEl.classList.add("is-playing");
+      requestAnimationFrame(() => videoEl.classList.add("is-playing"));
       const playPromise = videoEl.play();
       if (playPromise && playPromise.catch) playPromise.catch(go);
     };

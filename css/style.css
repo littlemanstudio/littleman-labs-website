@@ -197,11 +197,11 @@ html.lm-precovered[data-precover-zone] .room-transition-photo.is-revealing {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  visibility: hidden;
   pointer-events: none;
   background: var(--graphite-deep);
+  transition: opacity 260ms ease;
 }
-.room-transition-video.is-playing { opacity: 1; visibility: visible; }
+.room-transition-video.is-playing { opacity: 1; }
 
 @media (prefers-reduced-motion: reduce) {
   .room-transition, .room-transition-video { display: none; }
