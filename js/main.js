@@ -192,13 +192,29 @@ function initMobileMenu() {
   });
 }
 
+// True when this page load arrived via the room-transition (the video or
+// CSS-wipe cover already played on the previous page and is fading out on
+// this one right now, see js/room-transition.js). The precover already IS
+// the reveal motion for this page, so replaying the hero split-word
+// stagger or the [data-reveal] scroll-in on top of it doubles up: the
+// cover clears and the content is *still* visibly animating into place
+// underneath, reading as "the page just reloaded" instead of "we already
+// arrived." Real bug reported 2026-08-08 as a "refresh effect" right as
+// the transition finishes. Skip both entrance animations on a precovered
+// load and just show the final state, same as the reduced-motion path.
+const IS_PRECOVERED_LOAD = document.documentElement.classList.contains("lm-precovered");
+
 function initSplitWords() {
   document.querySelectorAll("[data-split]").forEach((el) => {
     const words = el.textContent.trim().split(/\s+/);
     el.innerHTML = words
       .map((w, i) => `<span class="split-word"><span style="transition-delay:${i * 50}ms">${w}</span></span>`)
       .join(" ");
-    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("split-ready")));
+    if (IS_PRECOVERED_LOAD) {
+      el.classList.add("split-ready");
+    } else {
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("split-ready")));
+    }
   });
 }
 
@@ -207,7 +223,7 @@ function initReveal() {
   if (!items.length) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduceMotion) {
+  if (reduceMotion || IS_PRECOVERED_LOAD) {
     items.forEach((el) => el.classList.add("is-visible"));
     return;
   }

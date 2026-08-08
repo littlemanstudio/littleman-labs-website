@@ -152,9 +152,17 @@ body[data-lab-zone="comms"] .bg-scene { background-image: url("../assets/img/lab
 }
 /* Set synchronously, pre-paint, by the inline <head> script when the
    sessionStorage flag says a navigation is mid-wipe, keeps the incoming
-   page's first frame already covered instead of flashing raw content. */
-html.lm-precovered .room-transition::after { transform: rotate(0deg) translateZ(0); }
-html.lm-precovered .room-transition::before { opacity: 0.28; }
+   page's first frame already covered instead of flashing raw content.
+   Scoped to :not([data-precover-zone]): the video-transition arrival
+   uses the photo precover below instead (with its own solid-color
+   fallback), never this door. The two used to run stacked, and if the
+   photo's image hadn't finished decoding yet, the door (bronze border
+   stripe and all) would visibly show through underneath during the
+   fade-out, a distinct "door" flash the user could see and didn't want.
+   The door still fully applies on its own for the plain CSS-wipe
+   fallback path (no video/photo involved at all). */
+html.lm-precovered:not([data-precover-zone]) .room-transition::after { transform: rotate(0deg) translateZ(0); }
+html.lm-precovered:not([data-precover-zone]) .room-transition::before { opacity: 0.28; }
 
 /* Photo precover, used only after a video-clip room transition (not the
    plain wipe above). The generated hallway clips end on the destination
@@ -172,6 +180,7 @@ html.lm-precovered .room-transition::before { opacity: 0.28; }
   z-index: 550;
   background-size: cover;
   background-position: center;
+  background-color: var(--graphite-deep);
   opacity: 0;
   pointer-events: none;
 }
