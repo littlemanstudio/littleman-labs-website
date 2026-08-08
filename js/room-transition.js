@@ -192,22 +192,59 @@ function playSequenceThenGo(videoEl, clips, href) {
     // before the first frame is actually composited), then reveal. The
     // reveal itself is a CSS opacity fade (not a class-toggle hard cut,
     // see .room-transition-video in style.css) so even a slightly late
-    // first frame reads as a soft cross-fade instead of a snap. Safety
-    // timeout covers the case where canplay never fires at all (clip
-    // failed to load): the current page just stays visible until go().
+    // first frame reads as a soft cross-fade instead of a snap.
     let revealed = false;
+    let advanced = false;
+    let fallbackTimer = null;
+
+    // Moves to the next clip (or finishes) exactly once, whichever fires
+    // first: the video's own `ended` event (the normal path) or the
+    // per-clip fallback timer below (only if something actually went
+    // wrong, e.g. the clip errors out mid-playback).
+    const advance = () => {
+      if (advanced) return;
+      advanced = true;
+      if (fallbackTimer) window.clearTimeout(fallbackTimer);
+      videoEl.removeEventListener("ended", advance);
+      playNext();
+    };
+    videoEl.addEventListener("ended", advance, { once: true });
+
     const reveal = () => {
       if (revealed) return;
       revealed = true;
       requestAnimationFrame(() => videoEl.classList.add("is-playing"));
       const playPromise = videoEl.play();
-      if (playPromise && playPromise.catch) playPromise.catch(go);
+      if (playPromise && playPromise.catch) playPromise.catch(advance);
+
+      // The fallback timer used to be a single deadline set once for the
+      // whole sequence, measured from the original click. Any delay
+      // getting here (slow network, cold cache, mobile decode latency)
+      // ate directly into that shared budget, so a clip could get cut
+      // off and navigate away before it had actually finished playing,
+      // reported as the transition "cutting off too early." Anchoring
+      // it here instead, to when this specific clip actually started
+      // playing, means every clip always gets its real ~1.9s (clips are
+      // encoded at that length; CLIP_MS leaves a margin) regardless of
+      // how long it took to get to this point. This is purely a safety
+      // net now, the natural `ended` event above is what normally fires
+      // first.
+      fallbackTimer = window.setTimeout(advance, CLIP_MS);
+
+      // Also start fetching the *next* clip in a two-hop sequence now,
+      // while this one is playing, instead of only once it ends. Only
+      // the two direct ring-neighbor clips get warmed ahead of the
+      // click (prefetchNeighborClips), so the second leg of a two-room
+      // hop (Home<->About, Services<->Contact) used to start loading
+      // completely cold right in the middle of the transition, the
+      // most visible place for a stutter to land.
+      const nextClip = clips[i];
+      if (nextClip) {
+        fetch("assets/video/" + nextClip, { credentials: "omit" }).catch(function () {});
+      }
     };
     videoEl.addEventListener("canplay", reveal, { once: true });
     window.setTimeout(reveal, 800);
   };
-  videoEl.addEventListener("ended", playNext);
   playNext();
-
-  window.setTimeout(go, clips.length * CLIP_MS);
 }
