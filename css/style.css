@@ -101,79 +101,33 @@ body[data-lab-zone="comms"] .bg-scene { background-image: url("../assets/img/lab
   background: radial-gradient(58% 52% at 50% 46%, rgba(28, 26, 23, 0.58) 0%, rgba(28, 26, 23, 0.32) 50%, rgba(28, 26, 23, 0) 100%);
 }
 
-/* Room-to-room transition, a real transform wipe, not a fade. Studied
-   from vectrfl.com's actual page-transition CSS (a fixed panel, rotated
-   90deg off-screen at rest, swung to 0deg on navigation): a full-bleed
-   panel pinned at the right edge swings across the viewport like a door
-   closing over the current room, the real navigation happens while it's
-   fully covered, then it's gone before the next room's first paint (see
-   js/room-transition.js for the click-intercept + timing, and the inline
-   script in <head> that keeps the incoming page covered until it's ready
-   so there's never a flash of the raw page underneath). */
+/* Room-to-room transition. The graphite wipe "door" panel that used to
+   live here (a rotated panel swung shut like a door) is permanently
+   retired, the user explicitly rejected it after it kept showing through
+   as a visible flash/glimpse during the video-transition reveal, even
+   after being scoped away from that path. `.room-transition` is kept as
+   an inert, empty container (no ::before/::after content) purely so
+   js/room-transition.js doesn't need a matching rewrite to stop
+   referencing it, it now renders nothing under any class combination.
+   The photo precover below is the only cover mechanism, for every
+   transition, with its own solid-color fallback if the image hasn't
+   decoded yet, never a separate colored panel. */
 .room-transition {
   position: fixed;
   inset: 0;
   z-index: 500;
   pointer-events: none;
 }
-.room-transition::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #000;
-  opacity: 0;
-}
-.room-transition::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--graphite-deep);
-  border-left: 2px solid var(--bronze-bright);
-  transform-origin: right top;
-  transform: rotate(-90deg) translateZ(0);
-}
-.room-transition.is-covering::after {
-  transform: rotate(0deg) translateZ(0);
-  transition: transform 0.58s cubic-bezier(0.76, 0, 0.24, 1);
-}
-.room-transition.is-covering::before {
-  opacity: 0.28;
-  transition: opacity 0.4s ease;
-}
-.room-transition.is-covered::after { transform: rotate(0deg) translateZ(0); }
-.room-transition.is-covered::before { opacity: 0.28; }
-.room-transition.is-revealing::after {
-  opacity: 0;
-  transition: opacity 0.32s ease;
-}
-.room-transition.is-revealing::before {
-  opacity: 0;
-  transition: opacity 0.32s ease;
-}
-/* Set synchronously, pre-paint, by the inline <head> script when the
-   sessionStorage flag says a navigation is mid-wipe, keeps the incoming
-   page's first frame already covered instead of flashing raw content.
-   Scoped to :not([data-precover-zone]): the video-transition arrival
-   uses the photo precover below instead (with its own solid-color
-   fallback), never this door. The two used to run stacked, and if the
-   photo's image hadn't finished decoding yet, the door (bronze border
-   stripe and all) would visibly show through underneath during the
-   fade-out, a distinct "door" flash the user could see and didn't want.
-   The door still fully applies on its own for the plain CSS-wipe
-   fallback path (no video/photo involved at all). */
-html.lm-precovered:not([data-precover-zone]) .room-transition::after { transform: rotate(0deg) translateZ(0); }
-html.lm-precovered:not([data-precover-zone]) .room-transition::before { opacity: 0.28; }
 
-/* Photo precover, used only after a video-clip room transition (not the
-   plain wipe above). The generated hallway clips end on the destination
+/* Photo precover. The generated hallway clips end on the destination
    room's own assets/img/lab/*.jpg still frame, so holding that exact same
-   image as the incoming page's cover (instead of the flat graphite panel)
-   removes the visual seam that made a video transition look like a second,
-   unrelated "loading screen" cut, it should read as one continuous walk
-   into the room, not a page refresh. Set via the `data-precover-zone`
-   attribute the inline <head> script adds pre-paint from sessionStorage
-   (see js/room-transition.js). The flat panel still renders underneath as
-   a safety backdrop in case this image hasn't hit cache yet. */
+   image as the incoming page's cover removes the visual seam that made a
+   video transition look like a second, unrelated "loading screen" cut, it
+   should read as one continuous walk into the room, not a page refresh.
+   Set via the `data-precover-zone` attribute the inline <head> script
+   adds pre-paint from sessionStorage (see js/room-transition.js). Its own
+   background-color is the fallback if the image hasn't decoded yet, a
+   plain solid color, never an animated panel. */
 .room-transition-photo {
   position: fixed;
   inset: 0;

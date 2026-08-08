@@ -1,40 +1,41 @@
 /* Littleman Labs, room-to-room transition.
 
-   Primary path: real generated video, not a fade, a camera walking down
-   the corridor from one room's photo into the next (start/end frames were
-   the actual assets/img/lab/*.jpg stills, run through Higgsfield, then
-   sped up + motion-interpolated smooth with ffmpeg). The four rooms sit on
-   a loop (entry -> workshop -> studio -> comms -> entry), and every one of
-   the 4 edges has a clip in BOTH directions (the "reverse" ones are the
-   same footage played backward via ffmpeg's `reverse` filter, not the
-   video element's playbackRate, Chromium doesn't support negative
-   playbackRate reliably). Going somewhere that isn't a direct neighbor
-   (e.g. About -> Contact skips nothing, but Home -> Nosotros is 2 hops the
-   "wrong way" round) plays two clips back-to-back through the connecting
-   room, see RING + clipSequence(). Every one of the 4 pages can reach
-   every other page this way; the plain CSS wipe below is a last-resort
-   fallback, not the normal path.
+   Real generated video, not a fade, a camera walking down the corridor
+   from one room's photo into the next (start/end frames were the actual
+   assets/img/lab/*.jpg stills, run through Higgsfield, then sped up +
+   motion-interpolated smooth with ffmpeg). The four rooms sit on a loop
+   (entry -> workshop -> studio -> comms -> entry), and every one of the 4
+   edges has a clip in BOTH directions (the "reverse" ones are the same
+   footage played backward via ffmpeg's `reverse` filter, not the video
+   element's playbackRate, Chromium doesn't support negative playbackRate
+   reliably). Going somewhere that isn't a direct neighbor (e.g. About ->
+   Contact skips nothing, but Home -> Nosotros is 2 hops the "wrong way"
+   round) plays two clips back-to-back through the connecting room, see
+   RING + clipSequence(). Every one of the 4 pages can reach every other
+   page this way.
 
-   Fallback path: a transform wipe, not a fade, a fixed panel rotated
-   90deg off-screen at rest, swung to 0deg on navigation to cover the
-   viewport like a door (mechanic studied from vectrfl.com's own
-   transition CSS).
+   There used to be a colored wipe-panel "door" as a fallback/safety cover
+   for whenever the video wasn't ready or available. Permanently retired:
+   the user explicitly rejected it after it kept showing through as a
+   visible flash during the video-transition reveal, even after being
+   scoped away from that specific path. The only cover now is the
+   destination room's own still photo (with its own solid-color CSS
+   fallback if the image hasn't decoded yet), used uniformly whether the
+   video plays or not.
 
    This site is static HTML with real multi-page navigation (no
-   client-side router), so both paths have to survive an actual document
-   unload/reload: play the cover animation, THEN navigate once the screen
-   is fully covered. The incoming page would otherwise flash its raw,
+   client-side router), so this has to survive an actual document
+   unload/reload: play the clip, THEN navigate once it's done (or once a
+   safety timeout fires). The incoming page would otherwise flash its raw,
    uncovered content for a frame before this file even runs, so a tiny
    inline script in <head> (see index.html etc.) reads the sessionStorage
-   flags this file sets and adds `.lm-precovered` (+ `data-precover-zone`
-   for the video path, so the incoming page can hold on the destination
-   room's own still frame instead of the flat panel) to <html>
-   synchronously, pre-paint. This file then reveals it once the new page
-   is actually ready. */
+   flags this file sets and adds `.lm-precovered` + `data-precover-zone`
+   to <html> synchronously, pre-paint, so the incoming page holds on the
+   destination room's own still frame from its very first paint. This file
+   then reveals it once the new page is actually ready. */
 
 const FLAG = "lm-room-covered";
 const ZONE_FLAG = "lm-room-zone";
-const COVER_MS = 560;
 const REVEAL_MS = 340;
 const CLIP_MS = 2200;
 
@@ -104,17 +105,14 @@ function clipSequence(fromZone, toZone) {
 }
 
 function initReveal() {
-  const el = document.querySelector(".room-transition");
   const photoEl = document.querySelector(".room-transition-photo");
-  if (!el || !document.documentElement.classList.contains("lm-precovered")) return;
+  if (!photoEl || !document.documentElement.classList.contains("lm-precovered")) return;
 
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      el.classList.add("is-revealing");
-      if (photoEl) photoEl.classList.add("is-revealing");
+      photoEl.classList.add("is-revealing");
       window.setTimeout(() => {
-        el.classList.remove("is-covering", "is-covered", "is-revealing");
-        if (photoEl) photoEl.classList.remove("is-revealing");
+        photoEl.classList.remove("is-revealing");
         document.documentElement.classList.remove("lm-precovered");
         document.documentElement.removeAttribute("data-precover-zone");
         sessionStorage.removeItem(FLAG);
@@ -126,9 +124,8 @@ function initReveal() {
 
 function initIntercept() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const el = document.querySelector(".room-transition");
   const videoEl = document.querySelector(".room-transition-video");
-  if (!el) return;
+  if (!videoEl) return;
 
   document.addEventListener("click", (e) => {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -142,35 +139,29 @@ function initIntercept() {
 
     const fromZone = document.body.dataset.labZone;
     const toZone = zoneForPath(url.pathname);
-    const clips = videoEl && fromZone && toZone ? clipSequence(fromZone, toZone) : null;
+    const clips = fromZone && toZone ? clipSequence(fromZone, toZone) : null;
 
     e.preventDefault();
 
     if (clips) {
       // Warm the destination room photo in cache while the clip(s) play,
       // so it's ready to paint instantly as the incoming page's precover
-      // instead of popping in after a delay.
+      // instead of popping in after a delay. This photo (with its own
+      // solid-color CSS fallback) is the only cover, for every
+      // transition, no separate colored panel.
       sessionStorage.setItem(ZONE_FLAG, toZone);
       const preload = new Image();
       preload.src = "assets/img/lab/" + toZone + ".jpg";
-      // Deliberately NOT covering with the plain wipe panel here (tried
-      // that, user rejected it, a visible panel/door-swing before the
-      // video reads as a distinct "block" interrupting the one-continuous-
-      // hallway-walk illusion, not as a smooth transition). The current
-      // page just stays on screen, unchanged, until the video is truly
-      // ready (see playSequenceThenGo's canplay wait) and then fades in
-      // via CSS opacity instead of a hard cut, see .room-transition-video
-      // in style.css. Reliability now comes from prefetchNeighborClips
-      // warming the HTTP cache ahead of the click, not from a fallback
-      // cover element.
       playSequenceThenGo(videoEl, clips, link.href);
-    } else {
-      sessionStorage.removeItem(ZONE_FLAG);
-      el.classList.add("is-covering");
+    } else if (toZone) {
+      // Destination zone known but no clip sequence for it (shouldn't
+      // happen on this 4-room ring in practice), still precover with its
+      // photo and just navigate, no video, no separate cover mechanism.
+      sessionStorage.setItem(ZONE_FLAG, toZone);
       sessionStorage.setItem(FLAG, "1");
-      window.setTimeout(() => {
-        location.href = link.href;
-      }, COVER_MS);
+      location.href = link.href;
+    } else {
+      location.href = link.href;
     }
   });
 }
