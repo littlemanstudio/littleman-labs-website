@@ -146,7 +146,21 @@ function initContactForm() {
       headers: { Accept: "application/json" },
       body: new FormData(form),
     })
-      .then(() => {
+      // FormSubmit always responds with HTTP 200, even when it didn't
+      // actually deliver anything, an unactivated endpoint, a spam
+      // block, or a missing referer all still come back 200 with
+      // {"success":"false", "message": "..."} in the body. Checking
+      // only whether the fetch itself didn't throw was a real bug
+      // found 2026-08-08: it showed the customer a success message
+      // while FormSubmit silently dropped their message (in this
+      // case because the endpoint needed a one-time activation click
+      // that was never done). Parse the body and check the actual
+      // "success" field before deciding which message to show.
+      .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+      .then(({ ok, data }) => {
+        if (!ok || String(data && data.success).toLowerCase() === "false") {
+          throw new Error((data && data.message) || "FormSubmit reported failure");
+        }
         if (status) {
           status.textContent = i18nText("contact.form.success", "Thanks, got it. We're on it right away.");
           status.classList.remove("is-error");
