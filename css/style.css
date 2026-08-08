@@ -658,6 +658,35 @@ h1, h2, h3, .display {
   .quick-services { grid-template-columns: 1fr; }
 }
 
+/* Legal content (Terms, Privacy): dense reference text with numbered
+   sections, deliberately not the large display-prose treatment
+   .intro-block uses for short marketing blurbs, that size/weight would
+   be unreadable at this length. */
+.legal-content { max-width: 720px; }
+.legal-updated {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--bone-faint);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+}
+.legal-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--bone);
+  margin-top: 48px;
+}
+.legal-content h2:first-of-type { margin-top: 0; }
+.legal-content p {
+  margin-top: 14px;
+  color: var(--bone-dim);
+  line-height: 1.7;
+}
+.legal-content a { text-decoration: underline; text-underline-offset: 3px; }
+.legal-content a:hover { text-decoration-thickness: 2px; }
+
 /* Intro / about blurb */
 .intro-block { max-width: 880px; }
 .intro-block p {
