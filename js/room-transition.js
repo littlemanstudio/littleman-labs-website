@@ -153,6 +153,16 @@ function initIntercept() {
       sessionStorage.setItem(ZONE_FLAG, toZone);
       const preload = new Image();
       preload.src = "assets/img/lab/" + toZone + ".jpg";
+      // Cover with the plain wipe panel immediately, same as the fallback
+      // path below. The video (z-index 600) paints on top of it once ready
+      // and the panel is never seen once that happens, but on a slow phone
+      // this guarantees the screen is always in a deliberate covered state
+      // between click and video-ready instead of depending on the video
+      // itself (network, decode, first-paint) to cover anything. That gap
+      // was the real cause of the reported black flash surviving the
+      // earlier canplay/prefetch fixes: nothing was covering the screen
+      // while the video wasn't ready yet.
+      el.classList.add("is-covering");
       playSequenceThenGo(videoEl, clips, link.href);
     } else {
       sessionStorage.removeItem(ZONE_FLAG);
