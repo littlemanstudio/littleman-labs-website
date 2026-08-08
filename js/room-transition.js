@@ -57,6 +57,34 @@ const PAGE_ZONE = {
 
 initReveal();
 initIntercept();
+prefetchNeighborClips();
+
+// Waiting for `canplay` on click (see playNext below) stops the video
+// from being *revealed* before it has a frame, but it doesn't guarantee
+// enough is buffered to play smoothly through on a slow connection,
+// that's what caused the reported choppiness surviving the first fix.
+// The real fix is to have the likely-next clip(s) already cached before
+// the click happens at all. From any room there are exactly two direct
+// ring neighbors, so this is at most 2 short clips (~250-450KB each),
+// fetched into the HTTP cache after the page has had a moment to settle
+// and only on a real connection (skips Data Saver / 2G).
+function prefetchNeighborClips() {
+  const conn = navigator.connection;
+  if (conn && (conn.saveData || /^2g/.test(conn.effectiveType || ""))) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const zone = document.body.dataset.labZone;
+  const i = RING.indexOf(zone);
+  if (i === -1) return;
+
+  const neighbors = [RING[(i + 1) % RING.length], RING[(i - 1 + RING.length) % RING.length]];
+  const idle = window.requestIdleCallback || function (fn) { window.setTimeout(fn, 800); };
+  idle(function () {
+    neighbors.forEach(function (n) {
+      fetch("assets/video/" + zone + "-" + n + ".mp4", { credentials: "omit" }).catch(function () {});
+    });
+  });
+}
 
 function zoneForPath(pathname) {
   const file = pathname.split("/").pop();
