@@ -766,12 +766,12 @@ h1, h2, h3, .display {
 }
 
 /* ==========================================================================
-   Code scroll, scroll-scrubbed frame sequence (same technique behind
-   "3D product" scroll showcases: a tall runway pins a sticky viewport,
-   and scroll progress alone picks which frame shows, so scrolling back
-   up reverses it for free). See js/code-scroll.js.
+   Code scroll, pinned build-process clip. A short runway pins the sticky
+   viewport just long enough to register as intentional, not a stuck
+   page, the clip itself just plays/loops on its own now (no scroll-tied
+   scrubbing, see js/code-scroll.js), so this doesn't need to be long.
    ========================================================================== */
-.code-scroll { position: relative; height: 400vh; }
+.code-scroll { position: relative; height: 180vh; }
 .code-scroll-sticky {
   position: sticky;
   top: 0;
