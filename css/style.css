@@ -360,13 +360,24 @@ h1, h2, h3, .display {
   filter: brightness(0) invert(1);
   opacity: 0.92;
 }
-.preloader-count {
+.preloader-orbit {
   position: absolute;
-  bottom: -46px;
-  right: -8px;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--bronze-bright);
+  inset: -22px;
+  animation: preloader-spin 0.55s linear infinite;
+}
+.preloader-orbit-dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--bronze-bright);
+  box-shadow: 0 0 6px 2px var(--bronze-bright), 0 0 16px 5px rgba(216, 168, 105, 0.5);
+}
+@keyframes preloader-spin {
+  to { transform: rotate(360deg); }
 }
 
 /* ==========================================================================

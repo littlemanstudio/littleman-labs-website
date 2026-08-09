@@ -69,7 +69,6 @@ function initFlipLinks() {
 
 function initPreloader() {
   const el = document.querySelector(".preloader");
-  const countEl = document.querySelector(".preloader-count");
   const hero = document.querySelector(".hero");
   const heroTitle = document.querySelector(".hero-title");
   const revealHero = () => {
@@ -95,22 +94,12 @@ function initPreloader() {
 
   el.classList.add("is-active");
   sessionStorage.setItem("llPreloaderSeen", "1");
-  let n = 0;
-  const start = performance.now();
   const minDuration = 1100;
-  const tick = () => {
-    const elapsed = performance.now() - start;
-    n = Math.min(100, Math.round((elapsed / minDuration) * 100));
-    if (countEl) countEl.textContent = String(n).padStart(2, "0");
-    if (elapsed < minDuration) {
-      requestAnimationFrame(tick);
-    } else {
-      el.classList.remove("is-active");
-      el.classList.add("is-hidden");
-      revealHero();
-    }
-  };
-  requestAnimationFrame(tick);
+  setTimeout(() => {
+    el.classList.remove("is-active");
+    el.classList.add("is-hidden");
+    revealHero();
+  }, minDuration);
 }
 
 const CONTACT_FORM_ENDPOINT = "https://formsubmit.co/ajax/info@littlemanlabs.com";
