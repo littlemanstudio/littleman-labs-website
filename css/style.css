@@ -783,8 +783,13 @@ h1, h2, h3, .display {
 }
 .code-scroll-frame {
   position: relative;
-  width: min(420px, 82vw);
-  height: min(746px, 78vh);
+  /* Single width value, constrained by both the viewport's width AND its
+     height (the third term converts an available-height budget into the
+     matching 9:16 width), then aspect-ratio derives height from that.
+     Two independent min(px, vw) / min(px, vh) constraints (the previous
+     version) don't agree on shorter viewports, the box stops being a true
+     9:16 rect, and whatever sits below it collides with the frame. */
+  width: min(400px, 82vw, 70vh * 0.5625);
   aspect-ratio: 9 / 16;
   border: 1px solid var(--line-strong);
 }
@@ -811,16 +816,36 @@ h1, h2, h3, .display {
 .code-scroll-caption {
   position: absolute;
   left: 0;
-  bottom: -32px;
+  bottom: 0;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   width: 100%;
+  padding: 20px 16px 14px;
+  background: linear-gradient(to top, rgba(18, 17, 16, 0.82), rgba(18, 17, 16, 0));
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--bone-faint);
 }
+.code-scroll-sound {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  padding: 7px 12px;
+  background: rgba(18, 17, 16, 0.55);
+  border: 1px solid rgba(241, 237, 228, 0.3);
+  color: var(--bone);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.code-scroll-sound:hover { background: rgba(18, 17, 16, 0.8); border-color: var(--bronze-bright); }
 
 /* ==========================================================================
    Services slider, native scroll-snap (no pin/scrub math, so it can't

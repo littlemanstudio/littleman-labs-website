@@ -16,6 +16,7 @@ function initCodeScroll() {
   const section = document.getElementById("codeScroll");
   if (!section) return;
   const video = section.querySelector(".code-scroll-video");
+  const soundBtn = section.querySelector(".code-scroll-sound");
   if (!video) return;
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; // poster frame stands in, video never plays
@@ -33,4 +34,20 @@ function initCodeScroll() {
     { threshold: 0.35 }
   );
   observer.observe(video);
+
+  // Autoplay only works muted, so it starts silent and this button lets
+  // whoever wants the audio turn it on with a tap.
+  if (!soundBtn) return;
+  const label = (key, fallback) => {
+    const lang = document.documentElement.getAttribute("lang") || "es";
+    const dict = (window.LITTLEMAN_I18N && window.LITTLEMAN_I18N[lang]) || {};
+    return dict[key] != null ? dict[key] : fallback;
+  };
+  soundBtn.addEventListener("click", () => {
+    video.muted = !video.muted;
+    soundBtn.textContent = video.muted
+      ? label("home.codeScroll.unmute", "Activar sonido")
+      : label("home.codeScroll.mute", "Silenciar");
+    soundBtn.setAttribute("aria-label", soundBtn.textContent);
+  });
 }

@@ -30,6 +30,8 @@ window.LITTLEMAN_I18N = {
     "home.why.body": "<p>Tu sitio, tu CRM y tus anuncios normalmente viven en herramientas separadas, cada una con su propio inicio de sesión, su propio soporte, y su propia factura. Aquí viven en el mismo sistema desde el primer día, sitio web, CRM y automatización, construidos juntos, no comprados por separado.</p><p>Un lead que llama, llena un formulario, o escribe por WhatsApp llega al mismo buzón, recibe el mismo seguimiento, y aparece en el mismo reporte mensual.</p><p>Cuando algo falla, sabes exactamente a quién llamar. Nadie te dice que eso no es con nosotros, es con la otra empresa. Y cuando todo funciona, tampoco tienes que coordinar entre tres calendarios distintos para lanzar una campaña o cambiar un texto en el sitio.</p><p>El tiempo vale más que el dinero. Por eso lo construimos una vez, bien hecho, para que deje de consumir tus horas todos los días.</p>",
 
     "home.codeScroll.caption": "Cómo sucede un proyecto, en realidad, de principio a fin",
+    "home.codeScroll.unmute": "Activar sonido",
+    "home.codeScroll.mute": "Silenciar",
 
     "home.process.lede": "Así se ve un proyecto, de la llamada al lanzamiento.",
     "home.process.step1.title": "Llamada",
@@ -140,6 +142,8 @@ window.LITTLEMAN_I18N = {
     "home.why.body": "<p>Your website, your CRM, and your ads usually live in separate tools, each with its own login, its own support line, and its own invoice. Here they live in the same system from day one, website, CRM, and automation, built together, not bought separately.</p><p>A lead that calls, fills out a form, or messages on WhatsApp lands in the same inbox, gets the same follow-up, and shows up in the same monthly report.</p><p>When something breaks, you know exactly who to call. Nobody tells you that's not us, that's the other company. And when everything's working, you're not coordinating three different calendars just to launch a campaign or change a line of text on the site.</p><p>Time is worth more than money. That's why we build it once, done right, so it stops eating your hours every day.</p>",
 
     "home.codeScroll.caption": "How a build actually happens, start to finish",
+    "home.codeScroll.unmute": "Turn on sound",
+    "home.codeScroll.mute": "Mute",
 
     "home.process.lede": "Here's what a project actually looks like, from call to launch.",
     "home.process.step1.title": "Call",
