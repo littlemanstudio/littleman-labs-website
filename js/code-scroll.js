@@ -45,9 +45,11 @@ function initCodeScroll() {
   };
   soundBtn.addEventListener("click", () => {
     video.muted = !video.muted;
-    soundBtn.textContent = video.muted
+    soundBtn.classList.toggle("is-unmuted", !video.muted);
+    const text = video.muted
       ? label("home.codeScroll.unmute", "Activar sonido")
       : label("home.codeScroll.mute", "Silenciar");
-    soundBtn.setAttribute("aria-label", soundBtn.textContent);
+    soundBtn.setAttribute("aria-label", text);
+    soundBtn.setAttribute("title", text);
   });
 }

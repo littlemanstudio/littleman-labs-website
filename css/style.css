@@ -834,18 +834,22 @@ h1, h2, h3, .display {
   top: 14px;
   right: 14px;
   z-index: 2;
-  padding: 7px 12px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   background: rgba(18, 17, 16, 0.55);
   border: 1px solid rgba(241, 237, 228, 0.3);
   color: var(--bone);
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   cursor: pointer;
   transition: background 0.2s var(--ease), border-color 0.2s var(--ease);
 }
 .code-scroll-sound:hover { background: rgba(18, 17, 16, 0.8); border-color: var(--bronze-bright); }
+.code-scroll-sound .icon-unmuted { display: none; }
+.code-scroll-sound.is-unmuted .icon-muted { display: none; }
+.code-scroll-sound.is-unmuted .icon-unmuted { display: block; }
 
 /* ==========================================================================
    Services slider, native scroll-snap (no pin/scrub math, so it can't

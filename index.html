@@ -156,7 +156,18 @@ src="https://www.facebook.com/tr?id=2527987917650629&ev=PageView&noscript=1"
         playsinline
         preload="metadata"
       ></video>
-      <button type="button" class="code-scroll-sound" data-i18n="home.codeScroll.unmute" aria-label="Activar sonido">Activar sonido</button>
+      <button type="button" class="code-scroll-sound" data-i18n-attr="aria-label:home.codeScroll.unmute" aria-label="Activar sonido" title="Activar sonido">
+        <svg class="icon-muted" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="10 4 5 8 2 8 2 14 5 14 10 18 10 4"></polygon>
+          <line x1="21" y1="8" x2="15" y2="14"></line>
+          <line x1="15" y1="8" x2="21" y2="14"></line>
+        </svg>
+        <svg class="icon-unmuted" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="10 4 5 8 2 8 2 14 5 14 10 18 10 4"></polygon>
+          <path d="M14.5 6.5a7 7 0 0 1 0 9.9"></path>
+          <path d="M17.5 3.5a11.5 11.5 0 0 1 0 15"></path>
+        </svg>
+      </button>
       <div class="code-scroll-caption">
         <span data-i18n="home.codeScroll.caption">Cómo sucede un proyecto, en realidad, de principio a fin</span>
       </div>
