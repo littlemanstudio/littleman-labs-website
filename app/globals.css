@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --graphite: #1c1a17;
+  --graphite-deep: #121110;
+  --bone: #f1ede4;
+  --bone-dim: rgba(241, 237, 228, 0.85);
+  --bone-faint: rgba(241, 237, 228, 0.58);
+  --line: rgba(241, 237, 228, 0.14);
+  --line-strong: rgba(241, 237, 228, 0.28);
+  --bronze: #b8874a;
+  --bronze-bright: #d8a869;
+  --patina: #5c8a75;
+
+  --font-display: var(--font-outfit);
+  --font-body: var(--font-jakarta);
+  --font-mono: var(--font-ibm-plex-mono);
+
+  --fs-h1: clamp(3rem, 2rem + 5vw, 7rem);
+  --fs-h2: clamp(2.6rem, 1.6rem + 4.6vw, 6rem);
+  --fs-h3: clamp(1.7rem, 1.35rem + 1.6vw, 2.6rem);
+  --fs-lead: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+}
+
+@theme inline {
+  --color-graphite: var(--graphite);
+  --color-graphite-deep: var(--graphite-deep);
+  --color-bone: var(--bone);
+  --color-bone-dim: var(--bone-dim);
+  --color-bone-faint: var(--bone-faint);
+  --color-bronze: var(--bronze);
+  --color-bronze-bright: var(--bronze-bright);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+/* Base rules wrapped in Tailwind's base layer so utility classes (e.g.
+   font-extrabold on a specific h1) can still override them, plain
+   unlayered CSS here would always win over Tailwind's layered utilities
+   regardless of specificity, which silently capped every heading at 700
+   even where a page explicitly asked for 800. */
+@layer base {
+  body {
+    background: var(--graphite);
+    color: var(--bone);
+    font-family: var(--font-body);
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.05;
+  }
+
+  /* Colored-word headline emphasis was explicitly removed on the live site
+     (2026-08-07): it read as an AI-template tic ("gradient/colored word in
+     the headline"), the same complaint that already ruled out gradients
+     and italic. Emphasized words render as plain headline text now, no
+     color, no italic. Do not reintroduce a colored-word device here. */
+  .accent {
+    font-style: normal;
+    color: inherit;
+  }
+}
