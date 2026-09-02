@@ -5,6 +5,7 @@ import Image from "next/image";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import { NavLink } from "@/components/NavLink";
 import { useLang } from "@/components/LangProvider";
+import { LangSwitch } from "@/components/LangSwitch";
 import { AnimatePresence, motion } from "framer-motion";
 
 const LINKS = [
@@ -27,7 +28,7 @@ function Logo() {
    dropped-shadow, nudged down from the top) instead of just toggling a
    flat background color. */
 export function Navbar() {
-  const { t, lang, setLang } = useLang();
+  const { t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -75,21 +76,8 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
-          <div className="flex overflow-hidden rounded-full border border-bone/20 font-mono text-[0.68rem]">
-            {(["es", "en"] as const).map((code) => (
-              <button
-                key={code}
-                onClick={() => setLang(code)}
-                className={
-                  "px-2.5 py-1 uppercase transition-colors " +
-                  (lang === code ? "bg-bronze-bright text-graphite-deep" : "text-bone/60 hover:text-bone")
-                }
-              >
-                {code}
-              </button>
-            ))}
-          </div>
+        <div className="flex items-center gap-5">
+          <LangSwitch />
           <NavLink
             href="/contact"
             className="rounded-md border border-bronze/70 px-4 py-2 font-mono text-[0.72rem] uppercase tracking-[0.06em] text-bronze-bright transition-colors hover:bg-bronze-bright hover:text-graphite-deep"
@@ -158,19 +146,8 @@ export function Navbar() {
                 {t("nav.contact")}
               </NavLink>
             </motion.div>
-            <div className="flex gap-2 pt-4 font-mono text-xs">
-              {(["es", "en"] as const).map((code) => (
-                <button
-                  key={code}
-                  onClick={() => setLang(code)}
-                  className={
-                    "rounded-full border border-bone/20 px-3 py-1 uppercase " +
-                    (lang === code ? "bg-bronze-bright text-graphite-deep" : "text-bone/60")
-                  }
-                >
-                  {code}
-                </button>
-              ))}
+            <div className="pt-4">
+              <LangSwitch large />
             </div>
           </motion.div>
         )}
