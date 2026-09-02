@@ -21,8 +21,12 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-5xl gap-12 px-6 pb-28 md:grid-cols-[1fr_1.1fr]">
-        <Reveal className="flex flex-col gap-4">
+      <section className="mx-auto grid max-w-5xl gap-12 px-6 pb-28 md:grid-cols-[1.1fr_1fr]">
+        <Reveal>
+          <ContactForm />
+        </Reveal>
+
+        <Reveal delay={0.08} className="flex flex-col gap-4">
           <a
             href="https://wa.me/19392335269"
             className="rounded-lg border border-bone/20 bg-graphite-deep/90 p-6 backdrop-blur-sm transition-colors hover:border-bronze-bright"
@@ -57,10 +61,6 @@ export default function Contact() {
               aspect="aspect-[16/10]"
             />
           </div>
-        </Reveal>
-
-        <Reveal delay={0.08}>
-          <ContactForm />
         </Reveal>
       </section>
 
