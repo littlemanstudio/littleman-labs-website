@@ -47,10 +47,20 @@ export function RoomTransitionProvider({ children }: { children: React.ReactNode
   const currentZoneRef = useRef<Zone>(zoneForPath(pathname));
   const [zone, setZone] = useState<Zone>(zoneForPath(pathname));
   const [queue, setQueue] = useState<string[]>([]);
-  const [clipIndex, setClipIndex] = useState(0);
   const [covering, setCovering] = useState(false);
   const [fadeOnly, setFadeOnly] = useState(false);
   const reducedMotionRef = useRef(false);
+
+  // Two persistent <video> elements that never remount: while slot A plays,
+  // slot B preloads the next clip in the background, so swapping between
+  // clips in a multi-hop sequence is a crossfade between two already-primed
+  // frames instead of a fresh element buffering from nothing (the old
+  // key={currentClip} approach, which showed the cover's bg color through
+  // for a beat every time React tore down and rebuilt the video node).
+  const videoRefs = [useRef<HTMLVideoElement>(null), useRef<HTMLVideoElement>(null)];
+  const [activeSlot, setActiveSlot] = useState<0 | 1>(0);
+  const clipIndexRef = useRef(0);
+  const queueRef = useRef<string[]>([]);
 
   useEffect(() => {
     reducedMotionRef.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -84,7 +94,6 @@ export function RoomTransitionProvider({ children }: { children: React.ReactNode
       setZone(toZone);
       setFadeOnly(false);
       setQueue(clips);
-      setClipIndex(0);
       setCovering(true);
       // Swap the underlying route while it's covered, so it's ready the
       // instant the cover lifts.
@@ -93,40 +102,90 @@ export function RoomTransitionProvider({ children }: { children: React.ReactNode
     [router]
   );
 
-  const handleClipEnded = () => {
-    if (clipIndex < queue.length - 1) {
-      setClipIndex((i) => i + 1);
-    } else {
-      setCovering(false);
-    }
-  };
+  // Prime slot 0 with the sequence's first clip and, if there's a second
+  // hop, start slot 1 buffering it in the background so it's already
+  // decoded and ready the moment slot 0 finishes — the swap below just
+  // crossfades between two live videos instead of waiting on a fresh one.
+  useEffect(() => {
+    if (fadeOnly || queue.length === 0) return;
+    clipIndexRef.current = 0;
+    queueRef.current = queue;
+    setActiveSlot(0);
 
-  const currentClip = queue[clipIndex];
+    const a = videoRefs[0].current;
+    const b = videoRefs[1].current;
+    if (a) {
+      a.src = `/video/${queue[0]}.mp4`;
+      a.currentTime = 0;
+      a.load();
+      a.play().catch(() => {});
+    }
+    if (b) {
+      if (queue[1]) {
+        b.src = `/video/${queue[1]}.mp4`;
+        b.currentTime = 0;
+        b.load();
+      } else {
+        b.removeAttribute("src");
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [queue, fadeOnly]);
+
+  const handleSlotEnded = useCallback((slot: 0 | 1) => {
+    const q = queueRef.current;
+    if (clipIndexRef.current >= q.length - 1) {
+      setCovering(false);
+      return;
+    }
+    clipIndexRef.current += 1;
+    const nextSlot: 0 | 1 = slot === 0 ? 1 : 0;
+    const nextVideo = videoRefs[nextSlot].current;
+    if (nextVideo) {
+      nextVideo.currentTime = 0;
+      nextVideo.play().catch(() => {});
+    }
+    setActiveSlot(nextSlot);
+  }, []);
 
   return (
     <RoomTransitionContext.Provider value={{ navigate, zone }}>
       {children}
       <AnimatePresence>
-        {covering && (fadeOnly || currentClip) && (
+        {covering && (fadeOnly || queue.length > 0) && (
           <motion.div
             key="room-cover"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35 }}
-            className="fixed inset-0 z-[999] flex items-center justify-center bg-[var(--graphite-deep)]"
+            className="fixed inset-0 z-[999] flex items-center justify-center overflow-hidden bg-[var(--graphite-deep)]"
           >
-            {!fadeOnly && currentClip && (
-              <video
-                key={currentClip}
-                className="h-full w-full object-cover"
-                src={`/video/${currentClip}.mp4`}
-                autoPlay
-                muted
-                playsInline
-                onEnded={handleClipEnded}
-                onError={handleClipEnded}
-              />
+            {!fadeOnly && queue.length > 0 && (
+              <>
+                <video
+                  ref={videoRefs[0]}
+                  className={
+                    "absolute inset-0 h-full w-full object-cover transition-opacity duration-150 " +
+                    (activeSlot === 0 ? "opacity-100" : "opacity-0")
+                  }
+                  muted
+                  playsInline
+                  onEnded={() => handleSlotEnded(0)}
+                  onError={() => handleSlotEnded(0)}
+                />
+                <video
+                  ref={videoRefs[1]}
+                  className={
+                    "absolute inset-0 h-full w-full object-cover transition-opacity duration-150 " +
+                    (activeSlot === 1 ? "opacity-100" : "opacity-0")
+                  }
+                  muted
+                  playsInline
+                  onEnded={() => handleSlotEnded(1)}
+                  onError={() => handleSlotEnded(1)}
+                />
+              </>
             )}
           </motion.div>
         )}
