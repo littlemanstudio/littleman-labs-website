@@ -29,7 +29,7 @@ export function Footer() {
       <div className="mx-auto max-w-5xl px-6 py-14">
         <div
           aria-hidden="true"
-          className="pointer-events-none select-none text-[13vw] font-extrabold leading-none tracking-tight text-bone/5 sm:text-6xl"
+          className="pointer-events-none select-none text-[13vw] font-extrabold leading-none tracking-tight text-bone/15 sm:text-6xl"
           style={{ fontFamily: "var(--font-display)" }}
         >
           Littleman Labs

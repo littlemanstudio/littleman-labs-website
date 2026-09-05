@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useLang } from "@/components/LangProvider";
 import { NavLink } from "@/components/NavLink";
 import { Reveal } from "@/components/Reveal";
@@ -8,8 +9,30 @@ import { PhotoFrame } from "@/components/PhotoFrame";
 import { CodeScroll } from "@/components/CodeScroll";
 import { CtaMascot } from "@/components/CtaMascot";
 
+/* The hero sculpture frame has two layouts (desktop: absolute vitrine,
+   mobile: inline card) shown/hidden with Tailwind's `hidden`/`md:hidden`,
+   but `display:none` doesn't unmount -- mounting <HeroScene/> in both
+   frames unconditionally ran two full WebGL scenes (GLB fetch, shadow
+   maps, rAF loop) at once on every device, one of them always invisible.
+   This tracks the breakpoint so only the frame actually on screen mounts
+   the real scene. */
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
+  return isDesktop;
+}
+
 export default function Home() {
   const { t } = useLang();
+  const isDesktop = useIsDesktop();
 
   return (
     <>
@@ -36,7 +59,7 @@ export default function Home() {
             className="absolute bottom-[-1px] right-[-1px] z-10 h-3.5 w-3.5 border-b border-r"
             style={{ borderColor: "var(--bronze-bright)" }}
           />
-          <HeroScene />
+          {isDesktop && <HeroScene />}
         </div>
 
         <div className="mx-auto w-full max-w-6xl">
@@ -70,7 +93,7 @@ export default function Home() {
               className="absolute bottom-[-1px] right-[-1px] z-10 h-3.5 w-3.5 border-b border-r"
               style={{ borderColor: "var(--bronze-bright)" }}
             />
-            <HeroScene />
+            {isDesktop === false && <HeroScene />}
           </div>
         </div>
       </section>
