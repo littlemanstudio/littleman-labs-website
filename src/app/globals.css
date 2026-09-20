@@ -2001,3 +2001,23 @@ button {
   padding-top: clamp(64px, 8vh, 110px);
   padding-bottom: clamp(64px, 8vh, 110px);
 }
+
+/* ---------- legibility over the statue ----------
+   Text-shadow inherits, so one soft dark halo on the body covers every line of copy
+   that can end up in front of the crystal. Kept light: tight edge plus a wide, faint bloom. */
+body {
+  text-shadow:
+    0 1px 2px rgba(6, 16, 21, 0.5),
+    0 0 14px rgba(6, 16, 21, 0.45),
+    0 0 34px rgba(6, 16, 21, 0.3);
+}
+/* light scenes and light buttons never sit over the statue: no halo there */
+.contact,
+.contact *,
+.footer,
+.footer *,
+.skip,
+.cookie .yes,
+.send {
+  text-shadow: none;
+}
