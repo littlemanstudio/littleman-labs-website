@@ -117,7 +117,10 @@ export default function BabyGlass({ page = false }: { page?: boolean }) {
     });
     scene.add(ringRig);
 
-    const photo = new THREE.TextureLoader().load("/models/crystal-front.webp");
+    let dead = false;
+    let photoDone!: () => void;
+    const photoReady = new Promise<void>((res) => (photoDone = res));
+    const photo = new THREE.TextureLoader().load("/models/crystal-front.webp", photoDone, undefined, photoDone);
     photo.colorSpace = THREE.SRGBColorSpace;
     photo.anisotropy = 8;
     let ready = false;
@@ -182,9 +185,15 @@ export default function BabyGlass({ page = false }: { page?: boolean }) {
         });
       });
       spin.add(holder);
-      ready = true;
-      canvas.dataset.ready = "true";
-      document.documentElement.classList.add("gl-baby");
+      /* Show the statue only once the photo is in and the shaders are compiled off the main thread,
+         so its first frame never stalls the page and it fades in smoothly. */
+      const compiled = renderer.compileAsync(scene, camera).catch(() => undefined);
+      void Promise.all([photoReady, compiled]).then(() => {
+        if (dead) return;
+        ready = true;
+        canvas.dataset.ready = "true";
+        document.documentElement.classList.add("gl-baby");
+      });
     });
 
     /* ---- layout + anchors ---- */
@@ -351,6 +360,7 @@ export default function BabyGlass({ page = false }: { page?: boolean }) {
     raf = requestAnimationFrame(draw);
 
     return () => {
+      dead = true;
       cancelAnimationFrame(raf);
       clearTimeout(late);
       window.removeEventListener("resize", measure);
