@@ -205,7 +205,7 @@ export default function BabyGlass({ page = false }: { page?: boolean }) {
     const measure = () => {
       W = innerWidth;
       H = innerHeight;
-      const dpr = Math.min(devicePixelRatio || 1, 1.75);
+      const dpr = Math.min(devicePixelRatio || 1, 1.5);
       renderer.setPixelRatio(dpr);
       renderer.setSize(W, H, false);
       camera.aspect = W / H;

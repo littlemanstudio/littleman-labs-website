@@ -17,7 +17,7 @@ export default function Hero() {
       if (reducedMotion()) return;
       const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
       tl.from(".hero-copy h1 .wi", { yPercent: 115, duration: 1.2, stagger: 0.07 }, 0.25)
-        .from(".hero-copy p", { autoAlpha: 0, y: 18, filter: "blur(6px)", duration: 1.1 }, 1.05)
+        .from(".hero-copy p", { autoAlpha: 0, y: 18, filter: "blur(6px)", clearProps: "filter", duration: 1.1 }, 1.05)
         .from(".cta", { autoAlpha: 0, x: -16, duration: 1 }, 1.2)
         .from(".cta .ring", { scale: 0, duration: 1.1, ease: "back.out(1.8)" }, 1.2)
         .from(".scroll-cue", { autoAlpha: 0, duration: 1 }, 2);
@@ -32,16 +32,15 @@ export default function Hero() {
         },
       });
       // the dark legibility scrim at the hero's foot fades out first, so the hero meets the next section without a visible edge
-      gsap.fromTo(el, { "--scrim": 1 }, {
-        "--scrim": 0,
+      gsap.to(".hero-scrim", {
+        autoAlpha: 0,
         ease: "none",
         scrollTrigger: { trigger: el, start: "2% top", end: "24% top", scrub: true },
       });
-      // headline blurs and fades in place while the object turns away (as in the reference)
+      // headline fades and lifts while the object turns away; opacity and transform only, so scrolling stays on the compositor
       gsap.to(".hero-copy", {
         autoAlpha: 0,
         y: -40,
-        filter: "blur(10px)",
         ease: "none",
         scrollTrigger: { trigger: el, start: "8% top", end: "55% top", scrub: true },
       });
@@ -55,6 +54,7 @@ export default function Hero() {
   return (
     <section className="hero" id="top" ref={root} aria-label="Littleman Labs">
 
+      <div className="hero-scrim" aria-hidden="true" />
       <div className="hero-copy">
         <h1 className="display" aria-label={plain(t.hero.title)} key={lang}>
           <Split text={t.hero.title} />
