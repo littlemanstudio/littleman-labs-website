@@ -31,6 +31,12 @@ export default function Hero() {
           sceneState.scroll = self.progress;
         },
       });
+      // the dark legibility scrim at the hero's foot fades out first, so the hero meets the next section without a visible edge
+      gsap.fromTo(el, { "--scrim": 1 }, {
+        "--scrim": 0,
+        ease: "none",
+        scrollTrigger: { trigger: el, start: "2% top", end: "24% top", scrub: true },
+      });
       // headline blurs and fades in place while the object turns away (as in the reference)
       gsap.to(".hero-copy", {
         autoAlpha: 0,
