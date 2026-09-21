@@ -297,7 +297,7 @@ button {
   z-index: 3;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 1.2s ease;
+  transition: opacity 0.35s ease-out;
 }
 .baby-canvas[data-ready="true"] {
   opacity: 1;
