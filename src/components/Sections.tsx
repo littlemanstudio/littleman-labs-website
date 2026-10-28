@@ -130,7 +130,7 @@ export function Film() {
         <div className="phone">
           <video
             ref={ref}
-            poster="/video/about-poster.jpg"
+            poster="/video/about-poster.webp"
             playsInline
             preload="metadata"
             onPlay={() => setPlaying(true)}
