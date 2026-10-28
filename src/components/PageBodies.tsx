@@ -18,6 +18,17 @@ export function HomeBody({ lang }: P) {
   return (
     <>
       <SiteLd lang={lang} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": `${SITE.url}/#website`,
+          name: SITE.name,
+          url: SITE.url,
+          inLanguage: ["es-PR", "en-US"],
+          publisher: { "@id": `${SITE.url}/#organization` },
+        }}
+      />
       <Frame />
       <Hero />
       <BabyGlass />

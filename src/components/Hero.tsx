@@ -15,13 +15,8 @@ export default function Hero() {
     if (!el) return;
     const ctx = gsap.context(() => {
       if (reducedMotion()) return;
-      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-      tl.from(".hero-copy h1 .wi", { yPercent: 115, duration: 1.2, stagger: 0.07 }, 0.25)
-        .from(".hero-copy p", { autoAlpha: 0, y: 18, filter: "blur(6px)", clearProps: "filter", duration: 1.1 }, 1.05)
-        .from(".cta", { autoAlpha: 0, x: -16, duration: 1 }, 1.2)
-        .from(".cta .ring", { scale: 0, duration: 1.1, ease: "back.out(1.8)" }, 1.2)
-        .from(".scroll-cue", { autoAlpha: 0, duration: 1 }, 2);
-
+      // the entrance (headline words, paragraph, button, scroll cue) is CSS in globals.css (.hero-copy / .scroll-cue),
+      // so it paints with the first frame instead of waiting for hydration; GSAP keeps the scroll-driven motion below
       ScrollTrigger.create({
         trigger: el,
         start: "top top",
