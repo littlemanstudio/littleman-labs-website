@@ -7,7 +7,8 @@ import type { LangCode } from "@/lib/site";
 export default function RootShell({ lang, children }: { lang: LangCode; children: React.ReactNode }) {
   /* Start downloading the statue's model and photo with the HTML, before any script runs. */
   preload("/models/crystal.glb", { as: "fetch", crossOrigin: "anonymous" });
-  preload("/models/crystal-front.webp", { as: "image" });
+  /* three.js loads this texture with crossOrigin "anonymous"; the preload must match or the browser downloads it twice. */
+  preload("/models/crystal-front.webp", { as: "image", crossOrigin: "anonymous" });
   return (
     <html lang={lang} className={fontClasses}>
       <body>

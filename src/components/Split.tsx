@@ -22,7 +22,7 @@ export function Split({ text }: { text: string }) {
       {words.map((x, i) => (
         <Fragment key={i}>
           <span className="w" aria-hidden="true">
-            <span className="wi">
+            <span className="wi" style={{ "--i": i } as React.CSSProperties}>
               {x.accent ? <em>{x.w}</em> : x.w}
               {x.tail}
             </span>

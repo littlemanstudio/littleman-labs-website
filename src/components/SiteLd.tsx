@@ -9,6 +9,7 @@ export default function SiteLd({ lang }: { lang: LangCode }) {
   const data = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": `${SITE.url}/#organization`,
     name: SITE.name,
     url: `${SITE.url}${localize(lang, "/") === "/" ? "" : localize(lang, "/")}`,
     logo: `${SITE.url}/brand/logo-640.png`,

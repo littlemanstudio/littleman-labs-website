@@ -52,7 +52,7 @@ export default function Nav() {
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/logo-outlined.png" alt="" width={48} height={43} />
+          <img src="/brand/logo-outlined-96.png" alt="" width={48} height={43} />
           <span>Littleman Labs</span>
         </Link>
 
