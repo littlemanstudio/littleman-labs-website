@@ -2087,6 +2087,7 @@ body {
   max-width: 44em;
   color: var(--faint);
   font-size: 13px;
+}
 
 /* ---------- hero entrance in CSS: same choreography as the old GSAP timeline, but it paints with the first frame ---------- */
 @keyframes hero-word {
