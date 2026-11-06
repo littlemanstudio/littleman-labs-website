@@ -5,7 +5,7 @@ import { scrollToTop } from "@/lib/lenis";
 import { SITE } from "@/lib/site";
 
 export default function Footer() {
-  const { t, href } = useLang();
+  const { t, href, lang } = useLang();
   return (
     <footer className="footer" id="end">
       <div className="pier" aria-hidden="true">
@@ -29,6 +29,7 @@ export default function Footer() {
           <Link href={href("/services/ads")}>{t.services.items[1].title}</Link>
           <Link href={href("/work")}>{t.nav.work}</Link>
           <Link href={href("/about")}>{t.nav.about}</Link>
+          <Link href={href("/reddit")}>{lang === "en" ? "Guides" : "Guías"}</Link>
         </div>
         <div>
           <p className="foot-h label">{t.footer.legal}</p>

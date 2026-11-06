@@ -2022,3 +2022,69 @@ body {
 .send {
   text-shadow: none;
 }
+
+
+/* ---------- Reddit question guides (/reddit) ---------- */
+.guide .lead + .lead {
+  margin-top: 16px;
+}
+.guide .guide-updated {
+  margin-top: 28px;
+  color: var(--faint);
+}
+.guide-list {
+  list-style: none;
+  margin: clamp(28px, 4vw, 48px) 0 0;
+  padding: 0;
+  max-width: 44em;
+}
+.guide-list li {
+  border-top: 1px solid var(--line);
+}
+.guide-list a {
+  display: grid;
+  gap: 8px;
+  padding: 22px 0;
+  min-height: 44px;
+}
+.guide-list .label {
+  color: var(--faint);
+}
+.guide-list strong {
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.25;
+  transition: color 0.3s var(--ease-out);
+}
+.guide-list a:hover strong {
+  color: var(--sand);
+}
+.guide-desc {
+  color: var(--dim);
+  font-size: 14px;
+}
+.guide-related {
+  margin-top: 0;
+}
+.guide-related a {
+  padding: 16px 0;
+}
+.guide .guide-us {
+  margin-top: 56px;
+  padding: clamp(22px, 3vw, 36px);
+  border: 1px solid var(--line);
+  background: rgba(20, 48, 59, 0.55);
+}
+.guide .guide-us .cta {
+  margin-top: 28px;
+}
+.guide .guide-us p + p {
+  margin-top: 12px;
+}
+.guide-note {
+  margin-top: 48px;
+  max-width: 44em;
+  color: var(--faint);
+  font-size: 13px;
+}
