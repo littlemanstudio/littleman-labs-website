@@ -857,6 +857,11 @@ button {
   .contact-grid {
     grid-template-columns: 1fr;
   }
+  /* On a phone the crawling-baby logo sat between the intro and the form, pushing the form (and the
+     WhatsApp and call links under it) below the fold. The form comes first instead. */
+  .contact .logo-big {
+    display: none;
+  }
 
   .hero-copy h1 {
     position: static;
