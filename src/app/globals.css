@@ -1008,6 +1008,68 @@ button {
   color: #8a2b2b;
 }
 
+/* ---------- contact: one question at a time ---------- */
+.step-meter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #35505b;
+}
+.step-bar {
+  flex: 1;
+  height: 2px;
+  background: rgba(20, 48, 59, 0.18);
+  overflow: hidden;
+}
+.step-bar i {
+  display: block;
+  height: 100%;
+  background: var(--blue);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.step-field label {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.step-field input,
+.step-field textarea {
+  font-size: 18px; /* 16px or more keeps iOS from zooming the page on focus */
+  min-height: 48px;
+}
+.step-field textarea {
+  min-height: 96px;
+}
+.step-note {
+  min-height: 1.5em;
+  margin: 0;
+  font-size: 13px;
+  color: #35505b;
+}
+.step-note[data-state="error"] {
+  color: #8a2b2b;
+}
+.form .step-back {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .step-bar i {
+    transition: none;
+  }
+}
+
 /* ---------- service cards: details link ---------- */
 .card .more {
   display: inline-block;
